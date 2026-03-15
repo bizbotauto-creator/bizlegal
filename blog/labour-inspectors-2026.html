@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>10,000 New Labour Inspectors: What Every South African Employer Must Know | BizLegal</title>
+  <meta name="description" content="President Ramaphosa announced 10,000 new labour inspectors at SONA 2026. What this means for your business, what inspectors can do, and why compliance matters now." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue: #1E3D82; --blue-dark: #162F6E; --blue-deep: #0F1A3A;
+      --blue-pale: #EEF2FB; --gold: #C8A96E; --gold-dark: #A8893E;
+      --white: #FFFFFF; --paper: #FAFAF7; --ink: #1A1A1A;
+      --ink-soft: #3A3A3A; --rule: #2C4286; --grey-light: #E8EBF4;
+      --nav-h: 90px;
+      --shadow-md: 0 8px 40px rgba(28,40,90,0.14);
+      --shadow-lg: 0 20px 60px rgba(28,40,90,0.2);
+      --transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; color: var(--ink); background: var(--white); -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; color: inherit; }
+    .container { width: 100%; max-width: 1240px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 48px); }
+
+    /* BUTTONS */
+    .btn { display: inline-flex; align-items: center; gap: 10px; padding: 13px 26px; border-radius: 6px; font-size: 14.5px; font-weight: 600; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: var(--transition); border: none; }
+    .btn-primary { background: var(--gold); color: var(--blue-deep); }
+    .btn-primary:hover { background: var(--gold-dark); transform: translateY(-2px); }
+    .btn-blue { background: var(--blue); color: var(--white); }
+    .btn-blue:hover { background: var(--blue-dark); transform: translateY(-2px); }
+    .btn svg { width: 17px; height: 17px; flex-shrink: 0; }
+
+    /* ANNOUNCEMENT */
+    .announcement { background: var(--blue-deep); color: var(--white); text-align: center; padding: 10px 20px; font-size: 13.5px; font-weight: 500; }
+    .announcement strong { color: var(--gold); }
+    .announcement a { color: #E8D4A8; text-decoration: underline; text-underline-offset: 3px; }
+
+    /* NAV */
+    nav { position: sticky; top: 0; z-index: 1000; background: rgba(255,255,255,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid var(--grey-light); height: var(--nav-h); transition: box-shadow var(--transition); }
+    nav.scrolled { box-shadow: var(--shadow-md); }
+    nav .container { height: 100%; }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 100%; }
+    .nav-logo img { height: 64px; width: auto; object-fit: contain; display: block; }
+    .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+    .nav-links a { display: block; padding: 8px 14px; font-size: 14.5px; font-weight: 500; color: var(--ink); border-radius: 6px; transition: var(--transition); }
+    .nav-links a:hover, .nav-links a.active { color: var(--blue); background: var(--blue-pale); }
+    .has-dropdown { position: relative; }
+    .dropdown { position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%) translateY(-8px); background: var(--white); border: 1px solid var(--grey-light); border-radius: 12px; box-shadow: var(--shadow-lg); min-width: 240px; padding: 8px; opacity: 0; pointer-events: none; transition: opacity 0.2s, transform 0.2s; list-style: none; }
+    .has-dropdown:hover .dropdown { opacity: 1; pointer-events: all; transform: translateX(-50%) translateY(0); }
+    .dropdown a { padding: 10px 14px; border-radius: 8px; font-size: 14px; display: flex; align-items: center; gap: 10px; }
+    .dropdown a:hover { background: var(--blue-pale); }
+    .dd-icon { width: 32px; height: 32px; border-radius: 8px; background: var(--blue-pale); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .dd-icon svg { width: 16px; height: 16px; color: var(--blue); }
+    .nav-cta { display: flex; align-items: center; gap: 12px; }
+    .nav-cta .phone { font-size: 13.5px; font-weight: 600; color: var(--blue); display: flex; align-items: center; gap: 6px; }
+    .nav-cta .phone svg { width: 16px; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 8px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--ink); border-radius: 2px; transition: var(--transition); }
+    .mobile-menu { display: none; position: fixed; inset: 0; top: var(--nav-h); background: var(--white); z-index: 999; padding: 24px; overflow-y: auto; }
+    .mobile-menu.open { display: block; }
+    .mobile-menu ul { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+    .mobile-menu ul a { display: block; padding: 14px 16px; font-size: 16px; font-weight: 500; color: var(--ink); border-radius: 8px; }
+    .mobile-menu ul a:hover { background: var(--blue-pale); color: var(--blue); }
+    .mobile-menu-cta { margin-top: 24px; display: flex; flex-direction: column; gap: 12px; }
+
+    /* ═══════════════════════════════════════════════
+       NEWSPAPER MASTHEAD
+    ═══════════════════════════════════════════════ */
+    .masthead {
+      background: var(--paper);
+      padding: 32px 0 0;
+      border-bottom: 3px solid var(--blue);
+    }
+    .masthead-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--blue);
+      margin-bottom: 16px;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .masthead-section {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--blue);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .masthead-section::before, .masthead-section::after {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .masthead-date {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11.5px;
+      color: #666;
+      letter-spacing: 0.04em;
+      text-align: right;
+    }
+    .masthead-headline {
+      text-align: center;
+      padding: 20px 0 18px;
+      border-bottom: 1px solid rgba(44,66,134,0.25);
+      position: relative;
+    }
+    .masthead-headline h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 5vw, 58px);
+      font-weight: 900;
+      color: var(--blue-deep);
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+      text-wrap: balance;
+    }
+    .masthead-headline h1 em {
+      font-style: italic;
+      color: var(--blue);
+    }
+    .masthead-deck {
+      margin-top: 14px;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(15px, 1.6vw, 18px);
+      font-style: italic;
+      color: var(--ink-soft);
+      line-height: 1.5;
+      max-width: 680px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .masthead-byline {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+      padding: 12px 0;
+      border-top: 1px solid #ddd;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+    .masthead-byline span {
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #666;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .masthead-byline svg { width: 13px; height: 13px; }
+    .masthead-byline .by { font-weight: 700; color: var(--blue); }
+
+    /* gold-rule removed */
+
+    /* ═══════════════════════════════════════════════
+       NEWSPAPER BODY — TWO COLUMN LAYOUT
+    ═══════════════════════════════════════════════ */
+    .newspaper-body {
+      background: var(--paper);
+      padding: 40px 0 60px;
+    }
+
+    .article-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 48px;
+      position: relative;
+    }
+
+    /* Vertical rule between columns — removed */
+
+    /* Elements that span full width */
+    .full-width {
+      grid-column: 1 / -1;
+    }
+
+    /* Section divider */
+    .section-rule {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 36px 0 28px;
+    }
+    .section-rule::before, .section-rule::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--blue);
+    }
+    .section-rule span {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(15px, 1.8vw, 19px);
+      font-weight: 700;
+      color: var(--blue-dark);
+      white-space: nowrap;
+      letter-spacing: 0.01em;
+    }
+
+    /* Pull quote — spans full width */
+    .pull-quote {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 28px 48px;
+      margin: 12px 0;
+      border-top: 3px double var(--blue);
+      border-bottom: 3px double var(--blue);
+      position: relative;
+    }
+    .pull-quote p {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(18px, 2.5vw, 26px);
+      font-style: italic;
+      font-weight: 600;
+      color: var(--blue-dark);
+      line-height: 1.4;
+      margin-bottom: 10px;
+    }
+    .pull-quote cite {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #888;
+      font-style: normal;
+    }
+    .pull-quote-ornament {
+      font-family: 'Playfair Display', serif;
+      font-size: 80px;
+      line-height: 0.6;
+      color: var(--gold);
+      opacity: 0.35;
+      position: absolute;
+      top: 24px;
+      left: 28px;
+    }
+
+    /* BODY TEXT */
+    .col-text p {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15.5px;
+      line-height: 1.85;
+      color: var(--ink-soft);
+      text-align: justify;
+      hyphens: auto;
+      margin-bottom: 16px;
+    }
+    .col-text p strong { color: var(--ink); font-weight: 600; }
+
+    /* Drop cap on first paragraph */
+    .col-text .drop-cap::first-letter {
+      font-family: 'Playfair Display', serif;
+      font-size: 4.8em;
+      font-weight: 900;
+      color: var(--blue);
+      float: left;
+      line-height: 0.78;
+      margin: 6px 8px 0 0;
+      padding: 0;
+    }
+
+    .col-text h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(15px, 1.5vw, 18px);
+      font-weight: 700;
+      color: var(--blue-dark);
+      margin: 28px 0 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--gold);
+    }
+
+    .col-text ul {
+      margin: 4px 0 16px;
+      padding-left: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .col-text ul li {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--ink-soft);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      text-align: left;
+    }
+    .col-text ul li::before {
+      content: '–';
+      color: var(--gold-dark);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .col-text ul li strong { color: var(--ink); font-weight: 600; }
+
+    /* Inline highlight for penalty amounts */
+    .penalty-line {
+      background: var(--blue-pale);
+      border-left: 3px solid var(--blue);
+      padding: 10px 14px;
+      margin: 14px 0 16px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14.5px;
+      color: var(--blue-dark);
+      font-weight: 600;
+      text-align: left;
+    }
+    .penalty-line span {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--blue);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    /* ═══════════════════════════════════════════════
+       CTA STRIP
+    ═══════════════════════════════════════════════ */
+    .article-cta { background: var(--blue-deep); padding: clamp(44px, 6vw, 68px) 0; }
+    .cta-inner { max-width: 1000px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 48px); display: flex; align-items: center; justify-content: space-between; gap: 36px; flex-wrap: wrap; }
+    .cta-inner h2 { font-family: 'Playfair Display', serif; font-size: clamp(19px, 2.2vw, 28px); font-weight: 700; color: var(--white); line-height: 1.3; margin-bottom: 6px; }
+    .cta-inner p { font-size: 15px; color: rgba(255,255,255,0.6); line-height: 1.65; max-width: 460px; }
+    .cta-buttons { display: flex; gap: 12px; flex-wrap: wrap; flex-shrink: 0; }
+
+    /* ═══════════════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════════════ */
+    footer { background: var(--blue-deep); color: var(--white); padding: clamp(52px, 8vw, 80px) 0 0; }
+    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: clamp(32px, 4vw, 60px); padding-bottom: 52px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .footer-brand img { height: 48px; width: auto; display: block; margin-bottom: 18px; }
+    .footer-brand p { font-size: 14.5px; color: rgba(255,255,255,0.6); line-height: 1.7; max-width: 300px; }
+    .footer-social { display: flex; gap: 10px; margin-top: 24px; }
+    .footer-social a { width: 36px; height: 36px; border-radius: 8px; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; transition: background var(--transition); }
+    .footer-social a:hover { background: var(--blue); }
+    .footer-social svg { width: 17px; height: 17px; color: rgba(255,255,255,0.7); }
+    .footer-col h5 { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul a { font-size: 14px; color: rgba(255,255,255,0.6); transition: color var(--transition); }
+    .footer-col ul a:hover { color: var(--white); }
+    .footer-contact-item { display: flex; gap: 10px; margin-bottom: 12px; align-items: flex-start; }
+    .footer-contact-item svg { width: 16px; height: 16px; color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+    .footer-contact-item span { font-size: 13.5px; color: rgba(255,255,255,0.65); line-height: 1.5; }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 24px 0; flex-wrap: wrap; }
+    .footer-bottom p { font-size: 13px; color: rgba(255,255,255,0.4); }
+    .footer-bottom-links { display: flex; gap: 20px; list-style: none; }
+    .footer-bottom-links a { font-size: 13px; color: rgba(255,255,255,0.4); transition: color 0.2s; }
+    .footer-bottom-links a:hover { color: var(--white); }
+
+    /* WHATSAPP */
+    .whatsapp-float { position: fixed; bottom: 28px; right: 28px; z-index: 999; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
+    .whatsapp-btn { width: 56px; height: 56px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 24px rgba(37,211,102,0.45); transition: transform 0.25s; }
+    .whatsapp-btn:hover { transform: scale(1.1); }
+    .whatsapp-btn svg { width: 28px; height: 28px; color: #fff; }
+    .whatsapp-tooltip { background: var(--ink); color: var(--white); font-size: 13px; font-weight: 500; padding: 7px 14px; border-radius: 8px; white-space: nowrap; opacity: 0; transform: translateX(10px); transition: var(--transition); pointer-events: none; }
+    .whatsapp-float:hover .whatsapp-tooltip { opacity: 1; transform: translateX(0); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .article-grid { grid-template-columns: 1fr; gap: 0; }
+      .article-grid::before { display: none; }
+      .pull-quote { padding: 20px 24px; }
+      .col-text p { text-align: left; }
+    }
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta .phone { display: none; }
+      .hamburger { display: flex; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .cta-inner { flex-direction: column; }
+      .masthead-headline h1 { font-size: clamp(24px, 7vw, 36px); }
+    }
+    @media (max-width: 480px) {
+      .footer-top { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="announcement">
+    <strong>⚠ Urgent:</strong> 10,000 new labour inspectors deployed in 2026. Is your business compliant?
+    <a href="../services/labour.html#quote">Get a free check →</a>
+  </div>
+
+  <nav id="mainNav">
+    <div class="container">
+      <div class="nav-inner">
+        <a class="nav-logo" href="../index.html"><img src="../images/logo.png" alt="BizLegal" /></a>
+        <ul class="nav-links">
+          <li><a href="../index.html">Home</a></li>
+          <li class="has-dropdown">
+            <a href="#">Services ▾</a>
+            <ul class="dropdown">
+              <li><a href="../services/labour.html"><span class="dd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7H4a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></span><span>Labour Services</span></a></li>
+              <li><a href="../services/legal.html"><span class="dd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6l9-4 9 4"/><path d="M3 6v14l9 4 9-4V6"/></svg></span><span>Legal Services</span></a></li>
+              <li><a href="../services/tax.html"><span class="dd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></span><span>Tax &amp; Accounting</span></a></li>
+              <li><a href="../services/popia.html"><span class="dd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span><span>POPIA / PAIA Compliance</span></a></li>
+              <li><a href="../services/cpa.html"><span class="dd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></span><span>Consumer Protection Act</span></a></li>
+              <li><a href="../services/training.html"><span class="dd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span><span>Labour Law Training</span></a></li>
+            </ul>
+          </li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../blog.html" class="active">Blog</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+        <div class="nav-cta">
+          <a class="phone" href="tel:0765760233">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.01 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.18 6.18l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            076 576 0233
+          </a>
+          <a href="../services/labour.html#quote" class="btn btn-primary">Get a Free Quote</a>
+        </div>
+        <button class="hamburger" id="hamburgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="../services/labour.html" style="padding-left:32px;font-size:15px">→ Labour Services</a></li>
+      <li><a href="../services/legal.html" style="padding-left:32px;font-size:15px">→ Legal Services</a></li>
+      <li><a href="../services/tax.html" style="padding-left:32px;font-size:15px">→ Tax &amp; Accounting</a></li>
+      <li><a href="../services/popia.html" style="padding-left:32px;font-size:15px">→ POPIA / PAIA</a></li>
+      <li><a href="../services/cpa.html" style="padding-left:32px;font-size:15px">→ Consumer Protection Act</a></li>
+      <li><a href="../services/training.html" style="padding-left:32px;font-size:15px">→ Labour Law Training</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../blog.html">Blog</a></li>
+      <li><a href="../contact.html">Contact</a></li>
+    </ul>
+    <div class="mobile-menu-cta">
+      <a href="tel:0765760233" class="btn btn-blue">📞 076 576 0233</a>
+      <a href="../services/labour.html#quote" class="btn btn-primary">Get a Free Quote</a>
+    </div>
+  </div>
+
+  <!-- ═══════════════ MASTHEAD ═══════════════ -->
+  <div class="masthead">
+    <div class="container">
+
+      <div class="masthead-top">
+        <div class="masthead-section">Labour Law · Current Affairs</div>
+        <div class="masthead-date">
+          BizLegal Blog &amp; Resources<br>
+          <span style="font-size:11px; color:#999;">March 2026 · 8 min read · BizLegal Editorial Team</span>
+        </div>
+      </div>
+
+      <div class="masthead-headline">
+        <h1>10,000 New Labour Inspectors:<br><em>What Every South African Employer Must Know</em></h1>
+        <p class="masthead-deck">President Ramaphosa's announcement at the 2026 State of the Nation Address has fundamentally changed the enforcement landscape for South African businesses. Here is what it means, what inspectors are empowered to do, and why the time to act is now.</p>
+        <div class="masthead-byline">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span class="by">BizLegal Editorial Team</span></span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>March 2026</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>8 min read</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ═══════════════ ARTICLE BODY ═══════════════ -->
+  <main class="newspaper-body">
+    <div class="container">
+      <div class="article-grid">
+
+        <!-- ── OPENING: full width lead ── -->
+        <div class="full-width col-text" style="margin-bottom: 28px;">
+          <p class="drop-cap">South Africa's labour enforcement landscape changed fundamentally on 12 February 2026. President Cyril Ramaphosa's announcement of 10,000 additional permanent labour inspectors — delivered at the State of the Nation Address at Cape Town City Hall — signals the end of an era in which under-resourced enforcement meant most businesses were simply never inspected. For employers across the Overberg, West Coast and Cape Town, the implications are immediate: compliance is no longer a matter of chance, and the likelihood of an unannounced inspection has never been greater.</p>
+        </div>
+
+        <!-- ── PULL QUOTE ── -->
+        <div class="pull-quote full-width">
+          <div class="pull-quote-ornament">"</div>
+          <p>"To tighten enforcement, we will hire an additional 10,000 labour inspectors this year."</p>
+          <cite>President Cyril Ramaphosa — State of the Nation Address, 12 February 2026</cite>
+        </div>
+
+        <!-- ══ SECTION 1 ══ -->
+        <div class="section-rule full-width">
+          <span>The Announcement and What It Actually Means</span>
+        </div>
+
+        <!-- Column 1 -->
+        <div class="col-text">
+          <p>President Ramaphosa confirmed that the Department of Employment and Labour, the Department of Home Affairs and the South African Police Service would work together in a coordinated fashion — conducting simultaneous inspections that cover both labour and immigration law violations. The announcement was not merely rhetorical. The Department of Employment and Labour subsequently confirmed it in formal parliamentary communications, and inspection blitzes have already commenced across multiple provinces in early 2026.</p>
+
+          <p>South Africa currently has approximately 2,300 labour inspectors. The expansion to 12,300 represents more than a fivefold increase in enforcement capacity — described by Deputy Minister Jomo Sibiya as a post-1994 record and a groundbreaking shift in how the state intends to govern workplaces.</p>
+        </div>
+
+        <!-- Column 2 -->
+        <div class="col-text">
+          <p>The most illuminating statistic in this entire conversation is one that most business owners have never heard: administrative data collected over nearly two decades shows that only <strong>2% to 5% of South African workplaces have ever been covered</strong> through inspection or enforcement activities. That is the coverage gap this expansion is designed to close — and the department has confirmed it openly in parliamentary replies.</p>
+
+          <p>The sectors prioritised for inspection are precisely those that dominate the Overberg, West Coast and Cape Town economies: agriculture, hospitality, construction, domestic work and informal retail. The message, for any business operating in these regions, is clear.</p>
+        </div>
+
+        <!-- ══ SECTION 2 ══ -->
+        <div class="section-rule full-width">
+          <span>What a Labour Inspector Is Empowered to Do</span>
+        </div>
+
+        <!-- Column 1 -->
+        <div class="col-text">
+          <h3>Entry Without Warning or Warrant</h3>
+          <p>Section 65 of the Basic Conditions of Employment Act grants a labour inspector the authority to enter any workplace — or any premises where an employer carries on business or keeps employment records — without a warrant and without prior notice, at any reasonable time. They present their credentials at the door and require access. This applies equally to a farm, a restaurant, a building site, a retail shop or an office.</p>
+
+          <h3>What They Examine</h3>
+          <p>Once on your premises, an inspector can examine virtually any employment-related documentation and require answers from both employer and employees — under oath if necessary. Inspections cover three broad areas of legislation:</p>
+          <ul>
+            <li><strong>Basic conditions of employment</strong> — employment contracts, working hours, leave records, overtime calculations, rest periods and payslips, in compliance with the BCEA and applicable sectoral determinations.</li>
+            <li><strong>Employment equity</strong> — whether designated employers have a compliant Employment Equity Plan, are meeting reporting obligations and can demonstrate measurable progress toward their transformation targets.</li>
+            <li><strong>Occupational health and safety</strong> — whether the workplace meets the requirements of the OHS Act, from machinery and equipment safety to hazardous substance management and emergency preparedness.</li>
+          </ul>
+        </div>
+
+        <!-- Column 2 -->
+        <div class="col-text">
+          <h3>UIF, COIDA and Immigration</h3>
+          <p>In addition to the three formal inspection types, inspectors can verify UIF registration and contributions, Compensation Fund (COIDA) registration, and — in the current enforcement climate — the immigration status and work authorisation of every foreign employee on the premises. The coordinated nature of the new enforcement model means SAPS and Home Affairs may arrive alongside the labour inspector.</p>
+
+          <h3>Undertakings and Compliance Orders</h3>
+          <p>When non-compliance is found, the inspector will first seek a <strong>written undertaking</strong> — a formal agreement from the employer to rectify the violation by a specified date. If that undertaking is not honoured, the Director-General can apply to the CCMA to convert it into an enforceable arbitration award, which has the full force of a court order.</p>
+          <p>Where the inspector believes a voluntary undertaking will not be sufficient, they may issue a <strong>compliance order</strong> directly. Under proposed 2025 amendments to the BCEA, an employer's objection to such an order will no longer automatically suspend it — security must be provided to the CCMA while the objection is heard. Obstruction of an inspector, or the provision of false information, is a criminal offence.</p>
+        </div>
+
+        <!-- ══ SECTION 3 ══ -->
+        <div class="section-rule full-width">
+          <span>Fines, Penalties and the Real Cost of Non-Compliance</span>
+        </div>
+
+        <!-- Column 1 -->
+        <div class="col-text">
+          <h3>National Minimum Wage</h3>
+          <p>As of 1 March 2025, the National Minimum Wage is R28.79 per hour — applicable to every employer regardless of size or industry. Failure to comply carries a fine equal to the greater of twice the value of the underpayment or twice the employee's monthly wage. Repeat violations attract a fine three times that amount, and the employer is required to retroactively pay all back wages for the full period of non-compliance.</p>
+          <div class="penalty-line">
+            <span>2× to 3× the underpayment</span>
+            National Minimum Wage violation fine, plus full back pay
+          </div>
+
+          <h3>BCEA Compliance Orders</h3>
+          <p>Fines under a BCEA compliance order can reach R500 per employee for each area of non-compliance. For a business with 20 staff, a single inspection revealing multiple violations can produce a fine of R30,000 or more — issued on the day, without a court hearing. Compliance orders can subsequently be made orders of the Labour Court and enforced through attachment of assets.</p>
+          <div class="penalty-line">
+            <span>Up to R500 per employee</span>
+            Per BCEA violation — issued on the day of inspection
+          </div>
+        </div>
+
+        <!-- Column 2 -->
+        <div class="col-text">
+          <h3>Employment Equity Act</h3>
+          <p>Designated employers who fail to comply with the Employment Equity Act face fines of up to R1.5 million or 10% of annual turnover — whichever is greater — for a first offence. Repeat violations attract penalties of up to R2.7 million. Non-compliance also results in the loss of the Equity Compliance Certificate, which is now a mandatory requirement for any business seeking to contract with an organ of state.</p>
+          <div class="penalty-line">
+            <span>Up to R1.5 million or 10% of turnover</span>
+            Employment Equity Act — first offence
+          </div>
+
+          <h3>CCMA Awards and Criminal Liability</h3>
+          <p>The exposure does not end with inspector-issued fines. An employer who dismisses an employee without following the correct procedure can face a CCMA arbitration award of up to 12 months' compensation. Employees who were never properly contracted, or whose dismissals followed flawed hearings, represent open liabilities that can far exceed any compliance fine.</p>
+          <p>Certain serious BCEA contraventions also carry the potential for criminal prosecution and imprisonment of up to three years. While prosecution of individuals remains relatively uncommon, it is a real and growing risk as enforcement capacity expands and the political mandate behind it strengthens.</p>
+        </div>
+
+        <!-- ══ SECTION 4 ══ -->
+        <div class="section-rule full-width">
+          <span>Why Compliance Is Now a Business Imperative</span>
+        </div>
+
+        <!-- Column 1 -->
+        <div class="col-text">
+          <p>Some business owners respond to enforcement news with a degree of fatalism: "We have always operated this way, and nothing has happened yet." That reasoning had some merit when 2,300 inspectors were spread across millions of workplaces, and only one in twenty businesses could realistically expect an inspection in any given year. It carries almost none when that inspectorate expands fivefold with an explicit mandate to move national coverage from 2–5% toward something far more comprehensive.</p>
+
+          <p>Beyond the enforcement risk, there is a more fundamental point. Labour law exists to protect the people who work for you. Compliance is not simply about avoiding a fine — it is about building a business on a foundation that treats people fairly, creates certainty for your staff and reduces disputes. Employers who have proper contracts, correct procedures and accurate records do not panic when an inspector walks through the door.</p>
+        </div>
+
+        <!-- Column 2 -->
+        <div class="col-text">
+          <p>Most compliance gaps are straightforwardly fixable. Proper written employment contracts, accurate leave and hours records, correct wage payments, UIF and COIDA registration, and a clear written disciplinary code — none of these are unreasonable expectations. They are the minimum that South African law requires, and the minimum that every employee is entitled to.</p>
+
+          <p>BizLegal's team of admitted attorneys and practicing legal professionals offers a free compliance consultation for businesses across the Overberg, West Coast and Cape Town. We review your employment documentation, identify gaps, put the right contracts and policies in place, and stand by you if an inspector arrives — on a fixed monthly retainer from R500 per month.</p>
+
+          <p style="font-weight: 600; color: var(--ink);"><em>Contact us today — before the inspector does.</em></p>
+        </div>
+
+      </div><!-- /article-grid -->
+    </div><!-- /container -->
+  </main>
+
+  <!-- CTA -->
+  <section class="article-cta">
+    <div class="cta-inner">
+      <div>
+        <h2>Get Compliant Before the Inspector Arrives.</h2>
+        <p>BizLegal's admitted attorneys review your employment documents, identify gaps and put the right structures in place — on a fixed monthly retainer from R500 per month.</p>
+      </div>
+      <div class="cta-buttons">
+        <a href="../services/labour.html#quote" class="btn btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          Get a Free Quote
+        </a>
+        <a href="../services/labour.html" class="btn" style="background:rgba(255,255,255,0.12);color:#fff;border:1.5px solid rgba(255,255,255,0.3);">
+          Labour Services
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="../images/logo2.png" alt="BizLegal" />
+          <p>Labour, Legal, Tax and Compliance solutions for businesses across the Overberg, West Coast and Cape Town regions. Affordable. Expert. Local.</p>
+          <div class="footer-social">
+            <a href="https://facebook.com" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+            <a href="https://linkedin.com" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+            <a href="https://wa.me/27765760233" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 1.999C6.477 1.999 2 6.477 2 12c0 1.88.518 3.638 1.418 5.148L2 22l4.966-1.395A9.956 9.956 0 0012 22c5.523 0 10-4.477 10-10S17.522 1.999 11.999 1.999z"/></svg></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Services</h5>
+          <ul>
+            <li><a href="../services/labour.html">Labour Services</a></li>
+            <li><a href="../services/legal.html">Legal Services</a></li>
+            <li><a href="../services/tax.html">Tax &amp; Accounting</a></li>
+            <li><a href="../services/popia.html">POPIA / PAIA</a></li>
+            <li><a href="../services/cpa.html">Consumer Protection</a></li>
+            <li><a href="../services/training.html">Labour Training</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Company</h5>
+          <ul>
+            <li><a href="../about.html">About BizLegal</a></li>
+            <li><a href="../blog.html">Blog &amp; Resources</a></li>
+            <li><a href="../contact.html">Contact Us</a></li>
+            <li><a href="../services/labour.html#quote">Get a Quote</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Our Offices</h5>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span><strong style="color:rgba(255,255,255,0.85)">Overberg</strong><br/>11 Hope Street, Hermanus<br/>Juvan Heyns · 083 455 3981</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span><strong style="color:rgba(255,255,255,0.85)">Weskus</strong><br/>Vredendal<br/>Wihan J. van Rensburg · 076 576 0233</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span><strong style="color:rgba(255,255,255,0.85)">Cape Town</strong><br/>The Ridge, Kenridge<br/>Johan Heyns · 083 292 6936</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 BizLegal. All rights reserved. Reg No. 2020/585965/07.</p>
+        <ul class="footer-bottom-links">
+          <li><a href="../privacy.html">Privacy Policy</a></li>
+          <li><a href="../terms.html">Terms of Use</a></li>
+          <li><a href="../paia.html">PAIA Manual</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <div class="whatsapp-float">
+    <div class="whatsapp-tooltip">Chat on WhatsApp</div>
+    <a class="whatsapp-btn" href="https://wa.me/27765760233?text=Hi%20BizLegal%2C%20I%20read%20your%20article%20about%20labour%20inspectors%20and%20would%20like%20a%20free%20compliance%20check." target="_blank" rel="noopener" aria-label="WhatsApp">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 1.999C6.477 1.999 2 6.477 2 12c0 1.88.518 3.638 1.418 5.148L2 22l4.966-1.395A9.956 9.956 0 0012 22c5.523 0 10-4.477 10-10S17.522 1.999 11.999 1.999z"/></svg>
+    </a>
+  </div>
+
+  <script>
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 20); });
+    const hamburger = document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    let menuOpen = false;
+    hamburger.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      mobileMenu.classList.toggle('open', menuOpen);
+      const spans = hamburger.querySelectorAll('span');
+      if (menuOpen) { spans[0].style.transform='rotate(45deg) translate(5px,5px)'; spans[1].style.opacity='0'; spans[2].style.transform='rotate(-45deg) translate(5px,-5px)'; }
+      else { spans.forEach(s => { s.style.transform=''; s.style.opacity=''; }); }
+    });
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      menuOpen = false; mobileMenu.classList.remove('open');
+      hamburger.querySelectorAll('span').forEach(s => { s.style.transform=''; s.style.opacity=''; });
+    }));
+  </script>
+</body>
+</html>

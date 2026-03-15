@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Labour Services | BizLegal</title>
+  <meta name="description" content="BizLegal provides affordable Labour Law and HR services on a fixed monthly retainer — employment contracts, disciplinary hearings, CCMA representation and more across the Overberg, West Coast and Cape Town." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:       #1E3D82;
+      --blue-dark:  #162F6E;
+      --blue-deep:  #0F1A3A;
+      --blue-light: #2F4D8F;
+      --blue-pale:  #EEF2FB;
+      --gold:       #C8A96E;
+      --gold-light: #E8D4A8;
+      --white:      #FFFFFF;
+      --off-white:  #F8F9FC;
+      --grey-light: #E8EBF4;
+      --grey-mid:   #9099B5;
+      --text:       #1A1D2E;
+      --text-soft:  #4A5070;
+      --nav-h:      90px;
+      --section-pad: clamp(64px, 8vw, 112px);
+      --radius:     12px;
+      --shadow-sm:  0 2px 12px rgba(28,40,90,0.08);
+      --shadow-md:  0 8px 40px rgba(28,40,90,0.14);
+      --shadow-lg:  0 20px 60px rgba(28,40,90,0.2);
+      --transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+
+    .container { width: 100%; max-width: 1240px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 48px); }
+
+    .tag { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(28px, 4vw, 44px); font-weight: 700; line-height: 1.2; color: var(--blue-dark); }
+    .section-title.light { color: var(--white); }
+    .section-sub { font-size: clamp(15px, 1.5vw, 17px); color: var(--text-soft); max-width: 560px; margin-top: 16px; line-height: 1.7; }
+    .section-sub.light { color: rgba(255,255,255,0.75); }
+
+    .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; border-radius: 6px; font-size: 15px; font-weight: 600; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: var(--transition); border: none; }
+    .btn-primary { background: var(--gold); color: var(--blue-deep); }
+    .btn-primary:hover { background: #b5953c; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(200,169,110,0.35); }
+    .btn-blue { background: var(--blue); color: var(--white); }
+    .btn-blue:hover { background: var(--blue-dark); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+    .btn-outline-blue { background: transparent; color: var(--blue); border: 2px solid var(--blue); }
+    .btn-outline-blue:hover { background: var(--blue); color: var(--white); }
+    .btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+    /* ─── ANNOUNCEMENT ─── */
+    .announcement { background: var(--blue-deep); color: var(--white); text-align: center; padding: 10px 20px; font-size: 13.5px; font-weight: 500; }
+    .announcement strong { color: var(--gold); }
+    .announcement a { color: var(--gold-light); text-decoration: underline; text-underline-offset: 3px; }
+
+    /* ─── NAV ─── */
+    nav { position: sticky; top: 0; z-index: 1000; background: rgba(255,255,255,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid var(--grey-light); height: var(--nav-h); transition: box-shadow var(--transition); }
+    nav.scrolled { box-shadow: var(--shadow-md); }
+    nav .container { height: 100%; }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 100%; }
+    .nav-logo img { height: 64px; width: auto; display: block; object-fit: contain; }
+    .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+    .nav-links a { display: block; padding: 8px 14px; font-size: 14.5px; font-weight: 500; color: var(--text); border-radius: 6px; transition: var(--transition); }
+    .nav-links a:hover, .nav-links a.active { color: var(--blue); background: var(--blue-pale); }
+    .has-dropdown { position: relative; }
+    .dropdown { position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%) translateY(-8px); background: var(--white); border: 1px solid var(--grey-light); border-radius: var(--radius); box-shadow: var(--shadow-lg); min-width: 240px; padding: 8px; opacity: 0; pointer-events: none; transition: opacity 0.2s, transform 0.2s; list-style: none; }
+    .has-dropdown:hover .dropdown { opacity: 1; pointer-events: all; transform: translateX(-50%) translateY(0); }
+    .dropdown a { padding: 10px 14px; border-radius: 8px; font-size: 14px; display: flex; align-items: center; gap: 10px; }
+    .dropdown a:hover { background: var(--blue-pale); }
+    .dd-icon { width: 32px; height: 32px; border-radius: 8px; background: var(--blue-pale); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .dd-icon svg { width: 16px; height: 16px; color: var(--blue); }
+    .nav-cta { display: flex; align-items: center; gap: 12px; }
+    .nav-cta .phone { font-size: 13.5px; font-weight: 600; color: var(--blue); display: flex; align-items: center; gap: 6px; }
+    .nav-cta .phone svg { width: 16px; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 8px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: var(--transition); }
+    .mobile-menu { display: none; position: fixed; inset: 0; top: var(--nav-h); background: var(--white); z-index: 999; padding: 24px; overflow-y: auto; }
+    .mobile-menu.open { display: block; }
+    .mobile-menu ul { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+    .mobile-menu ul a { display: block; padding: 14px 16px; font-size: 16px; font-weight: 500; color: var(--text); border-radius: 8px; transition: background var(--transition); }
+    .mobile-menu ul a:hover { background: var(--blue-pale); color: var(--blue); }
+    .mobile-menu-cta { margin-top: 24px; display: flex; flex-direction: column; gap: 12px; }
+
+    /* ─── PAGE HERO ─── */
+    .page-hero {
+      background: linear-gradient(135deg, var(--blue-deep) 0%, var(--blue) 100%);
+      padding: clamp(56px, 8vw, 96px) 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .page-hero-accent { position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: linear-gradient(to bottom, var(--gold), transparent); }
+    .page-hero-inner { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 40px; }
+    .breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 20px; }
+    .breadcrumb a { color: rgba(255,255,255,0.5); transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--gold); }
+    .breadcrumb svg { width: 14px; height: 14px; }
+    .page-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(32px, 5vw, 56px); font-weight: 700; color: var(--white); line-height: 1.15; margin-bottom: 18px; }
+    .page-hero h1 em { font-style: normal; color: var(--gold); }
+    .page-hero p { font-size: clamp(15px, 1.5vw, 17px); color: rgba(255,255,255,0.75); line-height: 1.7; max-width: 520px; }
+    .hero-badge-group { display: flex; flex-direction: column; gap: 12px; flex-shrink: 0; }
+    .hero-badge { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 12px; padding: 16px 22px; text-align: center; min-width: 140px; }
+    .hero-badge .hb-num { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; color: var(--gold); line-height: 1; }
+    .hero-badge .hb-label { font-size: 12px; color: rgba(255,255,255,0.55); margin-top: 4px; }
+
+    /* ─── INTRO STRIP ─── */
+    .intro-strip { background: var(--blue-pale); border-bottom: 1px solid var(--grey-light); padding: 28px 0; }
+    .intro-strip-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+    .intro-strip p { font-size: 15.5px; color: var(--text); font-weight: 500; max-width: 680px; }
+    .intro-strip p strong { color: var(--blue); }
+
+    /* ─── SCROLL ANIMATIONS ─── */
+    .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── WHAT WE DO ─── */
+    .what-we-do { padding: var(--section-pad) 0; background: var(--white); }
+    .services-full-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px; margin-top: 52px; }
+    .svc-card { background: var(--off-white); border: 1px solid var(--grey-light); border-radius: var(--radius); padding: 32px; position: relative; overflow: hidden; transition: var(--transition); }
+    .svc-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--blue), var(--gold)); transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease; }
+    .svc-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: transparent; background: var(--white); }
+    .svc-card:hover::after { transform: scaleX(1); }
+    .svc-card-icon { width: 50px; height: 50px; border-radius: 12px; background: var(--blue-pale); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+    .svc-card-icon svg { width: 24px; height: 24px; color: var(--blue); }
+    .svc-card h3 { font-family: 'Playfair Display', serif; font-size: 19px; font-weight: 700; color: var(--blue-dark); margin-bottom: 10px; }
+    .svc-card p { font-size: 14.5px; color: var(--text-soft); line-height: 1.65; }
+    .svc-card ul { margin-top: 14px; display: flex; flex-direction: column; gap: 7px; list-style: none; }
+    .svc-card ul li { font-size: 13.5px; color: var(--text-soft); display: flex; align-items: flex-start; gap: 8px; }
+    .svc-card ul li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 6px; }
+
+    /* ─── COMPLIANCE ALERT ─── */
+    .compliance-alert { padding: clamp(52px,7vw,80px) 0; background: linear-gradient(135deg, var(--blue-deep), var(--blue)); position: relative; overflow: hidden; }
+    .compliance-alert::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+    .alert-inner { position: relative; z-index: 2; display: grid; grid-template-columns: auto 1fr; gap: 40px; align-items: center; }
+    .alert-icon-wrap { width: 80px; height: 80px; border-radius: 50%; background: rgba(200,169,110,0.2); border: 2px solid rgba(200,169,110,0.4); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .alert-icon-wrap svg { width: 36px; height: 36px; color: var(--gold); }
+    .alert-label { display: inline-flex; align-items: center; gap: 8px; background: rgba(200,169,110,0.15); border: 1px solid rgba(200,169,110,0.3); border-radius: 100px; padding: 5px 14px; font-size: 11.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+    .compliance-alert h2 { font-family: 'Playfair Display', serif; font-size: clamp(20px,3vw,32px); font-weight: 700; color: var(--white); line-height: 1.3; margin-bottom: 12px; }
+    .compliance-alert p { font-size: 16px; color: rgba(255,255,255,0.72); line-height: 1.65; max-width: 640px; }
+
+    /* ─── FINES TABLE ─── */
+    .fines-section { padding: var(--section-pad) 0; background: var(--off-white); }
+    .fines-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+    .fine-card { background: var(--white); border-radius: var(--radius); border: 1px solid var(--grey-light); padding: 32px 28px; text-align: center; transition: var(--transition); }
+    .fine-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+    .fine-card .fine-amount { font-family: 'Playfair Display', serif; font-size: clamp(26px, 3vw, 38px); font-weight: 700; color: var(--blue); line-height: 1; margin-bottom: 8px; }
+    .fine-card .fine-label { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-soft); margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid var(--grey-light); }
+    .fine-card .fine-desc { font-size: 14px; color: var(--text-soft); line-height: 1.6; }
+    .fine-card.highlight { background: var(--blue); border-color: var(--blue); }
+    .fine-card.highlight .fine-amount { color: var(--gold); }
+    .fine-card.highlight .fine-label { color: rgba(255,255,255,0.6); border-color: rgba(255,255,255,0.15); }
+    .fine-card.highlight .fine-desc { color: rgba(255,255,255,0.7); }
+
+    /* ─── RETAINER PACKAGES ─── */
+    .packages { padding: var(--section-pad) 0; background: var(--white); }
+    .packages-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 28px; margin-top: 52px; }
+    .pkg-card { border-radius: 16px; border: 2px solid var(--grey-light); padding: 36px 32px; position: relative; transition: var(--transition); }
+    .pkg-card:hover { border-color: var(--blue); box-shadow: var(--shadow-lg); }
+    .pkg-card.featured { border-color: var(--blue); background: var(--blue-pale); }
+    .pkg-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--gold); color: var(--blue-deep); font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 16px; border-radius: 100px; white-space: nowrap; }
+    .pkg-card h3 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--blue-dark); margin-bottom: 8px; }
+    .pkg-card .pkg-sub { font-size: 14px; color: var(--text-soft); margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid var(--grey-light); line-height: 1.6; }
+    .pkg-card.featured .pkg-sub { border-color: rgba(44,66,134,0.15); }
+    .pkg-price { margin-bottom: 8px; }
+    .pkg-price .from { font-size: 13px; color: var(--text-soft); }
+    .pkg-price .amount { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 700; color: var(--blue); line-height: 1; }
+    .pkg-price .per { font-size: 13px; color: var(--text-soft); }
+    .pkg-price-note { font-size: 12.5px; color: var(--text-soft); margin-bottom: 28px; }
+    .pkg-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+    .pkg-features li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--text); }
+    .pkg-features li svg { width: 18px; height: 18px; color: var(--blue); flex-shrink: 0; margin-top: 1px; }
+
+    /* ─── PROCESS ─── */
+    .process { padding: var(--section-pad) 0; background: var(--off-white); }
+    .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; margin-top: 52px; position: relative; }
+    .process-steps::before { content: ''; position: absolute; top: 32px; left: calc(12.5% + 16px); right: calc(12.5% + 16px); height: 2px; background: linear-gradient(90deg, var(--blue-pale), var(--blue), var(--blue-pale)); z-index: 0; }
+    .step { text-align: center; position: relative; z-index: 1; }
+    .step-num { width: 64px; height: 64px; border-radius: 50%; background: var(--blue); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--white); border: 4px solid var(--off-white); }
+    .step h4 { font-size: 15px; font-weight: 700; color: var(--blue-dark); margin-bottom: 8px; }
+    .step p { font-size: 13.5px; color: var(--text-soft); line-height: 1.6; }
+
+    /* ─── FAQ ─── */
+    .faq { padding: var(--section-pad) 0; background: var(--white); }
+    .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 56px; margin-top: 52px; }
+    .faq-item { padding: 24px 0; border-bottom: 1px solid var(--grey-light); }
+    .faq-item:nth-last-child(-n+2) { border-bottom: none; }
+    .faq-q { font-size: 15.5px; font-weight: 600; color: var(--text); margin-bottom: 10px; display: flex; align-items: flex-start; gap: 12px; }
+    .faq-q::before { content: 'Q'; width: 24px; height: 24px; background: var(--blue); color: var(--white); border-radius: 6px; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+    .faq-a { font-size: 14.5px; color: var(--text-soft); line-height: 1.7; padding-left: 36px; }
+
+    /* ─── QUOTE FORM ─── */
+    .quote-section { padding: var(--section-pad) 0; background: var(--off-white); }
+    .quote-inner { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 80px); align-items: start; }
+    .quote-form-wrap { background: var(--white); border-radius: 16px; padding: clamp(32px, 4vw, 52px); border: 1px solid var(--grey-light); box-shadow: var(--shadow-sm); }
+    .form-title { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; color: var(--blue-dark); margin-bottom: 24px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+    .form-group label { font-size: 13px; font-weight: 600; color: var(--text); text-transform: uppercase; letter-spacing: 0.05em; }
+    .form-group input, .form-group select, .form-group textarea { padding: 12px 16px; border: 1.5px solid var(--grey-light); border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 15px; color: var(--text); background: var(--white); transition: border-color var(--transition); width: 100%; }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(44,66,134,0.1); }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-submit { width: 100%; justify-content: center; padding: 16px; font-size: 16px; }
+    .quote-info-items { display: flex; flex-direction: column; gap: 24px; margin-top: 36px; }
+    .quote-info-item { display: flex; gap: 16px; align-items: flex-start; }
+    .qi-icon { width: 44px; height: 44px; background: var(--blue); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .qi-icon svg { width: 20px; height: 20px; color: var(--white); }
+    .qi-title { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+    .qi-desc { font-size: 14px; color: var(--text-soft); line-height: 1.6; }
+
+    /* ─── OTHER SERVICES ─── */
+    .other-services { padding: var(--section-pad) 0; background: var(--white); }
+    .other-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; margin-top: 40px; }
+    .other-card { display: flex; align-items: center; gap: 14px; padding: 18px 20px; border: 1px solid var(--grey-light); border-radius: var(--radius); transition: var(--transition); }
+    .other-card:hover { background: var(--blue-pale); border-color: var(--blue); transform: translateY(-2px); }
+    .other-card-icon { width: 40px; height: 40px; background: var(--blue-pale); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .other-card-icon svg { width: 20px; height: 20px; color: var(--blue); }
+    .other-card span { font-size: 14.5px; font-weight: 600; color: var(--text); }
+    .other-card:hover span { color: var(--blue); }
+
+    /* ─── FOOTER ─── */
+    footer { background: var(--blue-deep); color: var(--white); padding: clamp(52px, 8vw, 80px) 0 0; }
+    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: clamp(32px, 4vw, 60px); padding-bottom: 52px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .footer-brand img { height: 48px; width: auto; display: block; margin-bottom: 18px; }
+    .footer-brand p { font-size: 14.5px; color: rgba(255,255,255,0.6); line-height: 1.7; max-width: 300px; }
+    .footer-social { display: flex; gap: 10px; margin-top: 24px; }
+    .footer-social a { width: 36px; height: 36px; border-radius: 8px; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; transition: background var(--transition); }
+    .footer-social a:hover { background: var(--blue); }
+    .footer-social svg { width: 17px; height: 17px; color: rgba(255,255,255,0.7); }
+    .footer-col h5 { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul a { font-size: 14px; color: rgba(255,255,255,0.6); transition: color var(--transition); }
+    .footer-col ul a:hover { color: var(--white); }
+    .footer-col ul a.active { color: var(--gold); }
+    .footer-contact-item { display: flex; gap: 10px; margin-bottom: 12px; align-items: flex-start; }
+    .footer-contact-item svg { width: 16px; height: 16px; color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+    .footer-contact-item span { font-size: 13.5px; color: rgba(255,255,255,0.65); line-height: 1.5; }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 24px 0; flex-wrap: wrap; }
+    .footer-bottom p { font-size: 13px; color: rgba(255,255,255,0.4); }
+    .footer-bottom-links { display: flex; gap: 20px; list-style: none; }
+    .footer-bottom-links a { font-size: 13px; color: rgba(255,255,255,0.4); transition: color 0.2s; }
+    .footer-bottom-links a:hover { color: var(--white); }
+
+    /* ─── WHATSAPP ─── */
+    .whatsapp-float { position: fixed; bottom: 28px; right: 28px; z-index: 999; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
+    .whatsapp-btn { width: 56px; height: 56px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 24px rgba(37,211,102,0.45); transition: transform 0.25s, box-shadow 0.25s; }
+    .whatsapp-btn:hover { transform: scale(1.1); }
+    .whatsapp-btn svg { width: 28px; height: 28px; color: #fff; }
+    .whatsapp-tooltip { background: var(--text); color: var(--white); font-size: 13px; font-weight: 500; padding: 7px 14px; border-radius: 8px; white-space: nowrap; opacity: 0; transform: translateX(10px); transition: var(--transition); pointer-events: none; }
+    .whatsapp-float:hover .whatsapp-tooltip { opacity: 1; transform: translateX(0); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      .fines-grid { grid-template-columns: 1fr 1fr; }
+      .process-steps { grid-template-columns: repeat(2, 1fr); }
+      .process-steps::before { display: none; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta .phone { display: none; }
+      .hamburger { display: flex; }
+      .page-hero-inner { grid-template-columns: 1fr; }
+      .hero-badge-group { flex-direction: row; }
+      .fines-grid { grid-template-columns: 1fr; }
+      .packages-grid { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+      .faq-grid { grid-template-columns: 1fr; }
+      .faq-item:last-child { border-bottom: none; }
+      .quote-inner { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+      .alert-inner { grid-template-columns: 1fr; }
+      .alert-icon-wrap { display: none; }
+    }
+    @media (max-width: 480px) {
+      .hero-badge-group { flex-direction: column; }
+      .process-steps { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ANNOUNCEMENT -->
+  <div class="announcement">
+    <strong>⚠ Urgent:</strong> 10,000 new labour inspectors deployed in 2026. Is your business compliant?
+    <a href="#quote">Get a free check →</a>
+  </div>
+
+  <!-- NAV -->
+  <nav id="mainNav">
+    <div class="container">
+      <div class="nav-inner">
+        <a class="nav-logo" href="../index.html">
+          <img src="../images/logo.png" alt="BizLegal" />
+        </a>
+        <ul class="nav-links">
+          <li><a href="../index.html">Home</a></li>
+          <li class="has-dropdown">
+            <a href="#" class="active">Services ▾</a>
+            <ul class="dropdown">
+              <li><a href="labour.html"><span class="dd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7H4a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></span><span>Labour Services</span></a></li>
+              <li><a href="legal.html"><span class="dd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6l9-4 9 4"/><path d="M3 6v14l9 4 9-4V6"/></svg></span><span>Legal Services</span></a></li>
+              <li><a href="tax.html"><span class="dd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></span><span>Tax &amp; Accounting</span></a></li>
+              <li><a href="popia.html"><span class="dd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span><span>POPIA / PAIA Compliance</span></a></li>
+              <li><a href="cpa.html"><span class="dd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></span><span>Consumer Protection Act</span></a></li>
+              <li><a href="training.html"><span class="dd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span><span>Labour Law Training</span></a></li>
+            </ul>
+          </li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../blog.html">Blog</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+        <div class="nav-cta">
+          <a class="phone" href="tel:0765760233">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.01 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.18 6.18l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            076 576 0233
+          </a>
+          <a href="#quote" class="btn btn-primary">Get a Free Quote</a>
+        </div>
+        <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="labour.html" style="padding-left:32px;font-size:15px">→ Labour Services</a></li>
+      <li><a href="legal.html" style="padding-left:32px;font-size:15px">→ Legal Services</a></li>
+      <li><a href="tax.html" style="padding-left:32px;font-size:15px">→ Tax &amp; Accounting</a></li>
+      <li><a href="popia.html" style="padding-left:32px;font-size:15px">→ POPIA / PAIA</a></li>
+      <li><a href="cpa.html" style="padding-left:32px;font-size:15px">→ Consumer Protection Act</a></li>
+      <li><a href="training.html" style="padding-left:32px;font-size:15px">→ Labour Law Training</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../blog.html">Blog</a></li>
+      <li><a href="../contact.html">Contact</a></li>
+    </ul>
+    <div class="mobile-menu-cta">
+      <a href="tel:0765760233" class="btn btn-blue">📞 Call Us: 076 576 0233</a>
+      <a href="#quote" class="btn btn-primary">Get a Free Quote</a>
+    </div>
+  </div>
+
+  <!-- ═══ PAGE HERO ═══ -->
+  <section class="page-hero">
+    <div class="page-hero-accent"></div>
+    <div class="container">
+      <div class="page-hero-inner">
+        <div>
+          <div class="breadcrumb">
+            <a href="../index.html">Home</a>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            <a href="#">Services</a>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            <span>Labour Services</span>
+          </div>
+          <h1>Labour Law &amp; HR Services.<br><em>Done Right. Every Time.</em></h1>
+          <p>From employment contracts and disciplinary hearings to CCMA representation — BizLegal's practicing legal professionals protect your business with expert labour law services on a fixed monthly retainer.</p>
+          <div style="display:flex; gap:14px; margin-top:32px; flex-wrap:wrap;">
+            <a href="#quote" class="btn btn-primary">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              Get a Free Quote
+            </a>
+            <a href="#what-we-do" class="btn" style="background:rgba(255,255,255,0.12); color:#fff; border: 1.5px solid rgba(255,255,255,0.3);">
+              See What's Included
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="hero-badge-group">
+          <div class="hero-badge">
+            <div class="hb-num">R500</div>
+            <div class="hb-label">From per month</div>
+          </div>
+          <div class="hero-badge">
+            <div class="hb-num">3</div>
+            <div class="hb-label">Regional offices</div>
+          </div>
+          <div class="hero-badge">
+            <div class="hb-num">LLB</div>
+            <div class="hb-label">Admitted attorneys</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRO STRIP -->
+  <div class="intro-strip">
+    <div class="container">
+      <div class="intro-strip-inner">
+        <p>BizLegal's labour services are delivered by <strong>admitted attorneys and practicing legal professionals</strong> — not HR consultants. You get real legal expertise, at a price that works for your business.</p>
+        <a href="#packages" class="btn btn-blue" style="flex-shrink:0; white-space:nowrap;">View Packages</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ WHAT WE DO ═══ -->
+  <section class="what-we-do" id="what-we-do">
+    <div class="container">
+      <div class="fade-up">
+        <span class="tag">What's Included</span>
+        <h2 class="section-title">Everything Your Business Needs<br>to Stay Labour Compliant.</h2>
+        <p class="section-sub">Our labour retainer covers the full spectrum of employment law — from day-to-day HR advice to formal CCMA proceedings.</p>
+      </div>
+
+      <div class="services-full-grid">
+
+        <div class="svc-card fade-up">
+          <div class="svc-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81"/><path d="M22 16.92v3a2 2 0 01-2.18 2"/><path d="M1 1l22 22"/></svg>
+          </div>
+          <h3>Telephonic &amp; Email Advice</h3>
+          <p>Unlimited access to legal advice on labour and human resource matters — whenever you need it, without the clock running.</p>
+          <ul>
+            <li>Advice on dismissals, warnings &amp; misconduct</li>
+            <li>HR policy questions answered promptly</li>
+            <li>Leave, sick leave &amp; absence queries</li>
+            <li>Minimum wage &amp; BCEA compliance checks</li>
+          </ul>
+        </div>
+
+        <div class="svc-card fade-up">
+          <div class="svc-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+          <h3>Employment Contracts &amp; Letters</h3>
+          <p>Professionally drafted employment contracts and letters of appointment tailored to your business, industry and employees.</p>
+          <ul>
+            <li>Fixed-term &amp; permanent contracts</li>
+            <li>Part-time &amp; casual employment agreements</li>
+            <li>Letters of appointment &amp; offer letters</li>
+            <li>Contract amendments &amp; addenda</li>
+          </ul>
+        </div>
+
+        <div class="svc-card fade-up">
+          <div class="svc-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Disciplinary Codes &amp; Policies</h3>
+          <p>Tailored disciplinary codes, workplace policies and HR manuals built for your specific business environment and risk profile.</p>
+          <ul>
+            <li>Disciplinary code of conduct</li>
+            <li>Leave, dress code &amp; substance abuse policies</li>
+            <li>Social media &amp; IT usage policies</li>
+            <li>Grievance &amp; whistle-blower procedures</li>
+          </ul>
+        </div>
+
+        <div class="svc-card fade-up">
+          <div class="svc-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <h3>Chairing of Disciplinary Hearings</h3>
+          <p>Our legal practitioners chair your disciplinary and incapacity hearings — independently and procedurally correctly — so your decisions hold up under scrutiny.</p>
+          <ul>
+            <li>Misconduct hearings</li>
+            <li>Incapacity (poor performance) hearings</li>
+            <li>Ill health incapacity enquiries</li>
+            <li>Outcome letters &amp; written records</li>
+          </ul>
+        </div>
+
+        <div class="svc-card fade-up">
+          <div class="svc-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          </div>
+          <h3>CCMA &amp; Bargaining Council</h3>
+          <p>Full representation at the CCMA and relevant bargaining councils — from conciliation through to arbitration — by the same advisor who handled your internal process.</p>
+          <ul>
+            <li>Unfair dismissal disputes</li>
+            <li>Unfair labour practice referrals</li>
+            <li>Conciliation &amp; arbitration representation</li>
+            <li>Bargaining council appearances</li>
+          </ul>
+        </div>
+
+        <div class="svc-card fade-up">
+          <div class="svc-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 014-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg>
+          </div>
+          <h3>Retrenchment Procedures</h3>
+          <p>Legally sound facilitation of retrenchment processes, including the Section 189 consultation procedure and severance calculations.</p>
+          <ul>
+            <li>Section 189 &amp; 189A consultation</li>
+            <li>Retrenchment letters &amp; notices</li>
+            <li>Severance pay calculations</li>
+            <li>Selection criteria advice</li>
+          </ul>
+        </div>
+
+        <div class="svc-card fade-up">
+          <div class="svc-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+          </div>
+          <h3>Strike Management</h3>
+          <p>Practical advice and legal guidance when your business faces strike action or protected industrial action — protecting your operations and rights.</p>
+          <ul>
+            <li>Strike legality assessment</li>
+            <li>Picketing rule negotiations</li>
+            <li>Operational guidance during strikes</li>
+            <li>Return-to-work agreements</li>
+          </ul>
+        </div>
+
+        <div class="svc-card fade-up">
+          <div class="svc-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+          </div>
+          <h3>HR Manual &amp; Useful Forms</h3>
+          <p>Access to our comprehensive labour and HR manual with ready-to-use forms, templates and checklists for day-to-day HR management.</p>
+          <ul>
+            <li>Notice of hearing forms</li>
+            <li>Warning templates (verbal &amp; written)</li>
+            <li>Performance improvement plans</li>
+            <li>Leave request &amp; approval forms</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ COMPLIANCE ALERT ═══ -->
+  <section class="compliance-alert">
+    <div class="container">
+      <div class="alert-inner fade-up">
+        <div class="alert-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div>
+          <div class="alert-label">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:13px;height:13px"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
+            Labour Enforcement — 2026
+          </div>
+          <h2>10,000 New Labour Inspectors.<br>Is Your Business Ready?</h2>
+          <p>President Ramaphosa announced at the 2026 State of the Nation Address the deployment of 10,000 additional labour inspectors, expanding the inspectorate from 2,300 to 12,300. Inspection blitzes have already begun across all provinces. Non-compliant employers face compliance orders, admission of guilt fines of R10,000–R15,000 per visit, and potential criminal prosecution.</p>
+          <div style="margin-top:28px;">
+            <a href="#quote" class="btn btn-primary">Get Compliant Today</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FINES ═══ -->
+  <section class="fines-section">
+    <div class="container">
+      <div class="fade-up" style="text-align:center; max-width:600px; margin:0 auto;">
+        <span class="tag">The Cost of Non-Compliance</span>
+        <h2 class="section-title">What Non-Compliance Costs Your Business</h2>
+        <p class="section-sub" style="margin:16px auto 0;">Labour law violations are not just procedural inconveniences — they carry real financial and legal consequences.</p>
+      </div>
+      <div class="fines-grid">
+        <div class="fine-card fade-up">
+          <div class="fine-amount">R10,000+</div>
+          <div class="fine-label">Admission of Guilt Fine</div>
+          <div class="fine-desc">Per inspection visit for BCEA or National Minimum Wage violations. Inspectors have the authority to issue these on the spot.</div>
+        </div>
+        <div class="fine-card highlight fade-up">
+          <div class="fine-amount">Unlimited</div>
+          <div class="fine-label">CCMA Compensation Award</div>
+          <div class="fine-desc">An unfair dismissal that goes to arbitration can result in up to 12 months' compensation — avoidable with proper procedure.</div>
+        </div>
+        <div class="fine-card fade-up">
+          <div class="fine-amount">Criminal</div>
+          <div class="fine-label">Prosecution Risk</div>
+          <div class="fine-desc">Serious BCEA violations can result in criminal prosecution of the employer or responsible manager — not just a fine.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PACKAGES ═══ -->
+  <section class="packages" id="packages">
+    <div class="container">
+      <div class="fade-up">
+        <span class="tag">Pricing</span>
+        <h2 class="section-title">Simple, Transparent<br>Monthly Retainer Packages.</h2>
+        <p class="section-sub">All prices exclude VAT. Packages are tailored to your number of employees and specific needs. Contact us for a personalised quote.</p>
+      </div>
+      <div class="packages-grid">
+
+        <div class="pkg-card fade-up">
+          <h3>Labour Essentials</h3>
+          <p class="pkg-sub">Perfect for small businesses with 1–5 employees. Core labour law protection on a tight budget.</p>
+          <div class="pkg-price">
+            <div class="from">From</div>
+            <div class="amount">R500 <span class="per">/ month</span></div>
+          </div>
+          <p class="pkg-price-note">+ R150 per employee excl. VAT</p>
+          <ul class="pkg-features">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Telephonic &amp; email HR advice</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Employment contract templates</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Disciplinary code of conduct</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>HR forms &amp; manual access</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>1 disciplinary hearing per month</li>
+          </ul>
+          <a href="#quote" class="btn btn-outline-blue" style="width:100%; justify-content:center;">Get This Package</a>
+        </div>
+
+        <div class="pkg-card featured fade-up">
+          <div class="pkg-badge">Most Popular</div>
+          <h3>Labour Full Cover</h3>
+          <p class="pkg-sub">Comprehensive labour law protection for growing businesses. CCMA representation included.</p>
+          <div class="pkg-price">
+            <div class="from">From</div>
+            <div class="amount">R800 <span class="per">/ month</span></div>
+          </div>
+          <p class="pkg-price-note">+ R150 per employee excl. VAT</p>
+          <ul class="pkg-features">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Everything in Essentials</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Unlimited disciplinary hearings</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>CCMA conciliation representation</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Retrenchment procedure advice</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Custom employment contracts</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Full HR policy suite</li>
+          </ul>
+          <a href="#quote" class="btn btn-blue" style="width:100%; justify-content:center;">Get This Package</a>
+        </div>
+
+        <div class="pkg-card fade-up">
+          <h3>Labour + Litigation</h3>
+          <p class="pkg-sub">Full cover including arbitration and Labour Court representation through our associated law firm at 50% discount.</p>
+          <div class="pkg-price">
+            <div class="from">From</div>
+            <div class="amount">R2,300 <span class="per">/ month</span></div>
+          </div>
+          <p class="pkg-price-note">+ R150 per employee excl. VAT</p>
+          <ul class="pkg-features">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Everything in Full Cover</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>CCMA arbitration representation</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Labour Court appearances</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>50% discount on litigation fees</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Dedicated attorney consultations</li>
+          </ul>
+          <a href="#quote" class="btn btn-outline-blue" style="width:100%; justify-content:center;">Get This Package</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PROCESS ═══ -->
+  <section class="process">
+    <div class="container">
+      <div class="fade-up" style="text-align:center; max-width:560px; margin:0 auto;">
+        <span class="tag">How It Works</span>
+        <h2 class="section-title">Getting Started is Simple.</h2>
+        <p class="section-sub" style="margin:16px auto 0;">From your first call to full coverage — we make it easy.</p>
+      </div>
+      <div class="process-steps">
+        <div class="step fade-up">
+          <div class="step-num">1</div>
+          <h4>Free Consultation</h4>
+          <p>We discuss your business, your employees, and your current HR situation — at no charge and no obligation.</p>
+        </div>
+        <div class="step fade-up">
+          <div class="step-num">2</div>
+          <h4>Tailored Proposal</h4>
+          <p>We send you a personalised quote within one business day, matched to your team size and service needs.</p>
+        </div>
+        <div class="step fade-up">
+          <div class="step-num">3</div>
+          <h4>Sign &amp; Start</h4>
+          <p>Sign the service agreement and debit order — then call us whenever you need us. We're on your team from day one.</p>
+        </div>
+        <div class="step fade-up">
+          <div class="step-num">4</div>
+          <h4>Ongoing Support</h4>
+          <p>Your dedicated consultant is available by phone or email whenever a labour issue arises — proactive, responsive and always in your corner.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FAQ ═══ -->
+  <section class="faq">
+    <div class="container">
+      <div class="fade-up">
+        <span class="tag">Common Questions</span>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+      </div>
+      <div class="faq-grid">
+        <div class="faq-item fade-up">
+          <div class="faq-q">Do I need labour law services even if I only have a few employees?</div>
+          <div class="faq-a">Yes. The Basic Conditions of Employment Act, Labour Relations Act and National Minimum Wage Act apply to all employers, regardless of size. Even a single employee can refer a dispute to the CCMA — and if you're not prepared, it can be costly.</div>
+        </div>
+        <div class="faq-item fade-up">
+          <div class="faq-q">What makes BizLegal different from other HR consultancies?</div>
+          <div class="faq-a">Our advisors are admitted attorneys and practicing legal professionals — not HR generalists. This means we can represent you at the CCMA, draft legally sound documents, and give you advice that stands up in court.</div>
+        </div>
+        <div class="faq-item fade-up">
+          <div class="faq-q">Can I cancel the retainer if I no longer need the service?</div>
+          <div class="faq-a">Yes. Either party may terminate the agreement by giving 2 calendar months' written notice. There is no long-term lock-in — we earn your business every month.</div>
+        </div>
+        <div class="faq-item fade-up">
+          <div class="faq-q">What happens if I get an unexpected labour inspector visit?</div>
+          <div class="faq-a">Call us immediately. We'll guide you through the inspection process, advise you on your rights and obligations, and help you respond to any compliance notice issued. This is exactly why having a retainer in place before an inspection happens matters.</div>
+        </div>
+        <div class="faq-item fade-up">
+          <div class="faq-q">How much does it cost per month?</div>
+          <div class="faq-a">Our Labour Essentials package starts from R500 per month plus R150 per employee (excl. VAT). The exact amount depends on your team size and the level of cover you need. We'll give you a precise quote after a free consultation.</div>
+        </div>
+        <div class="faq-item fade-up">
+          <div class="faq-q">What area do you serve?</div>
+          <div class="faq-a">We have offices in Hermanus (Overberg), Vredendal (Weskus) and Cape Town. We serve businesses across the Overberg, Helderberg, West Coast and broader Cape Town regions. Telephonic and email advice is available nationwide.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ QUOTE FORM ═══ -->
+  <section class="quote-section" id="quote">
+    <div class="container">
+      <div class="quote-inner">
+        <div class="fade-up">
+          <span class="tag">Free Consultation</span>
+          <h2 class="section-title">Get a Free Labour Services Quote</h2>
+          <p class="section-sub">Tell us about your business and we'll come back to you within one business day with a tailored proposal — no obligation, no fine print.</p>
+          <div class="quote-info-items">
+            <div class="quote-info-item">
+              <div class="qi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.01 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.18 6.18l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+              <div><div class="qi-title">Response within 1 business day</div><div class="qi-desc">We call or email you with a personalised proposal.</div></div>
+            </div>
+            <div class="quote-info-item">
+              <div class="qi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+              <div><div class="qi-title">No obligation, completely free</div><div class="qi-desc">The consultation and quote cost you nothing.</div></div>
+            </div>
+            <div class="quote-info-item">
+              <div class="qi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+              <div><div class="qi-title">100% confidential</div><div class="qi-desc">Your details are never shared with third parties.</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="quote-form-wrap fade-up">
+          <div class="form-title">Request a Labour Services Quote</div>
+          <form id="quoteForm" onsubmit="handleSubmit(event)">
+            <div class="form-row">
+              <div class="form-group"><label>First Name</label><input type="text" placeholder="Your name" required /></div>
+              <div class="form-group"><label>Last Name</label><input type="text" placeholder="Your surname" required /></div>
+            </div>
+            <div class="form-group"><label>Business Name</label><input type="text" placeholder="Your business name" required /></div>
+            <div class="form-row">
+              <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="082 000 0000" required /></div>
+              <div class="form-group"><label>Email Address</label><input type="email" placeholder="you@business.co.za" required /></div>
+            </div>
+            <div class="form-group">
+              <label>Your Region</label>
+              <select required>
+                <option value="">Select your region...</option>
+                <option>Overberg (Hermanus, Gansbaai, Caledon)</option>
+                <option>West Coast (Vredendal, Clanwilliam, Citrusdal)</option>
+                <option>Cape Town &amp; Surrounds</option>
+                <option>Helderberg (Somerset West, Strand)</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Number of Employees</label>
+              <select required>
+                <option value="">Select...</option>
+                <option>1 – 5 employees</option>
+                <option>6 – 15 employees</option>
+                <option>16 – 30 employees</option>
+                <option>31 – 50 employees</option>
+                <option>50+ employees</option>
+              </select>
+            </div>
+            <div class="form-group"><label>Tell Us More (optional)</label><textarea placeholder="Briefly describe your current HR situation or any specific labour issues you're facing..."></textarea></div>
+            <button type="submit" class="btn btn-primary form-submit">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              Submit Request
+            </button>
+          </form>
+          <div id="formSuccess" style="display:none; text-align:center; padding:40px 0;">
+            <div style="font-size:52px; margin-bottom:16px;">✅</div>
+            <h3 style="font-family:'Playfair Display',serif; font-size:22px; color:var(--blue-dark); margin-bottom:8px;">Thank You!</h3>
+            <p style="color:var(--text-soft);">We've received your request and will be in touch within one business day.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ OTHER SERVICES ═══ -->
+  <section class="other-services">
+    <div class="container">
+      <div class="fade-up">
+        <span class="tag">Also From BizLegal</span>
+        <h2 class="section-title">Explore Our Other Services</h2>
+        <p class="section-sub">Labour is just one piece of the puzzle. BizLegal covers all your compliance needs under one roof.</p>
+      </div>
+      <div class="other-grid">
+        <a href="legal.html" class="other-card fade-up">
+          <div class="other-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6l9-4 9 4"/><path d="M3 6v14l9 4 9-4V6"/></svg></div>
+          <span>Legal Services</span>
+        </a>
+        <a href="tax.html" class="other-card fade-up">
+          <div class="other-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></div>
+          <span>Tax &amp; Accounting</span>
+        </a>
+        <a href="popia.html" class="other-card fade-up">
+          <div class="other-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <span>POPIA / PAIA Compliance</span>
+        </a>
+        <a href="cpa.html" class="other-card fade-up">
+          <div class="other-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+          <span>Consumer Protection Act</span>
+        </a>
+        <a href="training.html" class="other-card fade-up">
+          <div class="other-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+          <span>Labour Law Training</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="../images/logo2.png" alt="BizLegal" />
+          <p>Labour, Legal, Tax and Compliance solutions for businesses across the Overberg, West Coast and Cape Town regions. Affordable. Expert. Local.</p>
+          <div class="footer-social">
+            <a href="https://facebook.com" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+            <a href="https://linkedin.com" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+            <a href="https://wa.me/27765760233" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 1.999C6.477 1.999 2 6.477 2 12c0 1.88.518 3.638 1.418 5.148L2 22l4.966-1.395A9.956 9.956 0 0012 22c5.523 0 10-4.477 10-10S17.522 1.999 11.999 1.999z"/></svg></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Services</h5>
+          <ul>
+            <li><a href="labour.html" class="active">Labour Services</a></li>
+            <li><a href="legal.html">Legal Services</a></li>
+            <li><a href="tax.html">Tax &amp; Accounting</a></li>
+            <li><a href="popia.html">POPIA / PAIA</a></li>
+            <li><a href="cpa.html">Consumer Protection</a></li>
+            <li><a href="training.html">Labour Training</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Company</h5>
+          <ul>
+            <li><a href="../about.html">About BizLegal</a></li>
+            <li><a href="../blog.html">Blog &amp; Resources</a></li>
+            <li><a href="../contact.html">Contact Us</a></li>
+            <li><a href="#quote">Get a Quote</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Our Offices</h5>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span><strong style="color:rgba(255,255,255,0.85)">Overberg</strong><br/>11 Hope Street, Hermanus<br/>Juvan Heyns · 083 455 3981</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span><strong style="color:rgba(255,255,255,0.85)">Weskus</strong><br/>Vredendal<br/>Wihan J. van Rensburg · 076 576 0233</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span><strong style="color:rgba(255,255,255,0.85)">Cape Town</strong><br/>The Ridge, Kenridge<br/>Johan Heyns · 083 292 6936</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 BizLegal. All rights reserved. Reg No. 2020/585965/07.</p>
+        <ul class="footer-bottom-links">
+          <li><a href="../privacy.html">Privacy Policy</a></li>
+          <li><a href="../terms.html">Terms of Use</a></li>
+          <li><a href="../paia.html">PAIA Manual</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WHATSAPP -->
+  <div class="whatsapp-float">
+    <div class="whatsapp-tooltip">Chat on WhatsApp</div>
+    <a class="whatsapp-btn" href="https://wa.me/27765760233?text=Hi%20BizLegal%2C%20I%20would%20like%20a%20free%20quote%20for%20Labour%20Services." target="_blank" rel="noopener" aria-label="WhatsApp">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 1.999C6.477 1.999 2 6.477 2 12c0 1.88.518 3.638 1.418 5.148L2 22l4.966-1.395A9.956 9.956 0 0012 22c5.523 0 10-4.477 10-10S17.522 1.999 11.999 1.999z"/></svg>
+    </a>
+  </div>
+
+  <script>
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 20); });
+
+    const hamburger = document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    let menuOpen = false;
+    hamburger.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      mobileMenu.classList.toggle('open', menuOpen);
+      const spans = hamburger.querySelectorAll('span');
+      if (menuOpen) {
+        spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+        spans[1].style.opacity = '0';
+        spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+      } else {
+        spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+      }
+    });
+    mobileMenu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        menuOpen = false;
+        mobileMenu.classList.remove('open');
+        hamburger.querySelectorAll('span').forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+      });
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      document.getElementById('quoteForm').style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      });
+    });
+  </script>
+</body>
+</html>
