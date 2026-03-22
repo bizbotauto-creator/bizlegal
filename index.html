@@ -1381,6 +1381,9 @@
                 <feGaussianBlur stdDeviation="4" result="blur"/>
                 <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
               </filter>
+              <pattern id="crosshatch" x="0" y="0" width="28.3" height="28.3" patternUnits="userSpaceOnUse">
+                <path d="M17,16v-2h-1v2h-2v1h2v2h1v-2h2v-1h-2zM17,2V0h-1v2h-2v1h2v2h1V3h2V2h-2zM3,16v-2H2v2H0v1h2v2h1v-2h2v-1H3zM3,2V0H2v2H0v1h2v2h1V3h2V2H3z" fill="rgba(255,255,255,0.10)"/>
+              </pattern>
             </defs>
             <g transform="matrix(2.1140541,0,0,2.1143069,-174.40842,-946.89248)">
 <g
@@ -1661,6 +1664,8 @@
         <style>
           .offices-map-wrap {
             width: 100%;
+            max-width: 680px;
+            margin: 0 auto;
           }
           .offices-map-svg-wrap {
             background: transparent;
@@ -1674,7 +1679,6 @@
             0%,100% { opacity:0.12; r:14; }
             50%      { opacity:0.04; r:22; }
           }
-          .map-pin:hover { transform: scale(1.35); }
           .map-pin:hover .pin-body { filter:url(#pinGlow); }
           #wcMapTooltip {
             position: fixed;
@@ -1798,6 +1802,45 @@
             var currentPin = null;
             var hideTimer = null;
 
+            // Add animated crosshatch overlay to served regions
+            (function() {
+              var svg = document.getElementById('wcMap');
+              var served = ['CPT','WC024','WC011','WC012','WC013','WC014','WC015','WC031','WC032','WC033','WC034'];
+              var offset = 0;
+              var overlayGroup = document.createElementNS('http://www.w3.org/2000/svg','g');
+              overlayGroup.setAttribute('pointer-events','none');
+              overlayGroup.id = 'crosshatchOverlay';
+
+              served.forEach(function(id) {
+                var src = document.getElementById(id);
+                if (!src) return;
+                var clone = src.cloneNode(true);
+                clone.removeAttribute('id');
+                // Set all child paths to pattern fill
+                clone.querySelectorAll('path').forEach(function(p) {
+                  p.style.fill = 'url(#crosshatch)';
+                  p.style.stroke = 'none';
+                });
+                clone.style.fill = 'url(#crosshatch)';
+                clone.style.stroke = 'none';
+                overlayGroup.appendChild(clone);
+              });
+
+              // Insert overlay inside the transform group (after municipality paths, before legend)
+              var transformG = svg.querySelector('g[transform]');
+              transformG.appendChild(overlayGroup);
+
+              // Animate pattern drift
+              var pat = document.getElementById('crosshatch');
+              function animatePat() {
+                offset = (offset + 0.08) % 28.3;
+                pat.setAttribute('x', offset);
+                pat.setAttribute('y', offset);
+                requestAnimationFrame(animatePat);
+              }
+              requestAnimationFrame(animatePat);
+            })();
+
             var regionMap = {
               ct: ['CPT', 'WC024'],
               ob: ['WC031', 'WC032', 'WC033', 'WC034'],
@@ -1826,26 +1869,78 @@
               });
             }
 
+            // Build reverse lookup: muni ID → office key
+            var muniToOffice = {};
+            Object.keys(regionMap).forEach(function(key) {
+              regionMap[key].forEach(function(id) { muniToOffice[id] = key; });
+            });
+
+            // Pin nearest coords for tooltip positioning on region hover
+            var pinCoords = {
+              ct: {x: 113, y: 393},
+              ob: {x: 176, y: 441},
+              wc: {x: 100, y: 152}
+            };
+
+            function showForKey(key, e) {
+              currentPin = key;
+              buildTooltip(key);
+              tt.style.display = 'block';
+              positionTooltip(e);
+              setLegendActive(key);
+              setRegionHighlight(key);
+            }
+
+            function hideAll() {
+              tt.style.display = 'none';
+              setLegendActive(null);
+              setRegionHighlight(null);
+              currentPin = null;
+            }
+
+            var isMobile = ('ontouchstart' in window);
+
+            // ── Pin events ──
             document.querySelectorAll('.map-pin').forEach(function(pin) {
-              pin.addEventListener('mouseenter', function(e) {
-                currentPin = pin.dataset.office;
-                buildTooltip(currentPin);
-                tt.style.display = 'block';
-                positionTooltip(e);
-                setLegendActive(currentPin);
-                setRegionHighlight(currentPin);
-              });
-              pin.addEventListener('mousemove', positionTooltip);
-              pin.addEventListener('mouseleave', function() {
-                tt.style.display = 'none';
-                setLegendActive(null);
-                setRegionHighlight(null);
-                currentPin = null;
-              });
-              pin.addEventListener('click', function() {
-                window.location.href = 'contact.html';
+              if (!isMobile) {
+                pin.addEventListener('mouseenter', function(e) { showForKey(pin.dataset.office, e); });
+                pin.addEventListener('mousemove', positionTooltip);
+                pin.addEventListener('mouseleave', hideAll);
+              }
+              pin.addEventListener('click', function(e) {
+                if (isMobile) {
+                  e.stopPropagation();
+                  if (currentPin === pin.dataset.office) { hideAll(); return; }
+                  showForKey(pin.dataset.office, e);
+                }
               });
             });
+
+            // ── Region hover events ──
+            var servedIds = ['CPT','WC024','WC011','WC012','WC013','WC014','WC015','WC031','WC032','WC033','WC034'];
+            servedIds.forEach(function(id) {
+              var el = document.getElementById(id);
+              if (!el) return;
+              el.style.cursor = 'pointer';
+              if (!isMobile) {
+                el.addEventListener('mouseenter', function(e) { showForKey(muniToOffice[id], e); });
+                el.addEventListener('mousemove', positionTooltip);
+                el.addEventListener('mouseleave', hideAll);
+              }
+              el.addEventListener('click', function(e) {
+                if (isMobile) {
+                  e.stopPropagation();
+                  if (currentPin === muniToOffice[id]) { hideAll(); return; }
+                  showForKey(muniToOffice[id], e);
+                }
+              });
+            });
+
+            // ── Mobile: hide popup on scroll ──
+            if (isMobile) {
+              window.addEventListener('scroll', hideAll, { passive: true });
+              document.addEventListener('click', function() { if (currentPin) hideAll(); });
+            }
           })();
         </script>
       </div>
