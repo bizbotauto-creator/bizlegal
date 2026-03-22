@@ -569,6 +569,8 @@
     }
 
     .service-card {
+      display: block;
+      text-decoration: none;
       background: var(--white);
       border-radius: var(--radius);
       border: 1px solid var(--grey-light);
@@ -586,7 +588,7 @@
       left: 0;
       right: 0;
       height: 3px;
-      background: linear-gradient(90deg, var(--blue), var(--gold));
+      background: linear-gradient(90deg, var(--gold), #E6A800);
       transform: scaleX(0);
       transform-origin: left;
       transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -600,18 +602,7 @@
 
     .service-card:hover::before { transform: scaleX(1); }
 
-    .service-card-icon {
-      width: 52px;
-      height: 52px;
-      border-radius: 12px;
-      background: var(--blue);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 22px;
-    }
-
-    .service-card-icon svg { width: 24px; height: 24px; color: var(--gold); }
+    .service-card-icon { display: none; }
 
     .service-badge {
       display: inline-block;
@@ -624,10 +615,13 @@
       margin-bottom: 12px;
     }
 
-    .badge-new { background: #FFF3E0; color: #D4700A; }
-    .badge-core { background: var(--blue-pale); color: var(--blue); }
-    .badge-compliance { background: #EDF7EE; color: #2A7A35; }
-    .badge-training { background: #F5EFFF; color: #6B3FA0; }
+    .badge-new, .badge-core, .badge-compliance, .badge-training {
+      background: linear-gradient(135deg, var(--gold) 0%, #E6A800 100%);
+      color: var(--blue-deep);
+      border-radius: 100px;
+      padding: 4px 12px;
+      box-shadow: 0 3px 10px rgba(240,192,32,0.3);
+    }
 
     .service-card h3 {
       font-family: 'Montserrat', sans-serif;
@@ -739,10 +733,12 @@
     .why-point:nth-last-child(-n+2) { border-bottom: none; }
 
     .why-point-icon {
-      width: 46px;
-      height: 46px;
+      width: 50px;
+      height: 50px;
       border-radius: 12px;
-      background: var(--blue);
+      background: var(--white)
+        url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%231E3D82' fill-opacity='0.12'%3E%3Cpath d='M12,11v-2h-1v2h-2v1h2v2h1v-2h2v-1h-2zM2,1V0H1v1H0v1h1v1h1V2h1V1H2z'/%3E%3C/g%3E%3C/svg%3E");
+      border: 1.5px solid var(--blue);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -750,7 +746,12 @@
       margin-top: 2px;
     }
 
-    .why-point-icon svg { width: 22px; height: 22px; color: var(--gold); }
+    .why-point-icon svg {
+      width: 26px;
+      height: 26px;
+      color: var(--gold);
+      filter: drop-shadow(0 0 5px rgba(240,192,32,0.7));
+    }
 
     .why-point h4 {
       font-size: 15.5px;
@@ -906,17 +907,24 @@
     }
 
     .qi-icon {
-      width: 44px;
-      height: 44px;
-      background: var(--blue);
-      border-radius: 10px;
+      width: 50px;
+      height: 50px;
+      background: var(--white)
+        url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%231E3D82' fill-opacity='0.12'%3E%3Cpath d='M12,11v-2h-1v2h-2v1h2v2h1v-2h2v-1h-2zM2,1V0H1v1H0v1h1v1h1V2h1V1H2z'/%3E%3C/g%3E%3C/svg%3E");
+      border: 1.5px solid var(--blue);
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
     }
 
-    .qi-icon svg { width: 20px; height: 20px; color: var(--white); }
+    .qi-icon svg {
+      width: 24px;
+      height: 24px;
+      color: var(--gold);
+      filter: drop-shadow(0 0 5px rgba(240,192,32,0.7));
+    }
     .qi-title { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
     .qi-desc { font-size: 14px; color: var(--text-soft); line-height: 1.6; }
 
@@ -979,11 +987,12 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      color: var(--blue);
-      background: var(--blue-pale);
-      padding: 3px 10px;
+      color: var(--blue-deep);
+      background: linear-gradient(135deg, var(--gold) 0%, #E6A800 100%);
+      padding: 4px 12px;
       border-radius: 100px;
       margin-bottom: 12px;
+      box-shadow: 0 3px 10px rgba(240,192,32,0.3);
     }
 
     .blog-card h3 {
@@ -1013,11 +1022,16 @@
       padding-top: 16px;
       border-top: 1px solid var(--grey-light);
       font-size: 13px;
-      color: var(--text-soft);
+      color: var(--gold);
+      font-weight: 600;
     }
 
     .blog-meta span { display: flex; align-items: center; gap: 5px; }
-    .blog-meta svg { width: 14px; height: 14px; }
+    .blog-meta svg {
+      width: 14px; height: 14px;
+      color: var(--gold);
+      filter: drop-shadow(0 0 4px rgba(240,192,32,0.7));
+    }
 
     .blog-card.featured .blog-card-body { padding: 28px 32px; }
     .blog-card.featured h3 { font-size: clamp(18px, 2vw, 24px); }
@@ -1064,8 +1078,12 @@
       transition: background var(--transition);
     }
 
-    .footer-social a:hover { background: var(--blue); }
-    .footer-social svg { width: 17px; height: 17px; color: rgba(255,255,255,0.7); }
+    .footer-social a:hover { background: rgba(255,255,255,0.1); }
+    .footer-social svg { width: 17px; height: 17px; }
+    .footer-social a.social-gold svg {
+      color: var(--gold);
+      filter: drop-shadow(0 0 4px rgba(240,192,32,0.6));
+    }
 
     .footer-col h5 {
       font-size: 12px;
@@ -1689,34 +1707,35 @@
             border: 1px solid var(--grey-light);
             border-radius: var(--radius);
             box-shadow: var(--shadow-lg);
-            min-width: 220px;
+            min-width: 230px;
             padding: 8px;
             overflow: hidden;
           }
           #wcMapTooltip .tt-logo-wrap {
             text-align: center;
-            padding: 10px 10px 8px;
-            border-bottom: 1px solid var(--grey-light);
+            padding: 10px 10px 10px;
             margin-bottom: 4px;
           }
           #wcMapTooltip .tt-logo-wrap img {
             height: 44px; width: auto; object-fit: contain; display: inline-block;
           }
           #wcMapTooltip .tt-row {
-            padding: 7px 10px;
-            border-left: 3px solid transparent;
-            font-size: 14px;
-            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 6px 10px;
+            font-size: 13.5px;
+            color: #162F6E;
             font-weight: 500;
-            transition: border-color 0.15s, background 0.15s;
-          }
-          #wcMapTooltip .tt-row:hover {
-            background: var(--blue-pale);
-            border-left-color: var(--gold);
-            color: var(--blue);
           }
           #wcMapTooltip .tt-row a {
-            color: inherit; text-decoration: none; display: block;
+            color: #162F6E; text-decoration: none;
+          }
+          #wcMapTooltip .tt-row a:hover { color: var(--blue); }
+          #wcMapTooltip .tt-icon {
+            width: 15px; height: 15px; flex-shrink: 0;
+            color: var(--gold);
+            filter: drop-shadow(0 0 5px rgba(240,192,32,0.85));
           }
           /* Legend dot active state */
           .legend-dot { transition: all 0.25s; }
@@ -1733,9 +1752,9 @@
                 logoH: '38',
                 legendId: 'leg-ct',
                 rows: [
-                  { val:'Stellenberg, Cape Town' },
-                  { val:'<a href="tel:0832926936">083 292 6936</a>' },
-                  { val:'<a href="mailto:johan@bizlegal.co.za">johan@bizlegal.co.za</a>' }
+                  { icon:'loc', val:'Stellenberg, Cape Town' },
+                  { icon:'tel', val:'<a href="tel:0832926936">083 292 6936</a>' },
+                  { icon:'mail', val:'<a href="mailto:johan@bizlegal.co.za">johan@bizlegal.co.za</a>' }
                 ]
               },
               ob: {
@@ -1743,9 +1762,9 @@
                 logoH: '52',
                 legendId: 'leg-ob',
                 rows: [
-                  { val:'Hermanus, Overberg' },
-                  { val:'<a href="tel:0834553981">083 455 3981</a>' },
-                  { val:'<a href="mailto:juvan@bizlegaloverberg.co.za">juvan@bizlegaloverberg.co.za</a>' }
+                  { icon:'loc', val:'Hermanus, Overberg' },
+                  { icon:'tel', val:'<a href="tel:0834553981">083 455 3981</a>' },
+                  { icon:'mail', val:'<a href="mailto:juvan@bizlegaloverberg.co.za">juvan@bizlegaloverberg.co.za</a>' }
                 ]
               },
               wc: {
@@ -1753,11 +1772,17 @@
                 logoH: '52',
                 legendId: 'leg-wc',
                 rows: [
-                  { val:'Vredendal, West Coast' },
-                  { val:'<a href="tel:0765760233">076 576 0233</a>' },
-                  { val:'<a href="mailto:wihan@bizlegaloverberg.co.za">wihan@bizlegaloverberg.co.za</a>' }
+                  { icon:'loc', val:'Vredendal, West Coast' },
+                  { icon:'tel', val:'<a href="tel:0765760233">076 576 0233</a>' },
+                  { icon:'mail', val:'<a href="mailto:wihan@bizlegaloverberg.co.za">wihan@bizlegaloverberg.co.za</a>' }
                 ]
               }
+            };
+
+            var iconSVG = {
+              loc:  '<svg class="tt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>',
+              tel:  '<svg class="tt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.01 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.18 6.18l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>',
+              mail: '<svg class="tt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>'
             };
 
             // Create tooltip at body level
@@ -1772,7 +1797,7 @@
               tt.innerHTML =
                 '<div class="tt-logo-wrap"><img src="' + d.logo + '" alt="" style="height:' + d.logoH + 'px;"/></div>' +
                 d.rows.map(function(r) {
-                  return '<div class="tt-row">' + r.val + '</div>';
+                  return '<div class="tt-row">' + iconSVG[r.icon] + r.val + '</div>';
                 }).join('');
             }
 
@@ -1964,83 +1989,83 @@
 
       <div class="services-grid">
 
-        <div class="service-card fade-up">
+        <a href="services/labour.html" class="service-card fade-up">
           <div class="service-card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7H4a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
           </div>
           <span class="service-badge badge-core">Core Service</span>
           <h3>Labour &amp; HR Services</h3>
           <p>Employment contracts, disciplinary hearings, CCMA representation, retrenchments and HR policies — all handled by practicing legal professionals on a fixed monthly retainer.</p>
-          <a href="services/labour.html" class="service-card-link">
+          <span class="service-card-link">
             Learn more
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-        </div>
+          </span>
+        </a>
 
-        <div class="service-card fade-up">
+        <a href="services/legal.html" class="service-card fade-up">
           <div class="service-card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6l9-4 9 4"/><path d="M3 6v14l9 4 9-4V6"/></svg>
           </div>
-          <span class="service-badge badge-core">Core Service</span>
+          <span class="service-badge badge-core">Partnered Service</span>
           <h3>Legal Services</h3>
-          <p>Commercial contracts, demand letters, evictions, debt collection, civil litigation and general legal advisory — delivered by admitted attorneys through our partner firm Coetzee &amp; Co.</p>
-          <a href="services/legal.html" class="service-card-link">
+          <p>Commercial contracts, demand letters, evictions, debt collection, civil litigation and general legal advisory — delivered by admitted attorneys through our partnered law firms.</p>
+          <span class="service-card-link">
             Learn more
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-        </div>
+          </span>
+        </a>
 
-        <div class="service-card fade-up">
+        <a href="services/popia.html" class="service-card fade-up">
           <div class="service-card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           </div>
           <span class="service-badge badge-compliance">Compliance</span>
           <h3>POPI &amp; PAIA Compliance</h3>
           <p>Full POPIA compliance reviews, PAIA manual drafting, privacy policy implementation, Information Officer registration and ongoing data protection advisory for your business.</p>
-          <a href="services/popia.html" class="service-card-link">
+          <span class="service-card-link">
             Learn more
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-        </div>
+          </span>
+        </a>
 
-        <div class="service-card fade-up">
+        <a href="services/cpa.html" class="service-card fade-up">
           <div class="service-card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
           </div>
           <span class="service-badge badge-compliance">Compliance</span>
           <h3>Consumer Protection</h3>
           <p>CPA compliance audits, terms and conditions review, supplier agreements, consumer complaints handling and regulatory advisory to ensure your business meets CPA requirements.</p>
-          <a href="services/cpa.html" class="service-card-link">
+          <span class="service-card-link">
             Learn more
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-        </div>
+          </span>
+        </a>
 
-        <div class="service-card fade-up">
+        <a href="services/tax.html" class="service-card fade-up">
           <div class="service-card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
           </div>
-          <span class="service-badge badge-core">Core Service</span>
+          <span class="service-badge badge-core">Partnered Service</span>
           <h3>Tax &amp; Accounting</h3>
-          <p>Bookkeeping, VAT, PAYE, UIF, CIPC registrations, annual financial statements and full payroll administration — all under one roof.</p>
-          <a href="services/tax.html" class="service-card-link">
+          <p>Bookkeeping, VAT, PAYE, UIF, CIPC registrations, annual financial statements and full payroll administration — through our partnered accounting practices.</p>
+          <span class="service-card-link">
             Learn more
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-        </div>
+          </span>
+        </a>
 
-        <div class="service-card fade-up">
+        <a href="services/training.html" class="service-card fade-up">
           <div class="service-card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
           </div>
-          <span class="service-badge badge-training">Training</span>
+          <span class="service-badge badge-core">Partnered Service</span>
           <h3>Training</h3>
           <p>Practical on-site and virtual training for managers, supervisors and HR staff — covering disciplinary procedures, CCMA processes, the Basic Conditions of Employment Act and more.</p>
-          <a href="services/training.html" class="service-card-link">
+          <span class="service-card-link">
             Learn more
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-        </div>
+          </span>
+        </a>
 
       </div>
     </div>
@@ -2075,7 +2100,7 @@
       <div class="fade-up">
         <span class="tag">Why Choose BizLegal</span>
         <h2 class="section-title">Practicing Lawyers.<br>Fixed Monthly Fees.</h2>
-        <p class="section-sub">Unlike most labour consultants, BizLegal is staffed by qualified, practicing legal practitioners — not HR consultants or generalists. We understand that business challenges go far beyond the realm of labour disputes.</p>
+        <p class="section-sub">We are more than consultants. We are qualified, practicing legal practitioners. Your business deserves a dedicated partner who understands the full legal landscape — someone who knows your operations, protects your interests, and is there when it matters most.</p>
       </div>
 
       <div class="why-points">
@@ -2085,7 +2110,7 @@
           </div>
           <div>
             <h4>Qualified, Practicing Legal Professionals</h4>
-            <p>Our team are admitted attorneys and practicing legal practitioners with Right of Appearance in the High Court — not merely consultants. Led by Wihan Jansen van Rensburg (LLB, BCom Law), you get genuine legal expertise, hands-on.</p>
+            <p>Our team are admitted attorneys and practicing legal practitioners — not merely consultants or HR generalists. You get genuine, hands-on legal expertise every time.</p>
           </div>
         </div>
         <div class="why-point fade-up">
@@ -2094,7 +2119,7 @@
           </div>
           <div>
             <h4>Fixed Monthly Fees — No Surprises</h4>
-            <p>From R500 per month. No scary hourly billing, no call-out fees. Know exactly what you pay before you sign anything — compliance made predictable and affordable.</p>
+            <p>From R500 per month. No hourly billing, no call-out fees. Know exactly what you pay before you sign — compliance made predictable and affordable.</p>
           </div>
         </div>
         <div class="why-point fade-up">
@@ -2103,7 +2128,7 @@
           </div>
           <div>
             <h4>One Dedicated Consultant. Always.</h4>
-            <p>You deal with the same person every time — no call centres, no re-explaining your business from scratch. Your consultant knows your operations, your industry and your specific risk profile.</p>
+            <p>You deal with the same person every time — no call centres, no re-explaining your business. Your consultant knows your operations, your industry and your specific risk profile.</p>
           </div>
         </div>
         <div class="why-point fade-up">
@@ -2121,7 +2146,7 @@
           </div>
           <div>
             <h4>Local. Accessible. Accountable.</h4>
-            <p>Offices in Cape Town, Hermanus and Vredendal. We are rooted in the same communities as our clients. You are a client we care about — not a ticket number.</p>
+            <p>Offices in Cape Town, Hermanus and Vredendal. We are rooted in the same communities as our clients — you are a client we care about, not a ticket number.</p>
           </div>
         </div>
         <div class="why-point fade-up">
@@ -2130,7 +2155,7 @@
           </div>
           <div>
             <h4>Seamless CCMA Continuity</h4>
-            <p>The consultant who chairs your disciplinary hearing also represents you at the CCMA. Consistent strategy, consistent representation — from the first warning to the final arbitration.</p>
+            <p>The consultant who chairs your disciplinary hearing also represents you at the CCMA. Consistent strategy, consistent representation — from the first warning to final arbitration.</p>
           </div>
         </div>
         <div class="why-point fade-up">
@@ -2178,17 +2203,15 @@
       </div>
 
       <div class="blog-grid fade-up">
-        <div class="blog-card featured">
-          <a href="blog/labour-inspectors-2026.html">
+        <a href="blog/labour-inspectors-2026.html" class="blog-card featured" style="text-decoration:none;color:inherit;display:block;">
             <img src="images/blog-labour-inspectors.jpg" class="blog-card-img" alt="Labour inspectors 2026" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
             <div class="blog-card-img-placeholder" style="display:none;">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
             </div>
-          </a>
           <div class="blog-card-body">
             <span class="blog-cat">Labour Law</span>
-            <h3><a href="blog/labour-inspectors-2026.html" style="color:inherit;">10,000 New Labour Inspectors: What Every South African Business Owner Needs to Know</a></h3>
-            <p>President Ramaphosa's 2026 SONA announcement has fundamentally changed the enforcement landscape. With 12,300 inspectors now active, no business is too small to be inspected. Here's exactly what you need to have in order before they arrive at your door.</p>
+            <h3>10,000 New Labour Inspectors: What Every South African Business Owner Needs to Know</h3>
+            <p>Government's 2026 SONA announcement has fundamentally changed the enforcement landscape. With 12,300 inspectors now active, no business is too small to be inspected. Here's exactly what you need to have in order before they arrive at your door.</p>
             <div class="blog-meta">
               <span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
@@ -2198,15 +2221,11 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                 8 min read
               </span>
-              <a href="blog/labour-inspectors-2026.html" style="margin-left:auto; font-size:13.5px; font-weight:600; color:var(--blue); display:flex; align-items:center; gap:5px;">
-                Read article
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:14px;height:14px;"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </a>
             </div>
           </div>
-        </div>
+        </a>
 
-        <div class="blog-card">
+        <a href="blog/popia-checklist.html" class="blog-card" style="text-decoration:none;color:inherit;display:block;">
           <div class="blog-card-img-placeholder">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           </div>
@@ -2219,12 +2238,15 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
                 Feb 2026
               </span>
-              <span>4 min read</span>
+              <span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                4 min read
+              </span>
             </div>
           </div>
-        </div>
+        </a>
 
-        <div class="blog-card">
+        <a href="blog/fair-dismissal-guide.html" class="blog-card" style="text-decoration:none;color:inherit;display:block;">
           <div class="blog-card-img-placeholder">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
           </div>
@@ -2237,10 +2259,13 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
                 Jan 2026
               </span>
-              <span>6 min read</span>
+              <span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                6 min read
+              </span>
             </div>
           </div>
-        </div>
+        </a>
       </div>
     </div>
   </section>
@@ -2319,10 +2344,9 @@
               <label for="region">Your Region</label>
               <select id="region" name="region" required>
                 <option value="">Select your region...</option>
-                <option>Cape Town &amp; Surrounds</option>
-                <option>Overberg (Hermanus, Gansbaai, Caledon)</option>
-                <option>West Coast (Vredendal, Clanwilliam, Citrusdal)</option>
-                <option>Helderberg (Somerset West, Strand)</option>
+                <option>Cape Town</option>
+                <option>Overberg</option>
+                <option>West Coast</option>
                 <option>Other</option>
               </select>
             </div>
@@ -2366,16 +2390,13 @@
     <div class="container">
       <div class="footer-top">
         <div class="footer-brand">
-          <img src="images/logo2.png" alt="BizLegal" />
+          <img src="images/logocolor.png" alt="BizLegal" style="filter: brightness(0) saturate(100%) invert(65%) sepia(90%) saturate(800%) hue-rotate(5deg) brightness(88%);" />
           <p>Labour, Legal, Tax and Compliance solutions for businesses across the Cape Town, Overberg and West Coast regions. Affordable. Expert. Local.</p>
           <div class="footer-social">
-            <a href="https://facebook.com" aria-label="Facebook">
+            <a href="https://facebook.com" aria-label="Facebook" class="social-gold">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
             </a>
-            <a href="https://linkedin.com" aria-label="LinkedIn">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-            </a>
-            <a href="https://wa.me/27765760233" aria-label="WhatsApp">
+            <a href="https://wa.me/27765760233" aria-label="WhatsApp" class="social-gold">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 1.999C6.477 1.999 2 6.477 2 12c0 1.88.518 3.638 1.418 5.148L2 22l4.966-1.395A9.956 9.956 0 0012 22c5.523 0 10-4.477 10-10S17.522 1.999 11.999 1.999z"/></svg>
             </a>
           </div>
@@ -2421,10 +2442,9 @@
       </div>
 
       <div class="footer-bottom">
-        <p>© 2026 BizLegal. All rights reserved. Reg No. 2020/585965/07.</p>
+        <p>© 2026 BizLegal. All rights reserved.</p>
         <ul class="footer-bottom-links">
           <li><a href="privacy.html">Privacy Policy</a></li>
-          <li><a href="terms.html">Terms of Use</a></li>
           <li><a href="paia.html">PAIA Manual</a></li>
         </ul>
       </div>
