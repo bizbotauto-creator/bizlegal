@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog & Insights | BizLegal</title>
+  <meta name="description" content="Labour law, POPIA, HR compliance and legal insights for South African business owners. Practical articles from qualified legal professionals." />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="shortcut icon" href="favicon.ico" />
+  <link rel="apple-touch-icon" href="favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue:#1E3D82; --blue-dark:#162F6E; --blue-deep:#0F1A3A; --blue-pale:#E8EDF8;
+      --gold:#F0C020; --gold-light:#FAE06A;
+      --white:#FFFFFF; --off-white:#F0F2F8; --grey-light:#E8EBF4; --grey-mid:#9099B5;
+      --text:#1A1D2E; --text-soft:#4A5070;
+      --nav-h:90px; --radius:12px;
+      --shadow-sm:0 2px 12px rgba(28,40,90,0.08);
+      --shadow-md:0 8px 40px rgba(28,40,90,0.14);
+      --shadow-lg:0 20px 60px rgba(28,40,90,0.2);
+      --transition:0.3s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--white); -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    .container { width: 100%; max-width: 1240px; margin: 0 auto; padding: 0 clamp(20px,5vw,48px); }
+
+    /* ANNOUNCEMENT */
+    .announcement { background: var(--blue-deep); color: var(--white); padding: 10px 0; text-align: center; font-size: 13px; font-weight: 500; letter-spacing: 0.02em; position: relative; z-index: 1001; }
+    .announcement a { color: var(--gold); text-decoration: underline; margin-left: 8px; }
+
+    /* NAV */
+    nav { position: sticky; top: 0; z-index: 1000; background: rgba(255,255,255,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid var(--grey-light); height: var(--nav-h); transition: box-shadow var(--transition); }
+    nav.scrolled { box-shadow: var(--shadow-md); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 100%; }
+    .nav-logo img { height: 64px; width: auto; }
+    .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+    .nav-links > li > a { display: block; padding: 8px 14px; font-size: 14.5px; font-weight: 500; color: var(--text); border-radius: 6px; transition: color var(--transition); }
+    .nav-links > li > a:hover { color: var(--gold); }
+    .has-dropdown { position: relative; }
+    .dropdown { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(-8px); background: var(--white); border: 1px solid var(--grey-light); border-radius: var(--radius); box-shadow: var(--shadow-lg); min-width: 240px; padding: 8px; padding-top: 16px; opacity: 0; pointer-events: none; transition: opacity 0.2s, transform 0.2s; list-style: none; }
+    .has-dropdown:hover .dropdown { opacity: 1; pointer-events: all; transform: translateX(-50%) translateY(0); }
+    .dropdown a { display: block; padding: 10px 16px; border-radius: 6px; font-size: 14px; font-weight: 500; border-left: 3px solid transparent; transition: all 0.2s; }
+    .dropdown a:hover { border-left-color: var(--gold); color: var(--gold); padding-left: 20px; }
+    .nav-cta { margin-left: 12px; }
+    .btn { display: inline-flex; align-items: center; gap: 10px; padding: 13px 26px; border-radius: 6px; font-size: 14.5px; font-weight: 600; font-family: 'DM Sans',sans-serif; cursor: pointer; transition: var(--transition); border: none; }
+    .btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+    .btn-primary { background: var(--gold); color: var(--blue-deep); }
+    .btn-primary:hover { background: #d4a800; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(240,192,32,0.35); }
+    .btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.5); }
+    .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.1); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 8px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: var(--transition); }
+    .mobile-menu { display: none; position: fixed; inset: 0; top: var(--nav-h); background: var(--white); z-index: 999; padding: 24px; overflow-y: auto; }
+    .mobile-menu.open { display: block; }
+    .mobile-menu ul { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+    .mobile-menu ul a { display: block; padding: 14px 16px; font-size: 16px; font-weight: 500; color: var(--text); border-radius: 8px; }
+    .mobile-menu ul a:hover { color: var(--gold); }
+    .mobile-menu-cta { margin-top: 24px; }
+
+    /* HERO */
+    .hero { position: relative; padding: clamp(80px,12vw,128px) 0 clamp(72px,10vw,108px); background: linear-gradient(135deg, var(--blue-deep) 0%, var(--blue) 100%); overflow: hidden; }
+    .hero-bg { position: absolute; inset: -60px; background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E"); pointer-events: none; animation: bgDrift 20s linear infinite; }
+    @keyframes bgDrift { 0%{transform:translate(0,0)} 25%{transform:translate(20px,10px)} 50%{transform:translate(10px,30px)} 75%{transform:translate(-10px,15px)} 100%{transform:translate(0,0)} }
+    .hero-inner { position: relative; z-index: 2; text-align: center; max-width: 720px; margin: 0 auto; }
+    .tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue-deep); background: linear-gradient(135deg, var(--gold), #E6A800); border-radius: 100px; padding: 6px 16px; margin-bottom: 18px; box-shadow: 0 4px 18px rgba(240,192,32,0.35); }
+    .hero h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(28px,5vw,52px); font-weight: 700; color: var(--white); line-height: 1.15; margin-bottom: 18px; }
+    .hero p { font-size: clamp(15px,1.6vw,17px); color: rgba(255,255,255,0.72); line-height: 1.75; max-width: 560px; margin: 0 auto; }
+    .breadcrumb { position: relative; z-index: 2; display: flex; align-items: center; gap: 8px; margin-bottom: 28px; justify-content: center; }
+    .breadcrumb a, .breadcrumb span { font-size: 13px; color: rgba(255,255,255,0.55); }
+    .breadcrumb a:hover { color: var(--gold); }
+    .breadcrumb svg { width: 12px; height: 12px; color: rgba(255,255,255,0.35); }
+
+    /* FILTER BAR */
+    .filter-bar { background: var(--white); border-bottom: 1px solid var(--grey-light); padding: 0; position: sticky; top: var(--nav-h); z-index: 100; }
+    .filter-inner { display: flex; align-items: center; gap: 8px; padding: 14px 0; overflow-x: auto; scrollbar-width: none; }
+    .filter-inner::-webkit-scrollbar { display: none; }
+    .filter-btn { flex-shrink: 0; padding: 8px 18px; border-radius: 100px; font-size: 13px; font-weight: 600; font-family: 'DM Sans', sans-serif; cursor: pointer; border: 1.5px solid var(--grey-light); background: var(--white); color: var(--text-soft); transition: var(--transition); }
+    .filter-btn:hover { border-color: var(--blue); color: var(--blue); }
+    .filter-btn.active { background: linear-gradient(135deg, var(--gold), #E6A800); border-color: transparent; color: var(--blue-deep); box-shadow: 0 3px 12px rgba(240,192,32,0.3); }
+
+    /* MAIN LAYOUT */
+    .blog-section { padding: clamp(56px,8vw,96px) 0; background: var(--off-white); }
+    .blog-layout { display: grid; grid-template-columns: 1fr 340px; gap: 40px; align-items: start; }
+
+    /* FEATURED */
+    .featured-article { display: grid; grid-template-columns: 1fr 1fr; border-radius: 16px; overflow: hidden; background: var(--white); box-shadow: var(--shadow-sm); border: 1px solid var(--grey-light); transition: var(--transition); margin-bottom: 32px; }
+    .featured-article:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: transparent; }
+    .fa-image { position: relative; overflow: hidden; min-height: 300px; }
+    .fa-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+    .featured-article:hover .fa-image img { transform: scale(1.04); }
+    .fa-image-placeholder { width: 100%; height: 100%; min-height: 300px; background: linear-gradient(135deg, var(--blue-deep), var(--blue)); display: flex; align-items: center; justify-content: center; }
+    .fa-image-placeholder svg { width: 56px; height: 56px; color: rgba(255,255,255,0.2); }
+    .fa-badge { position: absolute; top: 16px; left: 16px; background: linear-gradient(135deg, var(--gold), #E6A800); color: var(--blue-deep); font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 12px; border-radius: 100px; }
+    .fa-body { padding: 36px; display: flex; flex-direction: column; }
+    .fa-cat { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue-deep); background: linear-gradient(135deg, var(--gold), #E6A800); border-radius: 100px; padding: 4px 12px; margin-bottom: 16px; align-self: flex-start; box-shadow: 0 3px 10px rgba(240,192,32,0.25); }
+    .fa-title { font-family: 'Montserrat', sans-serif; font-size: clamp(18px,2vw,24px); font-weight: 700; color: var(--blue-dark); line-height: 1.3; margin-bottom: 12px; }
+    .fa-excerpt { font-size: 15px; color: var(--text-soft); line-height: 1.72; flex: 1; margin-bottom: 24px; }
+    .fa-meta { display: flex; align-items: center; gap: 16px; font-size: 13px; color: var(--gold); margin-bottom: 24px; flex-wrap: wrap; }
+    .fa-meta span { display: flex; align-items: center; gap: 5px; }
+    .fa-meta svg { width: 13px; height: 13px; }
+    .fa-link { display: inline-flex; align-items: center; gap: 7px; font-size: 14px; font-weight: 600; color: var(--blue); transition: gap 0.2s, color 0.2s; }
+    .featured-article:hover .fa-link { gap: 11px; color: var(--gold); }
+    .fa-link svg { width: 15px; height: 15px; }
+
+    /* ARTICLE GRID */
+    .articles-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .article-card { background: var(--white); border-radius: 14px; border: 1px solid var(--grey-light); overflow: hidden; transition: var(--transition); display: flex; flex-direction: column; }
+    .article-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: transparent; }
+    .ac-image { position: relative; overflow: hidden; height: 200px; }
+    .ac-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+    .article-card:hover .ac-image img { transform: scale(1.05); }
+    .ac-image-placeholder { width: 100%; height: 100%; background: linear-gradient(135deg, var(--blue-deep), var(--blue)); display: flex; align-items: center; justify-content: center; }
+    .ac-image-placeholder svg { width: 40px; height: 40px; color: rgba(255,255,255,0.18); }
+    .ac-body { padding: 24px; display: flex; flex-direction: column; flex: 1; }
+    .ac-cat { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue-deep); background: linear-gradient(135deg, var(--gold), #E6A800); border-radius: 100px; padding: 4px 11px; margin-bottom: 12px; align-self: flex-start; }
+    .ac-title { font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 700; color: var(--blue-dark); line-height: 1.4; margin-bottom: 10px; }
+    .ac-excerpt { font-size: 14px; color: var(--text-soft); line-height: 1.68; flex: 1; margin-bottom: 18px; }
+    .ac-meta { display: flex; align-items: center; gap: 12px; font-size: 12.5px; color: var(--gold); margin-bottom: 16px; }
+    .ac-meta span { display: flex; align-items: center; gap: 4px; }
+    .ac-meta svg { width: 12px; height: 12px; }
+    .ac-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13.5px; font-weight: 600; color: var(--blue); transition: gap 0.2s, color 0.2s; margin-top: auto; }
+    .article-card:hover .ac-link { gap: 10px; color: var(--gold); }
+    .ac-link svg { width: 14px; height: 14px; }
+
+    /* COMING SOON CARD */
+    .coming-soon { background: var(--white); border: 2px dashed var(--grey-light); border-radius: 14px; padding: 32px 24px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; min-height: 280px; }
+    .coming-soon svg { width: 36px; height: 36px; color: var(--grey-mid); margin-bottom: 14px; }
+    .coming-soon p { font-size: 14px; color: var(--grey-mid); line-height: 1.6; }
+
+    /* SIDEBAR */
+    .sidebar { display: flex; flex-direction: column; gap: 28px; position: sticky; top: calc(var(--nav-h) + 60px); }
+    .sidebar-card { background: var(--white); border: 1px solid var(--grey-light); border-radius: 14px; padding: 28px; }
+    .sidebar-card h4 { font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 700; color: var(--blue-dark); margin-bottom: 18px; padding-bottom: 14px; border-bottom: 2px solid var(--gold); display: inline-block; }
+    .sidebar-topics { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+    .topic-pill { padding: 7px 14px; border-radius: 100px; font-size: 13px; font-weight: 500; background: var(--off-white); color: var(--text-soft); border: 1.5px solid var(--grey-light); cursor: pointer; transition: var(--transition); }
+    .topic-pill:hover { background: linear-gradient(135deg, var(--gold), #E6A800); color: var(--blue-deep); border-color: transparent; }
+    .sidebar-recent { display: flex; flex-direction: column; gap: 16px; }
+    .sr-item { display: flex; gap: 12px; align-items: flex-start; }
+    .sr-img { width: 64px; height: 64px; border-radius: 8px; object-fit: cover; flex-shrink: 0; }
+    .sr-img-placeholder { width: 64px; height: 64px; border-radius: 8px; background: linear-gradient(135deg, var(--blue-deep), var(--blue)); flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+    .sr-img-placeholder svg { width: 22px; height: 22px; color: rgba(255,255,255,0.25); }
+    .sr-body a { font-size: 13.5px; font-weight: 600; color: var(--text); line-height: 1.45; transition: color 0.2s; display: block; margin-bottom: 4px; }
+    .sr-body a:hover { color: var(--gold); }
+    .sr-body span { font-size: 12px; color: var(--grey-mid); }
+    .sidebar-cta { background: linear-gradient(135deg, var(--blue-deep), var(--blue)); border-radius: 14px; padding: 28px; text-align: center; position: relative; overflow: hidden; }
+    .sidebar-cta::before { content: ''; position: absolute; inset: -30px; background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M20 20v-4h-1v4h-4v1h4v4h1v-4h4v-1h-4z'/%3E%3C/g%3E%3C/svg%3E"); pointer-events: none; }
+    .sidebar-cta h4 { font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 700; color: var(--white); margin-bottom: 10px; position: relative; z-index: 1; }
+    .sidebar-cta p { font-size: 13.5px; color: rgba(255,255,255,0.7); line-height: 1.6; margin-bottom: 20px; position: relative; z-index: 1; }
+    .sidebar-cta .btn { width: 100%; justify-content: center; position: relative; z-index: 1; }
+
+    /* NEWSLETTER */
+    .newsletter-section { padding: clamp(56px,7vw,80px) 0; background: var(--white); }
+    .newsletter-inner { background: var(--blue-pale); border-radius: 20px; padding: clamp(36px,5vw,56px); display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    .nl-text h2 { font-family: 'Montserrat', sans-serif; font-size: clamp(22px,2.5vw,32px); font-weight: 700; color: var(--blue-dark); margin-bottom: 12px; }
+    .nl-text p { font-size: 15px; color: var(--text-soft); line-height: 1.7; }
+    .nl-form { display: flex; flex-direction: column; gap: 12px; }
+    .nl-form input { padding: 14px 18px; border-radius: 8px; border: 1.5px solid var(--grey-light); font-size: 15px; font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--white); outline: none; transition: border-color 0.2s; }
+    .nl-form input:focus { border-color: var(--blue); }
+    .nl-form .btn { justify-content: center; }
+    .nl-note { font-size: 12px; color: var(--grey-mid); }
+
+    /* FOOTER */
+    footer { background: var(--blue-deep); color: var(--white); padding: clamp(52px,8vw,80px) 0 0; }
+    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: clamp(32px,4vw,60px); padding-bottom: 52px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .footer-brand img { height: 40px; width: auto; margin-bottom: 18px; display: block; filter: brightness(0) saturate(100%) invert(65%) sepia(90%) saturate(800%) hue-rotate(5deg) brightness(88%); }
+    .footer-brand p { font-size: 14.5px; color: rgba(255,255,255,0.6); line-height: 1.7; max-width: 300px; }
+    .footer-social { display: flex; gap: 10px; margin-top: 24px; }
+    .footer-social a { width: 36px; height: 36px; border-radius: 8px; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; transition: background var(--transition); }
+    .footer-social a.social-gold svg { color: var(--gold); filter: drop-shadow(0 0 4px rgba(240,192,32,0.6)); }
+    .footer-social svg { width: 17px; height: 17px; }
+    .footer-col h5 { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul a { font-size: 14px; color: rgba(255,255,255,0.6); transition: color var(--transition); }
+    .footer-col ul a:hover { color: var(--white); }
+    .footer-contact-item { display: flex; gap: 10px; margin-bottom: 12px; align-items: flex-start; }
+    .footer-contact-item svg { width: 15px; height: 15px; color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+    .footer-contact-item span { font-size: 13.5px; color: rgba(255,255,255,0.65); line-height: 1.5; }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 24px 0; flex-wrap: wrap; }
+    .footer-bottom p { font-size: 13px; color: rgba(255,255,255,0.4); }
+    .footer-bottom-links { display: flex; gap: 20px; list-style: none; }
+    .footer-bottom-links a { font-size: 13px; color: rgba(255,255,255,0.4); transition: color 0.2s; }
+    .footer-bottom-links a:hover { color: var(--white); }
+
+    /* WHATSAPP */
+    .whatsapp-float { position: fixed; bottom: 28px; right: 28px; z-index: 999; }
+    .whatsapp-btn { width: 56px; height: 56px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 24px rgba(37,211,102,0.45); transition: transform 0.25s; }
+    .whatsapp-btn:hover { transform: scale(1.1); }
+    .whatsapp-btn svg { width: 28px; height: 28px; color: #fff; }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .blog-layout { grid-template-columns: 1fr; }
+      .sidebar { position: static; }
+      .newsletter-inner { grid-template-columns: 1fr; gap: 32px; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .featured-article { grid-template-columns: 1fr; }
+      .fa-image { min-height: 220px; }
+      .articles-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+    }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<!-- ANNOUNCEMENT -->
+<div class="announcement">
+  Government labour law amendments now in effect — LLB Qualified consultants ready to assist.
+  <a href="blog/labour-inspectors-2026.html">Read more &rarr;</a>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="images/logocolor.png" alt="BizLegal" onerror="this.style.display='none'" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li class="has-dropdown">
+        <a href="services.html">Services</a>
+        <ul class="dropdown">
+          <li><a href="services/labour.html">Labour &amp; HR</a></li>
+          <li><a href="services/legal.html">Legal Services</a></li>
+          <li><a href="services/popia.html">POPI &amp; PAIA</a></li>
+          <li><a href="services/cpa.html">Consumer Protection</a></li>
+          <li><a href="services/tax.html">Tax &amp; Accounting</a></li>
+          <li><a href="services/training.html">Training</a></li>
+        </ul>
+      </li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="index.html#quote" class="btn btn-primary nav-cta">Get a Free Quote</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services/labour.html">Labour &amp; HR</a></li>
+    <li><a href="services/legal.html">Legal Services</a></li>
+    <li><a href="services/popia.html">POPI &amp; PAIA</a></li>
+    <li><a href="services/cpa.html">Consumer Protection</a></li>
+    <li><a href="services/tax.html">Tax &amp; Accounting</a></li>
+    <li><a href="services/training.html">Training</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="mobile-menu-cta"><a href="index.html#quote" class="btn btn-primary" style="width:100%;justify-content:center;">Get a Free Quote</a></div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="container">
+    <div class="hero-inner">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        <span>Blog</span>
+      </div>
+      <span class="tag">Insights &amp; Updates</span>
+      <h1>Labour Law. Legal Compliance. Written by Practitioners.</h1>
+      <p>Practical articles on employment law, POPIA, consumer protection and business compliance — written by our qualified legal team for South African business owners.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <div class="container">
+    <div class="filter-inner">
+      <button class="filter-btn active" onclick="filterPosts('all', this)">All Articles</button>
+      <button class="filter-btn" onclick="filterPosts('labour', this)">Labour Law</button>
+      <button class="filter-btn" onclick="filterPosts('popia', this)">POPIA</button>
+      <button class="filter-btn" onclick="filterPosts('legal', this)">Legal</button>
+      <button class="filter-btn" onclick="filterPosts('tax', this)">Tax &amp; Accounting</button>
+      <button class="filter-btn" onclick="filterPosts('cpa', this)">Consumer Protection</button>
+      <button class="filter-btn" onclick="filterPosts('hr', this)">HR</button>
+    </div>
+  </div>
+</div>
+
+<!-- BLOG SECTION -->
+<section class="blog-section">
+  <div class="container">
+    <div class="blog-layout">
+
+      <!-- MAIN CONTENT -->
+      <div class="blog-main">
+
+        <!-- FEATURED -->
+        <a href="blog/labour-inspectors-2026.html" class="featured-article reveal" data-cat="labour">
+          <div class="fa-image">
+            <img src="images/blog-labour-inspectors.jpg" alt="Labour Inspectors 2026" onerror="this.parentElement.innerHTML='<div class=fa-image-placeholder><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\'><path d=\'M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z\'/><polyline points=\'14 2 14 8 20 8\'/></svg></div>'" />
+            <span class="fa-badge">Featured</span>
+          </div>
+          <div class="fa-body">
+            <span class="fa-cat">Labour Law</span>
+            <div class="fa-title">Labour Inspectors in 2026: Powers, Procedures and What Your Business Must Have Ready</div>
+            <div class="fa-excerpt">A comprehensive guide to the statutory powers of labour inspectors under the BCEA, LRA and OHSA — what they examine, what triggers an inspection, and the consequences of non-compliance for South African employers.</div>
+            <div class="fa-meta">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> March 2026</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 12 min read</span>
+            </div>
+            <span class="fa-link">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+          </div>
+        </a>
+
+        <!-- GRID -->
+        <div class="articles-grid" id="articlesGrid">
+
+          <!-- POPIA -->
+          <a href="#" class="article-card reveal" data-cat="popia">
+            <div class="ac-image">
+              <img src="images/blog-popia.jpg" alt="POPIA Compliance" onerror="this.parentElement.innerHTML='<div class=ac-image-placeholder><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\'><path d=\'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\'/></svg></div>'" />
+            </div>
+            <div class="ac-body">
+              <span class="ac-cat">POPIA</span>
+              <div class="ac-title">Is Your Business Actually POPIA Compliant? Most Aren't.</div>
+              <div class="ac-excerpt">Having a Privacy Policy on your website is not POPIA compliance. Here is what the Information Regulator actually requires — and where most South African businesses fall short.</div>
+              <div class="ac-meta">
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> February 2026</span>
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 8 min read</span>
+              </div>
+              <span class="ac-link">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+            </div>
+          </a>
+
+          <!-- DISMISSAL -->
+          <a href="#" class="article-card reveal" data-cat="labour">
+            <div class="ac-image">
+              <img src="images/blog-dismiss.jpg" alt="Dismissal" onerror="this.parentElement.innerHTML='<div class=ac-image-placeholder><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\'><path d=\'M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2\'/><circle cx=\'9\' cy=\'7\' r=\'4\'/></svg></div>'" />
+            </div>
+            <div class="ac-body">
+              <span class="ac-cat">Labour Law</span>
+              <div class="ac-title">The Five Most Common Reasons Employers Lose at the CCMA</div>
+              <div class="ac-excerpt">Procedural irregularities, inadequate warnings and poorly documented hearings are responsible for most CCMA losses. Here is what employers consistently get wrong — and how to fix it.</div>
+              <div class="ac-meta">
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> January 2026</span>
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 10 min read</span>
+              </div>
+              <span class="ac-link">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+            </div>
+          </a>
+
+          <!-- NMW -->
+          <a href="#" class="article-card reveal" data-cat="labour">
+            <div class="ac-image">
+              <div class="ac-image-placeholder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+              </div>
+            </div>
+            <div class="ac-body">
+              <span class="ac-cat">Labour Law</span>
+              <div class="ac-title">National Minimum Wage 2026: What Every Employer Needs to Know</div>
+              <div class="ac-excerpt">The national minimum wage has been updated for 2026. We break down the new rates, which categories of workers they apply to, and the penalties for non-compliance.</div>
+              <div class="ac-meta">
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> January 2026</span>
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 6 min read</span>
+              </div>
+              <span class="ac-link">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+            </div>
+          </a>
+
+          <!-- CPA -->
+          <a href="#" class="article-card reveal" data-cat="cpa">
+            <div class="ac-image">
+              <div class="ac-image-placeholder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+            </div>
+            <div class="ac-body">
+              <span class="ac-cat">Consumer Protection</span>
+              <div class="ac-title">Your Standard Terms and Conditions May Be Unenforceable</div>
+              <div class="ac-excerpt">The Consumer Protection Act prohibits a range of standard contract terms that businesses routinely include. We look at the most common CPA violations in commercial T&amp;Cs.</div>
+              <div class="ac-meta">
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> December 2025</span>
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 7 min read</span>
+              </div>
+              <span class="ac-link">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+            </div>
+          </a>
+
+          <!-- RETRENCHMENT -->
+          <a href="#" class="article-card reveal" data-cat="labour">
+            <div class="ac-image">
+              <div class="ac-image-placeholder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="17" y1="11" x2="23" y2="11"/></svg>
+              </div>
+            </div>
+            <div class="ac-body">
+              <span class="ac-cat">Labour Law</span>
+              <div class="ac-title">Section 189 Retrenchments: The Consultation Process Employers Get Wrong</div>
+              <div class="ac-excerpt">Operational requirements dismissals are among the most legally complex processes in employment law. A failure in the consultation process alone can render a retrenchment substantively unfair.</div>
+              <div class="ac-meta">
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> November 2025</span>
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 9 min read</span>
+              </div>
+              <span class="ac-link">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+            </div>
+          </a>
+
+          <!-- COMING SOON -->
+          <div class="coming-soon reveal" data-cat="all">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            <p>More articles coming soon.<br/>Follow us on Facebook or WhatsApp to be notified.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+
+        <div class="sidebar-card reveal">
+          <h4>Topics</h4>
+          <div class="sidebar-topics">
+            <span class="topic-pill" onclick="filterPosts('labour', null)">Labour Law</span>
+            <span class="topic-pill" onclick="filterPosts('popia', null)">POPIA</span>
+            <span class="topic-pill" onclick="filterPosts('legal', null)">Legal</span>
+            <span class="topic-pill" onclick="filterPosts('tax', null)">Tax</span>
+            <span class="topic-pill" onclick="filterPosts('cpa', null)">Consumer Protection</span>
+            <span class="topic-pill" onclick="filterPosts('hr', null)">HR</span>
+            <span class="topic-pill" onclick="filterPosts('all', null)">All Articles</span>
+          </div>
+        </div>
+
+        <div class="sidebar-card reveal">
+          <h4>Recent Articles</h4>
+          <div class="sidebar-recent">
+            <div class="sr-item">
+              <img src="images/blog-labour-inspectors.jpg" alt="" class="sr-img" onerror="this.outerHTML='<div class=sr-img-placeholder><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\'><path d=\'M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z\'/></svg></div>'" />
+              <div class="sr-body">
+                <a href="blog/labour-inspectors-2026.html">Labour Inspectors in 2026: Powers, Procedures and What to Have Ready</a>
+                <span>March 2026</span>
+              </div>
+            </div>
+            <div class="sr-item">
+              <img src="images/blog-popia.jpg" alt="" class="sr-img" onerror="this.outerHTML='<div class=sr-img-placeholder><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\'><path d=\'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\'/></svg></div>'" />
+              <div class="sr-body">
+                <a href="#">Is Your Business Actually POPIA Compliant?</a>
+                <span>February 2026</span>
+              </div>
+            </div>
+            <div class="sr-item">
+              <img src="images/blog-dismiss.jpg" alt="" class="sr-img" onerror="this.outerHTML='<div class=sr-img-placeholder><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\'><path d=\'M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2\'/><circle cx=\'9\' cy=\'7\' r=\'4\'/></svg></div>'" />
+              <div class="sr-body">
+                <a href="#">The Five Most Common Reasons Employers Lose at the CCMA</a>
+                <span>January 2026</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar-cta reveal">
+          <h4>Need Legal Advice?</h4>
+          <p>Our qualified legal professionals are available to assist your business — on labour, legal, POPIA and more.</p>
+          <a href="index.html#quote" class="btn btn-primary">Get a Free Quote</a>
+        </div>
+
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter-section">
+  <div class="container">
+    <div class="newsletter-inner reveal">
+      <div class="nl-text">
+        <span class="tag">Stay Informed</span>
+        <h2>Get Compliance Updates Delivered to Your Inbox.</h2>
+        <p>New legislation, CCMA updates, POPIA enforcement notices and practical compliance tips — straight from our legal team to your inbox. No spam. Unsubscribe anytime.</p>
+      </div>
+      <div class="nl-form">
+        <input type="text" placeholder="Your name" />
+        <input type="email" placeholder="Your email address" />
+        <button class="btn btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Subscribe
+        </button>
+        <p class="nl-note">We respect your privacy. Your information is never shared with third parties.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="images/logocolor.png" alt="BizLegal" onerror="this.style.display='none'" />
+        <p>Labour, Legal and Compliance solutions for South African businesses. Fixed monthly retainers. Qualified legal professionals. Three regional offices across the Western Cape.</p>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/bizlegaloverberg" target="_blank" rel="noopener" class="social-gold" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="https://wa.me/27832926936" target="_blank" rel="noopener" class="social-gold" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="services/labour.html">Labour &amp; HR</a></li>
+          <li><a href="services/legal.html">Legal Services</a></li>
+          <li><a href="services/popia.html">POPI &amp; PAIA</a></li>
+          <li><a href="services/cpa.html">Consumer Protection</a></li>
+          <li><a href="services/tax.html">Tax &amp; Accounting</a></li>
+          <li><a href="services/training.html">Training</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="index.html#quote">Get a Quote</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Offices</h5>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span><strong style="color:rgba(255,255,255,0.85)">Cape Town</strong><br/>Stellenberg<br/>083 292 6936</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span><strong style="color:rgba(255,255,255,0.85)">Overberg</strong><br/>Hermanus<br/>083 455 3981</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span><strong style="color:rgba(255,255,255,0.85)">West Coast</strong><br/>Vredendal<br/>076 576 0233</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 BizLegal Overberg (Reg no. 2020/585965/07). All rights reserved.</p>
+      <ul class="footer-bottom-links">
+        <li><a href="services/popia.html">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP -->
+<div class="whatsapp-float">
+  <a href="https://wa.me/27832926936" target="_blank" rel="noopener" class="whatsapp-btn" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+</div>
+
+<script>
+  // NAV SCROLL
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 40); });
+
+  // MOBILE MENU
+  document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  });
+
+  // FILTER
+  function filterPosts(cat, btn) {
+    // update buttons
+    if (btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+    // show/hide cards
+    document.querySelectorAll('#articlesGrid .article-card, #articlesGrid .coming-soon').forEach(card => {
+      const cardCat = card.dataset.cat;
+      if (cat === 'all' || cardCat === cat || cardCat === 'all') {
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+    // featured
+    const featured = document.querySelector('.featured-article');
+    if (featured) {
+      featured.style.display = (cat === 'all' || featured.dataset.cat === cat) ? '' : 'none';
+    }
+  }
+
+  // SCROLL REVEAL
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Services | BizLegal</title>
+  <meta name="description" content="Labour, Legal, Tax, POPIA, Consumer Protection and Training services for South African businesses. Fixed monthly retainers. Qualified legal professionals." />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="shortcut icon" href="favicon.ico" />
+  <link rel="apple-touch-icon" href="favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue:#1E3D82; --blue-dark:#162F6E; --blue-deep:#0F1A3A; --blue-pale:#E8EDF8;
+      --gold:#F0C020; --gold-light:#FAE06A;
+      --white:#FFFFFF; --off-white:#F0F2F8; --grey-light:#E8EBF4; --grey-mid:#9099B5;
+      --text:#1A1D2E; --text-soft:#4A5070;
+      --nav-h:90px; --radius:12px;
+      --shadow-sm:0 2px 12px rgba(28,40,90,0.08);
+      --shadow-md:0 8px 40px rgba(28,40,90,0.14);
+      --shadow-lg:0 20px 60px rgba(28,40,90,0.2);
+      --transition:0.3s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--white); -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    .container { width: 100%; max-width: 1240px; margin: 0 auto; padding: 0 clamp(20px,5vw,48px); }
+
+    /* ── ANNOUNCEMENT ── */
+    .announcement { background: var(--blue-deep); color: var(--white); padding: 10px 0; text-align: center; font-size: 13px; font-weight: 500; letter-spacing: 0.02em; position: relative; z-index: 1001; }
+    .announcement a { color: var(--gold); text-decoration: underline; margin-left: 8px; }
+
+    /* ── NAV ── */
+    nav { position: sticky; top: 0; z-index: 1000; background: rgba(255,255,255,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid var(--grey-light); height: var(--nav-h); transition: box-shadow var(--transition); }
+    nav.scrolled { box-shadow: var(--shadow-md); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 100%; }
+    .nav-logo img { height: 64px; width: auto; }
+    .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+    .nav-links > li > a { display: block; padding: 8px 14px; font-size: 14.5px; font-weight: 500; color: var(--text); border-radius: 6px; transition: color var(--transition); }
+    .nav-links > li > a:hover { color: var(--gold); }
+    .has-dropdown { position: relative; }
+    .dropdown { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(-8px); background: var(--white); border: 1px solid var(--grey-light); border-radius: var(--radius); box-shadow: var(--shadow-lg); min-width: 240px; padding: 8px; padding-top: 16px; opacity: 0; pointer-events: none; transition: opacity 0.2s, transform 0.2s; list-style: none; }
+    .has-dropdown:hover .dropdown { opacity: 1; pointer-events: all; transform: translateX(-50%) translateY(0); }
+    .dropdown a { display: block; padding: 10px 16px; border-radius: 6px; font-size: 14px; font-weight: 500; border-left: 3px solid transparent; transition: all 0.2s; }
+    .dropdown a:hover { border-left-color: var(--gold); color: var(--gold); padding-left: 20px; }
+    .nav-cta { margin-left: 12px; }
+    .btn { display: inline-flex; align-items: center; gap: 10px; padding: 13px 26px; border-radius: 6px; font-size: 14.5px; font-weight: 600; font-family: 'DM Sans',sans-serif; cursor: pointer; transition: var(--transition); border: none; }
+    .btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+    .btn-primary { background: var(--gold); color: var(--blue-deep); }
+    .btn-primary:hover { background: #d4a800; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(240,192,32,0.35); }
+    .btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.5); }
+    .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.1); }
+    .btn-blue { background: var(--blue); color: var(--white); }
+    .btn-blue:hover { background: var(--blue-dark); transform: translateY(-2px); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 8px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: var(--transition); }
+    .mobile-menu { display: none; position: fixed; inset: 0; top: var(--nav-h); background: var(--white); z-index: 999; padding: 24px; overflow-y: auto; }
+    .mobile-menu.open { display: block; }
+    .mobile-menu ul { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+    .mobile-menu ul a { display: block; padding: 14px 16px; font-size: 16px; font-weight: 500; color: var(--text); border-radius: 8px; }
+    .mobile-menu ul a:hover { color: var(--gold); }
+    .mobile-menu-cta { margin-top: 24px; }
+
+    /* ── HERO ── */
+    .hero { position: relative; padding: clamp(80px,12vw,128px) 0 clamp(72px,10vw,108px); background: linear-gradient(135deg, var(--blue-deep) 0%, var(--blue) 100%); overflow: hidden; }
+    .hero-bg { position: absolute; inset: -60px; background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E"); pointer-events: none; animation: bgDrift 20s linear infinite; }
+    @keyframes bgDrift { 0%{transform:translate(0,0)} 25%{transform:translate(20px,10px)} 50%{transform:translate(10px,30px)} 75%{transform:translate(-10px,15px)} 100%{transform:translate(0,0)} }
+    .hero-inner { position: relative; z-index: 2; text-align: center; max-width: 760px; margin: 0 auto; }
+    .tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue-deep); background: linear-gradient(135deg, var(--gold), #E6A800); border-radius: 100px; padding: 6px 16px; margin-bottom: 18px; box-shadow: 0 4px 18px rgba(240,192,32,0.35); }
+    .hero h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(30px,5vw,54px); font-weight: 700; color: var(--white); line-height: 1.15; margin-bottom: 18px; }
+    .hero p { font-size: clamp(15px,1.6vw,17px); color: rgba(255,255,255,0.72); line-height: 1.75; max-width: 580px; margin: 0 auto 36px; }
+    .hero-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .breadcrumb { position: relative; z-index: 2; display: flex; align-items: center; gap: 8px; margin-bottom: 28px; justify-content: center; }
+    .breadcrumb a, .breadcrumb span { font-size: 13px; color: rgba(255,255,255,0.55); }
+    .breadcrumb a:hover { color: var(--gold); }
+    .breadcrumb svg { width: 12px; height: 12px; color: rgba(255,255,255,0.35); }
+
+    /* ── SERVICES GRID ── */
+    .services-section { padding: clamp(72px,10vw,112px) 0; background: var(--white); }
+    .section-header { text-align: center; max-width: 640px; margin: 0 auto 60px; }
+    .section-header h2 { font-family: 'Montserrat', sans-serif; font-size: clamp(24px,3vw,38px); font-weight: 700; color: var(--blue-dark); margin-bottom: 14px; }
+    .section-header p { font-size: 16px; color: var(--text-soft); line-height: 1.75; }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px; }
+    .service-card { border: 1px solid var(--grey-light); border-radius: 16px; padding: 34px; background: var(--white); transition: var(--transition); position: relative; overflow: hidden; display: flex; flex-direction: column; }
+    .service-card::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--gold), #E6A800); transform: scaleX(0); transform-origin: left; transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94); }
+    .service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: transparent; }
+    .service-card:hover::before { transform: scaleX(1); }
+    .sc-badge { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue-deep); background: linear-gradient(135deg, var(--gold), #E6A800); border-radius: 100px; padding: 4px 12px; margin-bottom: 20px; box-shadow: 0 3px 10px rgba(240,192,32,0.25); align-self: flex-start; }
+    .sc-icon { width: 54px; height: 54px; border-radius: 12px; background: var(--white); border: 1.5px solid var(--blue); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; flex-shrink: 0; background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%231E3D82' fill-opacity='0.12'%3E%3Cpath d='M12,11v-2h-1v2h-2v1h2v2h1v-2h2v-1h-2zM2,1V0H1v1H0v1h1v1h1V2h1V1H2z'/%3E%3C/g%3E%3C/svg%3E"); }
+    .sc-icon svg { width: 26px; height: 26px; color: var(--gold); filter: drop-shadow(0 0 5px rgba(240,192,32,0.7)); }
+    .sc-title { font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 700; color: var(--blue-dark); margin-bottom: 10px; }
+    .sc-desc { font-size: 14.5px; color: var(--text-soft); line-height: 1.72; flex: 1; margin-bottom: 22px; }
+    .sc-bullets { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 28px; }
+    .sc-bullets li { display: flex; align-items: flex-start; gap: 8px; font-size: 13.5px; color: var(--text-soft); }
+    .sc-bullets li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 6px; }
+    .sc-link { display: inline-flex; align-items: center; gap: 7px; font-size: 14px; font-weight: 600; color: var(--blue); transition: gap 0.2s, color 0.2s; margin-top: auto; }
+    .service-card:hover .sc-link { gap: 11px; color: var(--gold); }
+    .sc-link svg { width: 15px; height: 15px; }
+
+    /* ── STATS STRIP ── */
+    .stats-strip { background: var(--blue-deep); padding: clamp(52px,7vw,80px) 0; position: relative; overflow: hidden; }
+    .stats-strip::before { content: ''; position: absolute; inset: -60px; background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E"); pointer-events: none; animation: bgDrift 25s linear infinite; }
+    .stats-inner { position: relative; z-index: 1; }
+    .stats-heading { text-align: center; margin-bottom: 52px; }
+    .stats-heading h2 { font-family: 'Montserrat', sans-serif; font-size: clamp(22px,3vw,36px); font-weight: 700; color: var(--white); margin-bottom: 10px; }
+    .stats-heading p { font-size: 16px; color: rgba(255,255,255,0.65); }
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 40px; }
+    .stat-item { text-align: center; }
+    .stat-num { font-family: 'Montserrat', sans-serif; font-size: clamp(36px,4vw,52px); font-weight: 900; color: var(--gold); text-shadow: 0 0 20px rgba(240,192,32,0.5); line-height: 1; }
+    .stat-label { font-size: 14px; color: rgba(255,255,255,0.65); margin-top: 10px; line-height: 1.5; }
+
+    /* ── APPROACH SECTION ── */
+    .approach-section { padding: clamp(72px,10vw,112px) 0; background: var(--off-white); }
+    .approach-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .approach-text h2 { font-family: 'Montserrat', sans-serif; font-size: clamp(24px,3vw,38px); font-weight: 700; color: var(--blue-dark); margin-bottom: 18px; }
+    .approach-text p { font-size: 16px; color: var(--text-soft); line-height: 1.78; margin-bottom: 16px; }
+    .approach-text p:last-of-type { margin-bottom: 32px; }
+    .approach-points { display: flex; flex-direction: column; gap: 20px; }
+    .ap-item { display: flex; gap: 16px; align-items: flex-start; }
+    .ap-icon { width: 44px; height: 44px; border-radius: 10px; background: var(--white); border: 1.5px solid var(--blue); display: flex; align-items: center; justify-content: center; flex-shrink: 0; background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%231E3D82' fill-opacity='0.12'%3E%3Cpath d='M12,11v-2h-1v2h-2v1h2v2h1v-2h2v-1h-2zM2,1V0H1v1H0v1h1v1h1V2h1V1H2z'/%3E%3C/g%3E%3C/svg%3E"); }
+    .ap-icon svg { width: 20px; height: 20px; color: var(--gold); filter: drop-shadow(0 0 4px rgba(240,192,32,0.6)); }
+    .ap-body h4 { font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 700; color: var(--blue-dark); margin-bottom: 4px; }
+    .ap-body p { font-size: 14px; color: var(--text-soft); line-height: 1.65; }
+    .approach-visual { display: flex; flex-direction: column; gap: 16px; }
+    .av-card { background: var(--white); border: 1px solid var(--grey-light); border-radius: 14px; padding: 24px 28px; display: flex; align-items: center; gap: 20px; transition: var(--transition); }
+    .av-card:hover { box-shadow: var(--shadow-md); transform: translateX(6px); }
+    .av-card-num { font-family: 'Montserrat', sans-serif; font-size: 36px; font-weight: 900; color: var(--gold); text-shadow: 0 0 14px rgba(240,192,32,0.4); flex-shrink: 0; line-height: 1; }
+    .av-card-body strong { display: block; font-size: 15px; font-weight: 700; color: var(--blue-dark); margin-bottom: 4px; }
+    .av-card-body p { font-size: 13.5px; color: var(--text-soft); line-height: 1.55; }
+
+    /* ── CTA ── */
+    .cta-section { padding: clamp(64px,8vw,96px) 0; background: linear-gradient(135deg, var(--blue-deep), var(--blue)); position: relative; overflow: hidden; }
+    .cta-section::before { content: ''; position: absolute; inset: -60px; background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E"); pointer-events: none; animation: bgDrift 20s linear infinite; }
+    .cta-inner { position: relative; z-index: 2; text-align: center; max-width: 680px; margin: 0 auto; }
+    .cta-inner h2 { font-family: 'Montserrat', sans-serif; font-size: clamp(24px,3.5vw,42px); font-weight: 700; color: var(--white); margin-bottom: 14px; }
+    .cta-inner p { font-size: 17px; color: rgba(255,255,255,0.72); line-height: 1.72; margin-bottom: 36px; }
+    .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--blue-deep); color: var(--white); padding: clamp(52px,8vw,80px) 0 0; }
+    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: clamp(32px,4vw,60px); padding-bottom: 52px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .footer-brand img { height: 40px; width: auto; margin-bottom: 18px; display: block; filter: brightness(0) saturate(100%) invert(65%) sepia(90%) saturate(800%) hue-rotate(5deg) brightness(88%); }
+    .footer-brand p { font-size: 14.5px; color: rgba(255,255,255,0.6); line-height: 1.7; max-width: 300px; }
+    .footer-social { display: flex; gap: 10px; margin-top: 24px; }
+    .footer-social a { width: 36px; height: 36px; border-radius: 8px; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; transition: background var(--transition); }
+    .footer-social a.social-gold svg { color: var(--gold); filter: drop-shadow(0 0 4px rgba(240,192,32,0.6)); }
+    .footer-social svg { width: 17px; height: 17px; }
+    .footer-col h5 { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul a { font-size: 14px; color: rgba(255,255,255,0.6); transition: color var(--transition); }
+    .footer-col ul a:hover { color: var(--white); }
+    .footer-contact-item { display: flex; gap: 10px; margin-bottom: 12px; align-items: flex-start; }
+    .footer-contact-item svg { width: 15px; height: 15px; color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+    .footer-contact-item span { font-size: 13.5px; color: rgba(255,255,255,0.65); line-height: 1.5; }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 24px 0; flex-wrap: wrap; }
+    .footer-bottom p { font-size: 13px; color: rgba(255,255,255,0.4); }
+    .footer-bottom-links { display: flex; gap: 20px; list-style: none; }
+    .footer-bottom-links a { font-size: 13px; color: rgba(255,255,255,0.4); transition: color 0.2s; }
+    .footer-bottom-links a:hover { color: var(--white); }
+
+    /* ── WHATSAPP ── */
+    .whatsapp-float { position: fixed; bottom: 28px; right: 28px; z-index: 999; }
+    .whatsapp-btn { width: 56px; height: 56px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 24px rgba(37,211,102,0.45); transition: transform 0.25s; }
+    .whatsapp-btn:hover { transform: scale(1.1); }
+    .whatsapp-btn svg { width: 28px; height: 28px; color: #fff; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .approach-grid { grid-template-columns: 1fr; gap: 48px; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .services-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-top { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .stats-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+    }
+
+    /* ── SCROLL ANIMATION ── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<!-- ANNOUNCEMENT -->
+<div class="announcement">
+  Government labour law amendments now in effect — LLB Qualified consultants ready to assist.
+  <a href="blog/labour-inspectors-2026.html">Read more &rarr;</a>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="images/logocolor.png" alt="BizLegal" onerror="this.style.display='none'" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li class="has-dropdown">
+        <a href="services.html">Services</a>
+        <ul class="dropdown">
+          <li><a href="services/labour.html">Labour &amp; HR</a></li>
+          <li><a href="services/legal.html">Legal Services</a></li>
+          <li><a href="services/popia.html">POPI &amp; PAIA</a></li>
+          <li><a href="services/cpa.html">Consumer Protection</a></li>
+          <li><a href="services/tax.html">Tax &amp; Accounting</a></li>
+          <li><a href="services/training.html">Training</a></li>
+        </ul>
+      </li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="index.html#quote" class="btn btn-primary nav-cta">Get a Free Quote</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services/labour.html">Labour &amp; HR</a></li>
+    <li><a href="services/legal.html">Legal Services</a></li>
+    <li><a href="services/popia.html">POPI &amp; PAIA</a></li>
+    <li><a href="services/cpa.html">Consumer Protection</a></li>
+    <li><a href="services/tax.html">Tax &amp; Accounting</a></li>
+    <li><a href="services/training.html">Training</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="mobile-menu-cta"><a href="index.html#quote" class="btn btn-primary" style="width:100%;justify-content:center;">Get a Free Quote</a></div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="container">
+    <div class="hero-inner">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        <span>Services</span>
+      </div>
+      <span class="tag">What We Offer</span>
+      <h1>Everything Your Business Needs to Stay Compliant.</h1>
+      <p>Labour, Legal, POPIA, Consumer Protection, Tax and Training — all under one roof. Fixed monthly retainers. No call centres. One dedicated consultant who knows your business.</p>
+      <div class="hero-btns">
+        <a href="index.html#quote" class="btn btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.01 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.18 6.18l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          Get a Free Quote
+        </a>
+        <a href="about.html" class="btn btn-outline">About BizLegal</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES GRID -->
+<section class="services-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="tag">Our Services</span>
+      <h2>Six Service Areas. One Point of Contact.</h2>
+      <p>Every service we offer is delivered by or through qualified legal professionals — not generalist HR consultants. Click any service to learn more.</p>
+    </div>
+    <div class="services-grid">
+
+      <!-- LABOUR -->
+      <a href="services/labour.html" class="service-card reveal">
+        <span class="sc-badge">Monthly Retainer</span>
+        <div class="sc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <div class="sc-title">Labour &amp; HR Management</div>
+        <div class="sc-desc">Fixed-fee monthly retainer covering all your day-to-day employment law obligations — from contracts and disciplinary codes to CCMA representation.</div>
+        <ul class="sc-bullets">
+          <li>Disciplinary hearings &amp; warnings</li>
+          <li>CCMA &amp; bargaining council representation</li>
+          <li>Retrenchment procedures</li>
+          <li>Workplace policies &amp; contracts</li>
+        </ul>
+        <span class="sc-link">View service <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </a>
+
+      <!-- LEGAL -->
+      <a href="services/legal.html" class="service-card reveal">
+        <span class="sc-badge">Partnered Service</span>
+        <div class="sc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6l9-4 9 4"/><path d="M3 6v14l9 4 9-4V6"/><path d="M12 2v20"/></svg>
+        </div>
+        <div class="sc-title">Legal Services</div>
+        <div class="sc-desc">Civil and commercial legal support through our associated law firm — contractual disputes, debt collection, letters of demand and litigation at a 50% guaranteed discount.</div>
+        <ul class="sc-bullets">
+          <li>Letters of demand &amp; debt collection</li>
+          <li>Commercial contracts</li>
+          <li>Litigation cover at 50% discount</li>
+          <li>Civil &amp; contractual dispute resolution</li>
+        </ul>
+        <span class="sc-link">View service <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </a>
+
+      <!-- POPIA -->
+      <a href="services/popia.html" class="service-card reveal">
+        <span class="sc-badge">Compliance Package</span>
+        <div class="sc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="sc-title">POPI &amp; PAIA Compliance</div>
+        <div class="sc-desc">End-to-end POPIA and PAIA compliance — from Information Officer appointment and gap assessment to all required policies, staff training and annual review.</div>
+        <ul class="sc-bullets">
+          <li>POPIA gap assessment &amp; written report</li>
+          <li>Custom PAIA Manual (Section 51)</li>
+          <li>All 4 required compliance policies</li>
+          <li>Staff &amp; Information Officer training</li>
+        </ul>
+        <span class="sc-link">View service <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </a>
+
+      <!-- CPA -->
+      <a href="services/cpa.html" class="service-card reveal">
+        <span class="sc-badge">Compliance Package</span>
+        <div class="sc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <div class="sc-title">Consumer Protection</div>
+        <div class="sc-desc">CPA compliance audits, compliant terms and conditions, returns policies, consumer complaint procedures and marketing compliance — for businesses that deal directly with consumers.</div>
+        <ul class="sc-bullets">
+          <li>CPA compliance audit &amp; report</li>
+          <li>T&amp;Cs review or drafting</li>
+          <li>Returns &amp; warranty policy compliance</li>
+          <li>Consumer complaint procedures</li>
+        </ul>
+        <span class="sc-link">View service <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </a>
+
+      <!-- TAX -->
+      <a href="services/tax.html" class="service-card reveal">
+        <span class="sc-badge">Partnered Service</span>
+        <div class="sc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <div class="sc-title">Tax &amp; Accounting</div>
+        <div class="sc-desc">Bookkeeping, SARS returns, payroll administration, VAT, UIF, company registrations and more — delivered through our partnered accounting practices.</div>
+        <ul class="sc-bullets">
+          <li>Bookkeeping &amp; financial statements</li>
+          <li>SARS returns &amp; tax advice</li>
+          <li>Payroll &amp; UIF administration</li>
+          <li>Company registrations &amp; CIPC</li>
+        </ul>
+        <span class="sc-link">View service <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </a>
+
+      <!-- TRAINING -->
+      <a href="services/training.html" class="service-card reveal">
+        <span class="sc-badge">On Request</span>
+        <div class="sc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        </div>
+        <div class="sc-title">Workplace Training</div>
+        <div class="sc-desc">Practical compliance training for managers, supervisors and all staff — delivered by our qualified legal practitioners and tailored to your specific workplace.</div>
+        <ul class="sc-bullets">
+          <li>Labour law for managers</li>
+          <li>POPIA awareness for all staff</li>
+          <li>Disciplinary procedure workshops</li>
+          <li>OHS &amp; CPA compliance training</li>
+        </ul>
+        <span class="sc-link">View service <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- STATS STRIP -->
+<section class="stats-strip">
+  <div class="container stats-inner">
+    <div class="stats-heading reveal">
+      <h2>The Numbers That Matter</h2>
+      <p>Why South African businesses choose BizLegal for their compliance needs.</p>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-item reveal"><div class="stat-num">6</div><div class="stat-label">Service areas under one roof</div></div>
+      <div class="stat-item reveal"><div class="stat-num">3</div><div class="stat-label">Regional offices — Cape Town, Overberg, West Coast</div></div>
+      <div class="stat-item reveal"><div class="stat-num">50%</div><div class="stat-label">Guaranteed litigation discount through our associated law firm</div></div>
+      <div class="stat-item reveal"><div class="stat-num">R10M</div><div class="stat-label">Maximum POPIA fine your business avoids by being compliant</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section class="approach-section">
+  <div class="container">
+    <div class="approach-grid">
+      <div class="approach-text reveal">
+        <span class="tag">Our Approach</span>
+        <h2>One Consultant. Always. No Call Centres.</h2>
+        <p>At BizLegal, every client is assigned a dedicated consultant who knows your business, your industry and your risk profile. When you call, you speak to the same person who chairs your hearings and represents you at the CCMA — not a call centre agent reading off a script.</p>
+        <p>We are practicing legal professionals, not generic HR consultants. Our director is an admitted attorney with High Court appearance rights. That expertise runs through everything we do — from the advice we give to the documents we draft.</p>
+        <div class="approach-points">
+          <div class="ap-item">
+            <div class="ap-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+            <div class="ap-body"><h4>Dedicated Consultant</h4><p>One person who understands your business — always available, always accountable.</p></div>
+          </div>
+          <div class="ap-item">
+            <div class="ap-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6l9-4 9 4"/><path d="M3 6v14l9 4 9-4V6"/><path d="M12 2v20"/></svg></div>
+            <div class="ap-body"><h4>Legal Professionals, Not Consultants</h4><p>Led by an admitted attorney — genuine legal expertise on every matter.</p></div>
+          </div>
+          <div class="ap-item">
+            <div class="ap-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+            <div class="ap-body"><h4>Fixed Monthly Retainer</h4><p>Predictable costs, unlimited access. No surprise bills when things get complicated.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="approach-visual reveal">
+        <div class="av-card">
+          <div class="av-card-num">01</div>
+          <div class="av-card-body"><strong>We Learn Your Business</strong><p>We invest time upfront to understand your industry, workforce and risk profile — so advice is always tailored.</p></div>
+        </div>
+        <div class="av-card">
+          <div class="av-card-num">02</div>
+          <div class="av-card-body"><strong>We Build Your Compliance Foundation</strong><p>Contracts, policies, PAIA Manual, POPIA compliance — everything put in place correctly from day one.</p></div>
+        </div>
+        <div class="av-card">
+          <div class="av-card-num">03</div>
+          <div class="av-card-body"><strong>We Stay With You</strong><p>Ongoing support as your business grows and the law evolves — a long-term partnership, not a once-off service.</p></div>
+        </div>
+        <div class="av-card">
+          <div class="av-card-num">04</div>
+          <div class="av-card-body"><strong>We Represent You</strong><p>When disputes arise, your dedicated consultant represents you — at the CCMA, bargaining councils and in court.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-inner reveal">
+      <span class="tag">Get Started</span>
+      <h2>Not Sure Which Service You Need?</h2>
+      <p>Contact us and we will assess your business's current compliance position across all six areas — at no charge. We will tell you exactly where you stand and what it will take to get fully compliant.</p>
+      <div class="cta-btns">
+        <a href="index.html#quote" class="btn btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.01 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.18 6.18l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          Request a Free Assessment
+        </a>
+        <a href="contact.html" class="btn btn-outline">Contact Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="images/logocolor.png" alt="BizLegal" onerror="this.style.display='none'" />
+        <p>Labour, Legal and Compliance solutions for South African businesses. Fixed monthly retainers. Qualified legal professionals. Three regional offices across the Western Cape.</p>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/bizlegaloverberg" target="_blank" rel="noopener" class="social-gold" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="https://wa.me/27832926936" target="_blank" rel="noopener" class="social-gold" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="services/labour.html">Labour &amp; HR</a></li>
+          <li><a href="services/legal.html">Legal Services</a></li>
+          <li><a href="services/popia.html">POPI &amp; PAIA</a></li>
+          <li><a href="services/cpa.html">Consumer Protection</a></li>
+          <li><a href="services/tax.html">Tax &amp; Accounting</a></li>
+          <li><a href="services/training.html">Training</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="index.html#quote">Get a Quote</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Offices</h5>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span><strong style="color:rgba(255,255,255,0.85)">Cape Town</strong><br/>Stellenberg<br/>083 292 6936</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span><strong style="color:rgba(255,255,255,0.85)">Overberg</strong><br/>Hermanus<br/>083 455 3981</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span><strong style="color:rgba(255,255,255,0.85)">West Coast</strong><br/>Vredendal<br/>076 576 0233</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 BizLegal Overberg (Reg no. 2020/585965/07). All rights reserved.</p>
+      <ul class="footer-bottom-links">
+        <li><a href="services/popia.html">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP -->
+<div class="whatsapp-float">
+  <a href="https://wa.me/27832926936" target="_blank" rel="noopener" class="whatsapp-btn" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+</div>
+
+<script>
+  // NAV SCROLL
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 40); });
+  // MOBILE MENU
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  // SCROLL REVEAL
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => { if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i * 80); observer.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
