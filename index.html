@@ -2376,10 +2376,19 @@
               Submit Request
             </button>
           </form>
-          <div id="formSuccess" style="display:none; text-align:center; padding:32px 0;">
-            <div style="font-size:48px; margin-bottom:16px;">✅</div>
-            <h3 style="font-family:'Montserrat',sans-serif; font-size:22px; color:var(--blue-dark); margin-bottom:8px;">Thank You!</h3>
-            <p style="color:var(--text-soft);">We've received your request and will be in touch within one business day.</p>
+          <div id="formSuccess" style="display:none; padding: 40px 24px; text-align:center; position:relative; overflow:hidden;">
+            <div style="position:absolute;inset:-20px;background-image:url('data:image/svg+xml,%3Csvg width=\'40\' height=\'40\' viewBox=\'0 0 40 40\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'%231E3D82\' fill-opacity=\'0.05\'%3E%3Cpath d=\'M20 20v-2h-1v2h-2v1h2v2h1v-2h2v-1h-2z\'/%3E%3C/g%3E%3C/svg%3E');pointer-events:none;"></div>
+            <div style="position:relative;z-index:1;">
+              <div style="width:64px;height:64px;background:linear-gradient(135deg,var(--gold),#E6A800);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;box-shadow:0 6px 24px rgba(240,192,32,0.4);">
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--blue-deep)" stroke-width="2.5" style="width:30px;height:30px;"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <h3 style="font-family:'Montserrat',sans-serif;font-size:22px;font-weight:700;color:var(--blue-dark);margin-bottom:10px;">Request Received</h3>
+              <p style="font-size:15px;color:var(--text-soft);line-height:1.7;max-width:320px;margin:0 auto 24px;">Thank you. We will review your request and be in touch within one business day with a tailored proposal.</p>
+              <div style="display:flex;align-items:center;gap:10px;justify-content:center;padding:14px 20px;background:var(--blue-pale);border-radius:10px;max-width:300px;margin:0 auto;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" style="width:18px;height:18px;filter:drop-shadow(0 0 4px rgba(240,192,32,0.6));flex-shrink:0;"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.01 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.18 6.18l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                <span style="font-size:13.5px;font-weight:600;color:var(--blue);">Expect a call or email within 1 business day</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
