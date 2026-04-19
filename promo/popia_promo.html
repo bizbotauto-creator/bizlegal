@@ -2,337 +2,271 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<title>BizLegal POPIA Promo</title>
+<title>BizLegal POPIA</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --navy:#0F1A3A; --blue:#1E3D82; --mid:#162F6E;
+  --navy:#0F1A3A; --blue:#1E3D82;
   --gold:#F0C020; --gold2:#D4A800;
   --bg:#F2F5FC; --white:#fff;
-  --text:#0F1A3A; --soft:#4A5070;
+  --soft:#4A5070;
 }
-
-/* ── BASE ── */
 html,body{
-  width:1280px; height:720px;
+  width:1280px;height:720px;
   overflow:hidden;
   background:var(--bg);
   font-family:'DM Sans',sans-serif;
-  color:var(--text);
+  color:var(--navy);
 }
 
-/* ── + GRID PATTERN ── */
+/* ── + GRID BACKGROUND ── */
 body::before{
-  content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
   background-image:
     linear-gradient(var(--navy) 1.5px,transparent 1.5px),
     linear-gradient(90deg,var(--navy) 1.5px,transparent 1.5px);
-  background-size:40px 40px;
-  background-position:19px 19px;
-  opacity:0.04;
+  background-size:40px 40px;background-position:19px 19px;opacity:0.04;
 }
 
-/* ── PROGRESS ── */
+/* ── PROGRESS BAR ── */
 #prog{
-  position:fixed;bottom:0;left:0;height:4px;width:0%;z-index:99;
+  position:fixed;bottom:0;left:0;height:5px;width:0%;z-index:99;
   background:linear-gradient(90deg,var(--gold),var(--gold2));
-  box-shadow:0 0 10px rgba(240,192,32,0.5);
   transition:width 0.08s linear;
 }
 
 /* ── SCENE DOTS ── */
 #dots{
-  position:fixed;bottom:12px;left:50%;transform:translateX(-50%);
-  z-index:99;display:flex;gap:8px;align-items:center;
+  position:fixed;bottom:14px;left:50%;transform:translateX(-50%);
+  z-index:99;display:flex;gap:10px;align-items:center;
 }
-.di{
-  width:7px;height:7px;border-radius:50%;
-  background:rgba(15,26,58,0.18);transition:all 0.3s;
-}
-.di.on{background:var(--gold);width:22px;border-radius:3px;}
+.di{width:8px;height:8px;border-radius:50%;background:rgba(15,26,58,0.18);transition:all 0.3s;}
+.di.on{background:var(--gold);width:26px;border-radius:4px;}
 
-/* ── SCENE SYSTEM ── */
+/* ══════════════════════════════════════
+   SCENE SYSTEM
+══════════════════════════════════════ */
 .sc{
   position:absolute;inset:0;
-  opacity:0;pointer-events:none;
-  display:flex;
+  display:none;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:60px 100px;
+  text-align:center;
+  overflow:hidden;
 }
-.sc.enter{animation:scIn 0.5s ease forwards;pointer-events:all;}
-.sc.exit{animation:scOut 0.4s ease forwards;}
+.sc.on{ display:flex; }
 
-@keyframes scIn  {from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
-@keyframes scOut {from{opacity:1;transform:none}to{opacity:0;transform:translateY(-12px)}}
+/* ── SWISH ANIMATIONS ── */
+@keyframes swIn  { from{opacity:0;transform:translateX(120px)} to{opacity:1;transform:none} }
+@keyframes swOut { from{opacity:1;transform:none} to{opacity:0;transform:translateX(-120px)} }
+@keyframes fadeUp{ from{opacity:0;transform:translateY(40px)} to{opacity:1;transform:none} }
+@keyframes glow  { 0%,100%{color:var(--gold)} 50%{color:#FFD84D} }
+@keyframes pulse { 0%,100%{box-shadow:0 8px 40px rgba(240,192,32,0.35)} 50%{box-shadow:0 8px 60px rgba(240,192,32,0.7)} }
 
-/* ── ELEMENT KEYFRAMES ── */
-@keyframes fu  {from{opacity:0;transform:translateY(40px)} to{opacity:1;transform:none}}
-@keyframes fl  {from{opacity:0;transform:translateX(-50px)}to{opacity:1;transform:none}}
-@keyframes fd  {from{opacity:0;transform:translateY(-30px)}to{opacity:1;transform:none}}
-@keyframes pop {0%{opacity:0;transform:scale(0.5)}65%{transform:scale(1.04)}100%{opacity:1;transform:scale(1)}}
-@keyframes wipe{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0% 0 0)}}
-@keyframes glow{0%,100%{color:var(--gold)}50%{color:#FFD84D;text-shadow:0 0 60px rgba(240,192,32,0.6)}}
-@keyframes lineGrow{from{width:0}to{width:var(--lw,100%)}}
-@keyframes btnPulse{0%,100%{box-shadow:0 8px 40px rgba(240,192,32,0.4)}50%{box-shadow:0 8px 60px rgba(240,192,32,0.75)}}
+/* Elements start invisible; .on triggers swish-in */
+.sw{opacity:0;}
+.sc.on  .sw{animation:swIn  0.45s ease-out forwards;}
+.sc.bye .sw{animation:swOut 0.4s  ease-in  forwards!important;}
 
-.a0{opacity:0}
+/* Staggered delays */
+.sw.d1{animation-delay:0.05s}
+.sw.d2{animation-delay:0.18s}
+.sw.d3{animation-delay:0.31s}
+.sw.d4{animation-delay:0.44s}
 
-/* ── SHARED ── */
-.badge{
-  display:inline-block;
-  font-size:36px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;
+/* ── SHARED COMPONENTS ── */
+.tag{
+  display:inline-block;font-size:34px;font-weight:700;
+  letter-spacing:0.14em;text-transform:uppercase;
   color:var(--navy);background:linear-gradient(135deg,var(--gold),var(--gold2));
-  border-radius:100px;padding:14px 40px;
-  box-shadow:0 6px 24px rgba(240,192,32,0.35);
+  border-radius:100px;padding:12px 36px;
+  box-shadow:0 4px 20px rgba(240,192,32,0.3);
+  margin-bottom:28px;
 }
 .rule{
-  height:5px;border-radius:3px;
+  width:200px;height:5px;border-radius:3px;
   background:linear-gradient(90deg,var(--gold),var(--gold2));
+  margin:20px auto 28px;
 }
-.gold-card{
+h2{
+  font-family:'Montserrat',sans-serif;
+  font-size:112px;font-weight:900;line-height:1.0;
+  letter-spacing:-0.03em;color:var(--navy);
+}
+h2 em{font-style:normal;color:var(--gold);}
+.sub{
+  font-size:52px;color:var(--soft);
+  line-height:1.4;font-weight:500;max-width:1060px;
+}
+
+/* ══════════════════════════════════════
+   S1 — IS YOUR BUSINESS COMPLIANT?
+══════════════════════════════════════ */
+#s1 h2{font-size:128px;}
+
+/* ══════════════════════════════════════
+   S2 — ALL BUSINESSES MUST COMPLY
+══════════════════════════════════════ */
+#s2 .cards{
+  display:grid;grid-template-columns:1fr 1fr;gap:24px;
+  margin-top:32px;width:100%;
+}
+#s2 .card{
   background:var(--white);
-  border:1px solid rgba(240,192,32,0.3);
+  border:2px solid rgba(240,192,32,0.3);
   border-left:8px solid var(--gold);
   border-radius:0 16px 16px 0;
-  padding:40px 48px;
+  padding:36px 40px;text-align:left;
   box-shadow:0 4px 24px rgba(15,26,58,0.07);
 }
+#s2 .cn{font-size:30px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+#s2 .ct{font-size:40px;font-weight:600;color:var(--navy);line-height:1.35;}
 
-/* ═══════════════════════════════════════
-   S1 — OPENER  0–3.5s
-═══════════════════════════════════════ */
-#s1{flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 120px;}
-#s1 h1{
+/* ══════════════════════════════════════
+   S3 — ANNUAL REPORTING
+══════════════════════════════════════ */
+#s3 .big-date{
   font-family:'Montserrat',sans-serif;
-  font-size:148px;font-weight:900;line-height:0.97;
-  letter-spacing:-0.03em;color:var(--navy);
-  margin:32px 0 28px;
-}
-#s1 h1 em{font-style:normal;color:var(--gold);display:block;}
-#s1 .sub{font-size:56px;color:var(--soft);max-width:900px;line-height:1.4;font-weight:500;}
-
-/* ═══════════════════════════════════════
-   S2 — THE LAW  3.5–7.5s
-═══════════════════════════════════════ */
-#s2{flex-direction:column;justify-content:center;padding:60px 110px;}
-#s2 .kicker{font-size:36px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--blue);opacity:0.65;margin-bottom:20px;}
-#s2 h2{
-  font-family:'Montserrat',sans-serif;
-  font-size:110px;font-weight:900;line-height:1.0;
-  color:var(--navy);margin-bottom:48px;
-}
-#s2 h2 em{font-style:normal;color:var(--gold);}
-#s2 .cards{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
-#s2 .cn{font-size:28px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
-#s2 .ct{font-size:42px;font-weight:600;color:var(--navy);line-height:1.35;}
-
-/* ═══════════════════════════════════════
-   S3 — REGULATOR  7.5–12s
-═══════════════════════════════════════ */
-#s3{flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 100px;}
-#s3 .ey{font-size:34px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--soft);margin-bottom:24px;}
-#s3 h2{
-  font-family:'Montserrat',sans-serif;
-  font-size:106px;font-weight:900;line-height:1.0;
-  color:var(--navy);margin-bottom:32px;
-}
-#s3 h2 em{font-style:normal;color:var(--gold);}
-#s3 .callout{
-  display:inline-flex;align-items:center;gap:24px;
-  background:var(--white);
-  border:2px solid rgba(240,192,32,0.4);
-  border-left:8px solid var(--gold);
-  border-radius:0 16px 16px 0;
-  padding:28px 48px;
-  font-size:46px;font-weight:600;color:var(--navy);
-  box-shadow:0 8px 32px rgba(240,192,32,0.15);
-}
-#s3 .callout em{font-style:normal;color:var(--gold);font-weight:900;}
-
-/* ═══════════════════════════════════════
-   S4 — R10M STAT  12–16.5s
-═══════════════════════════════════════ */
-#s4{flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px;}
-#s4 .pre{font-size:38px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--soft);margin-bottom:16px;}
-#s4 .big{
-  font-family:'Montserrat',sans-serif;
-  font-size:220px;font-weight:900;line-height:0.9;
-  color:var(--navy);letter-spacing:-0.04em;
+  font-size:160px;font-weight:900;line-height:0.9;
+  color:var(--gold);letter-spacing:-0.04em;
   animation:glow 2.5s 1s infinite;
 }
-#s4 .big span{color:var(--gold);}
-#s4 .lbl{font-family:'Montserrat',sans-serif;font-size:52px;font-weight:700;color:var(--navy);margin-top:12px;}
-#s4 .sub2{font-size:40px;color:var(--soft);margin-top:8px;}
 
-/* ═══════════════════════════════════════
-   S5 — PIVOT  16.5–20.5s
-═══════════════════════════════════════ */
-#s5{flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 120px;}
-#s5::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 60%,rgba(240,192,32,0.07) 0%,transparent 70%);pointer-events:none;}
-#s5 h2{
-  font-family:'Montserrat',sans-serif;
-  font-size:128px;font-weight:900;line-height:1.0;
-  color:var(--navy);margin:28px 0 20px;
+/* ══════════════════════════════════════
+   S4 — 10-PHASE BIZLEGAL PROCESS
+══════════════════════════════════════ */
+#s4 .steps{
+  display:flex;gap:0;margin-top:36px;
+  background:var(--white);border-radius:16px;
+  border:2px solid rgba(240,192,32,0.2);
+  box-shadow:0 4px 24px rgba(15,26,58,0.07);
+  overflow:hidden;width:100%;
 }
-#s5 h2 em{font-style:normal;color:var(--gold);}
-#s5 .sub{font-size:52px;color:var(--soft);max-width:1000px;line-height:1.35;font-weight:500;}
+#s4 .step{
+  flex:1;padding:30px 20px;text-align:center;
+  border-right:2px solid rgba(15,26,58,0.06);
+}
+#s4 .step:last-child{border-right:none;}
+#s4 .sn{font-family:'Montserrat',sans-serif;font-size:56px;font-weight:900;color:var(--gold);line-height:1;}
+#s4 .sl{font-size:34px;font-weight:600;color:var(--navy);margin-top:6px;line-height:1.3;}
 
-/* ═══════════════════════════════════════
-   S6 — PRICING  20.5–25s
-═══════════════════════════════════════ */
-#s6{flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 100px;}
-#s6 .ey{font-size:34px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--soft);margin-bottom:20px;}
-#s6 .cards2{display:flex;gap:28px;margin-top:28px;}
-#s6 .pc{
-  flex:1;background:var(--white);border:2px solid var(--bg);
+/* ══════════════════════════════════════
+   S5 — PRICING
+══════════════════════════════════════ */
+#s5 .pr-row{display:flex;gap:28px;margin-top:32px;width:100%;}
+#s5 .pr-card{
+  flex:1;background:var(--white);
+  border:2px solid rgba(15,26,58,0.08);
   border-radius:20px;padding:44px 48px;text-align:left;
-  box-shadow:0 6px 32px rgba(15,26,58,0.08);
-}
-#s6 .pc.feat{border-color:var(--gold);box-shadow:0 6px 40px rgba(240,192,32,0.2);animation:btnPulse 2.5s 1.5s infinite;}
-#s6 .pt{display:inline-block;font-size:26px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--navy);background:linear-gradient(135deg,var(--gold),var(--gold2));border-radius:100px;padding:8px 24px;margin-bottom:18px;}
-#s6 .pn{font-family:'Montserrat',sans-serif;font-size:38px;font-weight:700;color:var(--navy);margin-bottom:12px;}
-#s6 .pa{font-family:'Montserrat',sans-serif;font-size:88px;font-weight:900;color:var(--gold);line-height:1;}
-#s6 .pp{font-size:32px;color:var(--soft);margin-top:8px;line-height:1.4;}
-
-/* ═══════════════════════════════════════
-   S7 — CTA  25–30s → LOOP
-═══════════════════════════════════════ */
-#s7{flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:48px 80px;}
-#s7::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(240,192,32,0.06) 0%,transparent 65%);pointer-events:none;}
-#s7 .logo{margin-bottom:24px;}
-#s7 .logo img{height:110px;width:auto;display:block;margin:0 auto;object-fit:contain;}
-#s7 h2{
-  font-family:'Montserrat',sans-serif;
-  font-size:100px;font-weight:900;line-height:1.05;
-  color:var(--navy);margin-bottom:16px;
-}
-#s7 h2 em{font-style:normal;color:var(--gold);}
-#s7 .offices{
-  display:flex;margin-top:24px;
-  border:2px solid rgba(15,26,58,0.1);border-radius:16px;
-  background:var(--white);overflow:hidden;
   box-shadow:0 4px 24px rgba(15,26,58,0.07);
 }
-#s7 .office{flex:1;padding:28px 32px;text-align:center;}
-#s7 .office:not(:last-child){border-right:2px solid rgba(15,26,58,0.08);}
-#s7 .or{font-size:28px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;}
-#s7 .op{font-size:28px;color:var(--soft);margin-bottom:6px;}
-#s7 .on{font-family:'Montserrat',sans-serif;font-size:48px;font-weight:800;color:var(--navy);}
-#s7 .btn{
+#s5 .pr-card.feat{
+  border-color:var(--gold);
+  box-shadow:0 4px 40px rgba(240,192,32,0.2);
+  animation:pulse 2.5s 1s infinite;
+}
+#s5 .pt{display:inline-block;font-size:28px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--navy);background:linear-gradient(135deg,var(--gold),var(--gold2));border-radius:100px;padding:8px 24px;margin-bottom:16px;}
+#s5 .pn{font-family:'Montserrat',sans-serif;font-size:38px;font-weight:700;color:var(--navy);margin-bottom:10px;}
+#s5 .pa{font-family:'Montserrat',sans-serif;font-size:90px;font-weight:900;color:var(--gold);line-height:1;}
+#s5 .pp{font-size:32px;color:var(--soft);margin-top:8px;line-height:1.4;}
+
+/* ══════════════════════════════════════
+   S6 — GET COMPLIANT NOW
+══════════════════════════════════════ */
+#s6 .logo img{height:120px;width:auto;display:block;margin:0 auto;}
+#s6 .url{
+  font-family:'Montserrat',sans-serif;
+  font-size:64px;font-weight:700;color:var(--soft);
+  letter-spacing:0.04em;margin-top:8px;
+}
+#s6 .cta-btn{
   display:inline-flex;align-items:center;gap:14px;
   background:linear-gradient(135deg,var(--gold),var(--gold2));
   color:var(--navy);font-family:'Montserrat',sans-serif;
-  font-size:52px;font-weight:900;
-  padding:28px 80px;border-radius:12px;margin-top:24px;
+  font-size:56px;font-weight:900;
+  padding:30px 90px;border-radius:14px;margin-top:36px;
   letter-spacing:0.01em;
-  animation:btnPulse 2s 2s infinite;
+  animation:pulse 2s 1.5s infinite;
 }
 </style>
 </head>
 <body>
 
-<!-- S1: OPENER -->
+<!-- ══ S1: IS YOUR BUSINESS COMPLIANT? ══ -->
 <div class="sc" id="s1">
-  <div style="position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center;padding:60px 120px;width:100%">
-    <div class="a0" style="animation:fd 0.5s 0.1s forwards"><span class="badge">POPIA &amp; PAIA Compliance</span></div>
-    <h1 class="a0" style="animation:fu 0.8s 0.4s forwards">
-      Is Your Business<br><em>POPIA</em>Compliant?
-    </h1>
-    <p class="sub a0" style="animation:fu 0.6s 0.9s forwards">Every SA business must comply — no exceptions.</p>
-  </div>
+  <div class="sw d1"><span class="tag">POPIA &amp; PAIA Compliance</span></div>
+  <h2 class="sw d2">Is Your Business<br><em>POPIA Compliant?</em></h2>
+  <div class="rule sw d3"></div>
+  <p class="sub sw d3">Every South African business must comply — no exceptions, no minimum size.</p>
 </div>
 
-<!-- S2: THE LAW -->
+<!-- ══ S2: ALL BUSINESSES MUST COMPLY ══ -->
 <div class="sc" id="s2">
-  <div style="position:relative;z-index:1;width:100%;padding:60px 110px;">
-    <div class="kicker a0" style="animation:fd 0.5s 0.1s forwards">The legal obligation</div>
-    <div class="rule a0" style="animation:lineGrow 0.6s 0.2s forwards;--lw:280px;width:0;margin-bottom:32px;"></div>
-    <h2 class="a0" style="animation:fl 0.7s 0.3s forwards">POPIA Is<br>Not <em>Optional.</em></h2>
-    <div class="cards">
-      <div class="gold-card a0" style="animation:fu 0.6s 0.75s forwards">
-        <div class="cn">POPIA</div>
-        <div class="ct">Applies to every business that collects personal information.</div>
-      </div>
-      <div class="gold-card a0" style="animation:fu 0.6s 1.05s forwards">
-        <div class="cn">PAIA · Section 51</div>
-        <div class="ct">Every business must have a PAIA Manual — regardless of size.</div>
-      </div>
+  <h2 class="sw d1">All Businesses<br>Must <em>Comply.</em></h2>
+  <div class="cards sw d2">
+    <div class="card">
+      <div class="cn">The Obligation</div>
+      <div class="ct">POPIA + PAIA apply to every business — no exceptions. Non-compliance means enforcement action.</div>
+    </div>
+    <div class="card">
+      <div class="cn">The Penalty</div>
+      <div class="ct">Fines of up to <strong style="color:var(--gold)">R10 million</strong> per violation. Directors face criminal prosecution.</div>
     </div>
   </div>
 </div>
 
-<!-- S3: INFORMATION REGULATOR -->
+<!-- ══ S3: ANNUAL REPORTING ══ -->
 <div class="sc" id="s3">
-  <div style="position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center;padding:60px 100px;width:100%">
-    <div class="ey a0" style="animation:fd 0.5s 0.1s forwards">Information Regulator of South Africa</div>
-    <h2 class="a0" style="animation:fu 0.8s 0.35s forwards">Enforcement Has<br><em>Already Begun.</em></h2>
-    <div class="callout a0" style="animation:fu 0.7s 0.9s forwards">
-      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-      <em>R5 million</em> fine already issued — more are coming.
-    </div>
-  </div>
+  <div class="sw d1"><span class="tag">Annual Compliance</span></div>
+  <div class="big-date sw d2">30 June</div>
+  <h2 class="sw d2" style="font-size:80px;margin-top:16px;">Submit to the Information Regulator<br><em>Before End of June — Every Year.</em></h2>
+  <p class="sub sw d3" style="font-size:44px;margin-top:16px;">Annual reporting to the Information Regulator is a legal requirement for every compliant business.</p>
 </div>
 
-<!-- S4: BIG STAT -->
+<!-- ══ S4: BIZLEGAL 10-PHASE PROCESS ══ -->
 <div class="sc" id="s4">
-  <div style="position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center;padding:40px;width:100%">
-    <p class="pre a0" style="animation:fd 0.5s 0.1s forwards">Maximum fine — per violation</p>
-    <div class="big a0" style="animation:pop 0.8s 0.3s forwards">R<span>10</span>M</div>
-    <div class="lbl a0" style="animation:fu 0.6s 0.85s forwards">Per Violation. Per Incident.</div>
-    <div class="sub2 a0" style="animation:fu 0.5s 1.15s forwards">Directors face criminal prosecution.</div>
+  <div class="sw d1"><span class="tag">The BizLegal Process</span></div>
+  <h2 class="sw d2" style="font-size:96px;">10 Phases.<br>~12 Weeks. <em>Fully Compliant.</em></h2>
+  <div class="steps sw d3">
+    <div class="step"><div class="sn">10</div><div class="sl">Structured Phases</div></div>
+    <div class="step"><div class="sn">12</div><div class="sl">Weeks to Complete</div></div>
+    <div class="step"><div class="sn">9</div><div class="sl">Key Deliverables</div></div>
+    <div class="step"><div class="sn">1</div><div class="sl">Dedicated Consultant</div></div>
   </div>
 </div>
 
-<!-- S5: PIVOT -->
+<!-- ══ S5: PRICING ══ -->
 <div class="sc" id="s5">
-  <div style="position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center;padding:60px 120px;width:100%">
-    <div class="a0" style="animation:pop 0.6s 0.1s forwards"><span class="badge">The Solution</span></div>
-    <h2 class="a0" style="animation:fu 0.8s 0.45s forwards">
-      BizLegal Gets You<br><em>Fully Compliant.</em>
-    </h2>
-    <p class="sub a0" style="animation:fu 0.6s 0.95s forwards">End to end. Done properly. Fixed price.</p>
+  <div class="sw d1"><span class="tag">Transparent Pricing</span></div>
+  <div class="pr-row sw d2">
+    <div class="pr-card">
+      <div class="pt">Option 1</div>
+      <div class="pn">Once-Off</div>
+      <div class="pa">R12,000</div>
+      <div class="pp">Full implementation<br>+ R3,000/year annual reporting</div>
+    </div>
+    <div class="pr-card feat">
+      <div class="pt">Most Popular</div>
+      <div class="pn">Monthly Retainer</div>
+      <div class="pa">R1,500</div>
+      <div class="pp">Per month · Min. 12 months<br>All-inclusive, ongoing support</div>
+    </div>
   </div>
 </div>
 
-<!-- S6: PRICING -->
+<!-- ══ S6: GET COMPLIANT NOW ══ -->
 <div class="sc" id="s6">
-  <div style="position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center;padding:60px 100px;width:100%">
-    <p class="ey a0" style="animation:fd 0.5s 0.1s forwards">Two options — both fully inclusive</p>
-    <div class="rule a0" style="animation:lineGrow 0.6s 0.25s forwards;--lw:300px;width:0;margin:0 auto 0;"></div>
-    <div class="cards2 a0" style="animation:fu 0.7s 0.5s forwards">
-      <div class="pc">
-        <div class="pt">Option 1</div>
-        <div class="pn">Once-Off</div>
-        <div class="pa">R12,000</div>
-        <div class="pp">+ R3,000/year annual reporting</div>
-      </div>
-      <div class="pc feat">
-        <div class="pt">Most Popular</div>
-        <div class="pn">Monthly Retainer</div>
-        <div class="pa">R1,500</div>
-        <div class="pp">Per month · Min. 12 months</div>
-      </div>
-    </div>
+  <div class="logo sw d1">
+    <img src="../images/logo.png" alt="BizLegal"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
+    <div style="display:none;font-family:'Montserrat',sans-serif;font-size:90px;font-weight:900;letter-spacing:-0.02em;color:var(--navy)">BIZ<span style="color:var(--gold)">/</span>LEGAL</div>
   </div>
-</div>
-
-<!-- S7: CTA -->
-<div class="sc" id="s7">
-  <div style="position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center;padding:48px 80px;width:100%">
-    <div class="logo a0" style="animation:pop 0.7s 0.15s forwards">
-      <img src="../images/logo.png" alt="BizLegal"
-        onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
-      <div style="display:none;font-family:'Montserrat',sans-serif;font-size:80px;font-weight:900;letter-spacing:-0.02em;color:var(--navy)">BIZ<span style="color:var(--gold)">/</span>LEGAL</div>
-    </div>
-    <h2 class="a0" style="animation:fu 0.7s 0.5s forwards">
-      Don't Wait for the<br>Regulator to Come <em>to You.</em>
-    </h2>
-    <div class="offices a0" style="animation:fu 0.6s 1.0s forwards">
-      <div class="office"><div class="or">Cape Town</div><div class="op">Stellenberg</div><div class="on">083 292 6936</div></div>
-      <div class="office"><div class="or">Overberg</div><div class="op">Hermanus</div><div class="on">083 455 3981</div></div>
-      <div class="office"><div class="or">West Coast</div><div class="op">Vredendal</div><div class="on">076 576 0233</div></div>
-    </div>
-    <div class="btn a0" style="animation:fu 0.6s 1.5s forwards">Contact Us Today →</div>
-  </div>
+  <h2 class="sw d2" style="font-size:100px;margin-top:20px;">Get <em>Compliant</em> Now.</h2>
+  <div class="url sw d3">bizlegal.co.za</div>
+  <div class="cta-btn sw d4">Contact Us Today →</div>
 </div>
 
 <div id="prog"></div>
@@ -340,93 +274,109 @@ body::before{
 
 <script>
 const SCENES = [
-  { id:'s1', t:0     },
-  { id:'s2', t:3500  },
-  { id:'s3', t:7500  },
-  { id:'s4', t:12000 },
-  { id:'s5', t:16500 },
-  { id:'s6', t:20500 },
-  { id:'s7', t:25000 },
+  {id:'s1',t:0},
+  {id:'s2',t:5000},
+  {id:'s3',t:10000},
+  {id:'s4',t:15000},
+  {id:'s5',t:20000},
+  {id:'s6',t:25000},
 ];
-const TOTAL = 30000; // loop every 30s
+const TOTAL    = 30000;
+const SWISH_MS = 550; // trigger exit swish this many ms before scene end
 
-let raf, t0, lastIdx = -1;
+let raf, t0, lastIdx = -1, byeSet = false;
 
 // Build dots
 const dotsEl = document.getElementById('dots');
-SCENES.forEach((_, i) => {
+SCENES.forEach((_,i)=>{
   const d = document.createElement('div');
-  d.className = 'di'; d.id = 'di' + i;
+  d.className = 'di'; d.id = 'di'+i;
   dotsEl.appendChild(d);
 });
 
-function resetAll() {
-  SCENES.forEach(s => {
-    const el = document.getElementById(s.id);
-    if (!el) return;
-    const c = el.cloneNode(true);
-    el.parentNode.replaceChild(c, el);
-  });
-  document.getElementById('prog').style.width = '0%';
-  SCENES.forEach((_, i) => document.getElementById('di' + i).classList.remove('on'));
-  lastIdx = -1;
+function getEl(id){ return document.getElementById(id); }
+
+function activateScene(idx){
+  const el = getEl(SCENES[idx].id);
+  if(!el) return;
+  el.classList.add('on');
+  el.classList.remove('bye');
+  SCENES.forEach((_,i)=> { const d=getEl('di'+i); if(d) d.classList.toggle('on',i===idx); });
 }
 
-function tick() {
-  const elapsed = (Date.now() - t0) % TOTAL;
+function deactivateScene(idx){
+  const el = getEl(SCENES[idx].id);
+  if(!el) return;
+  el.classList.remove('on','bye');
+}
 
-  // Detect loop restart
-  const wrappedElapsed = (Date.now() - t0);
-  if (wrappedElapsed > 0 && wrappedElapsed % TOTAL < 80 && wrappedElapsed > TOTAL * 0.9) {
+function triggerExit(idx){
+  const el = getEl(SCENES[idx].id);
+  if(!el) return;
+  el.classList.add('bye');
+}
+
+function resetAll(){
+  SCENES.forEach(s=>{
+    const el = getEl(s.id);
+    if(!el) return;
+    // Clone to reset all animations
+    const clone = el.cloneNode(true);
+    el.parentNode.replaceChild(clone, el);
+  });
+  getEl('prog').style.width = '0%';
+  SCENES.forEach((_,i)=>{ const d=getEl('di'+i); if(d) d.classList.remove('on'); });
+  lastIdx = -1;
+  byeSet = false;
+}
+
+function tick(){
+  const now = Date.now();
+  const elapsed = (now - t0) % TOTAL;
+  const cycle   = Math.floor((now - t0) / TOTAL);
+
+  // Detect new cycle → reset
+  if(cycle > 0 && elapsed < 100 && lastIdx === SCENES.length - 1){
     resetAll();
-    t0 = Date.now();
+    t0 = now - elapsed;
     raf = requestAnimationFrame(tick);
     return;
   }
 
-  document.getElementById('prog').style.width = (elapsed / TOTAL * 100) + '%';
+  getEl('prog').style.width = (elapsed / TOTAL * 100) + '%';
 
+  // Active index
   let activeIdx = 0;
-  for (let i = SCENES.length - 1; i >= 0; i--) {
-    if (elapsed >= SCENES[i].t) { activeIdx = i; break; }
+  for(let i = SCENES.length-1; i >= 0; i--){
+    if(elapsed >= SCENES[i].t){ activeIdx = i; break; }
   }
 
-  if (activeIdx !== lastIdx) {
-    // Exit old
-    if (lastIdx >= 0) {
-      const prev = document.getElementById(SCENES[lastIdx].id);
-      if (prev) {
-        prev.classList.remove('enter');
-        prev.classList.add('exit');
-        setTimeout(() => { if (prev) { prev.style.opacity = '0'; prev.classList.remove('exit'); } }, 400);
-      }
-    }
-    // Enter new
-    const cur = document.getElementById(SCENES[activeIdx].id);
-    if (cur) {
-      cur.classList.remove('exit');
-      cur.style.opacity = '';
-      void cur.offsetWidth;
-      cur.classList.add('enter');
-    }
-    // Dots
-    SCENES.forEach((_, i) => {
-      const d = document.getElementById('di' + i);
-      if (d) d.classList.toggle('on', i === activeIdx);
-    });
+  // Scene switch
+  if(activeIdx !== lastIdx){
+    if(lastIdx >= 0) deactivateScene(lastIdx);
+    activateScene(activeIdx);
     lastIdx = activeIdx;
+    byeSet = false;
+  }
+
+  // Trigger exit swish before scene ends
+  const nextT = (activeIdx < SCENES.length - 1) ? SCENES[activeIdx+1].t : TOTAL;
+  const timeLeft = nextT - elapsed;
+  if(!byeSet && timeLeft <= SWISH_MS){
+    triggerExit(activeIdx);
+    byeSet = true;
   }
 
   raf = requestAnimationFrame(tick);
 }
 
-function start() {
+function start(){
   cancelAnimationFrame(raf);
   resetAll();
-  setTimeout(() => { t0 = Date.now(); raf = requestAnimationFrame(tick); }, 80);
+  setTimeout(()=>{ t0 = Date.now(); raf = requestAnimationFrame(tick); }, 80);
 }
 
-window.addEventListener('load', () => setTimeout(start, 300));
+window.addEventListener('load', ()=> setTimeout(start, 300));
 </script>
 </body>
 </html>
