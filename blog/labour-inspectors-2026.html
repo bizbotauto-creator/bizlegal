@@ -459,6 +459,19 @@
       .footer-top { grid-template-columns: 1fr; }
     }
 
+    /* Recent articles - same as blog sidebar */
+    .sr-list { display: flex; flex-direction: column; gap: 16px; }
+    .sr-item { display: flex; gap: 12px; align-items: flex-start; }
+    .sr-img { width: 64px; height: 64px; border-radius: 8px; object-fit: cover; flex-shrink: 0; }
+    .sr-img-placeholder { width: 64px; height: 64px; border-radius: 8px; background: linear-gradient(135deg, var(--blue-deep), var(--blue)); flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+    .sr-img-placeholder svg { width: 22px; height: 22px; color: rgba(255,255,255,0.25); }
+    .sr-body a { font-size: 13.5px; font-weight: 600; color: var(--text); line-height: 1.45; transition: color 0.2s; display: block; margin-bottom: 4px; }
+    .sr-body a:hover { color: var(--gold); }
+    .sr-body span { font-size: 12px; color: var(--grey-mid); }
+
+    /* Fix sticky nav overshoot on anchor links */
+    h2[id] { scroll-margin-top: calc(var(--nav-h) + 24px); }
+
     .tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue-deep); background: linear-gradient(135deg, var(--gold) 0%, #E6A800 100%); border-radius: 100px; padding: 6px 16px; margin-bottom: 14px; box-shadow: 0 4px 18px rgba(240,192,32,0.35); }
 
     #copy-toast {
@@ -692,37 +705,32 @@
         <!-- SIDEBAR -->
         <aside class="article-sidebar">
 
-          <!-- Related Articles -->
+          <!-- Recent Articles -->
           <div class="sidebar-card">
-            <h4>Related Articles</h4>
-            <a href="popia-checklist.html" style="display:block;">
-              <div class="related-article">
-                <div class="related-article-thumb">
-                  <img src="../images/blog-popia.jpg" alt="POPIA" style="width:56px;height:56px;object-fit:cover;border-radius:8px;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
-                  <div style="display:none;width:56px;height:56px;border-radius:8px;background:var(--blue-pale);align-items:center;justify-content:center;">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:22px;height:22px;opacity:0.4;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                  </div>
-                </div>
-                <div>
-                  <div class="related-article-title">Are You POPIA Compliant? The Checklist Every Business Needs</div>
-                  <div class="related-article-meta">Feb 2026 · 4 min read</div>
+            <h4>Recent Articles</h4>
+            <div class="sr-list">
+              <div class="sr-item">
+                <img src="../images/blog-popia.jpg" alt="" class="sr-img" onerror="this.outerHTML='<div class=sr-img-placeholder><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\'><path d=\'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\'/></svg></div>'" />
+                <div class="sr-body">
+                  <a href="#">Is Your Business Actually POPIA Compliant?</a>
+                  <span>February 2026</span>
                 </div>
               </div>
-            </a>
-            <a href="fair-dismissal-guide.html" style="display:block;">
-              <div class="related-article">
-                <div class="related-article-thumb">
-                  <img src="../images/blog-dismiss.jpg" alt="Fair Dismissal" style="width:56px;height:56px;object-fit:cover;border-radius:8px;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
-                  <div style="display:none;width:56px;height:56px;border-radius:8px;background:var(--blue-pale);align-items:center;justify-content:center;">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:22px;height:22px;opacity:0.4;"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-                  </div>
-                </div>
-                <div>
-                  <div class="related-article-title">How to Dismiss an Employee Fairly: A Step-by-Step Guide</div>
-                  <div class="related-article-meta">Jan 2026 · 6 min read</div>
+              <div class="sr-item">
+                <img src="../images/blog-dismiss.jpg" alt="" class="sr-img" onerror="this.outerHTML='<div class=sr-img-placeholder><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\'><path d=\'M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2\'/><circle cx=\'9\' cy=\'7\' r=\'4\'/></svg></div>'" />
+                <div class="sr-body">
+                  <a href="#">The Five Most Common Reasons Employers Lose at the CCMA</a>
+                  <span>January 2026</span>
                 </div>
               </div>
-            </a>
+              <div class="sr-item">
+                <div class="sr-img-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+                <div class="sr-body">
+                  <a href="#">National Minimum Wage 2026: What Every Employer Needs to Know</a>
+                  <span>January 2026</span>
+                </div>
+              </div>
+            </div>
           </div>
 
           <!-- Sidebar CTA -->
