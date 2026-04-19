@@ -837,22 +837,69 @@
     window.formspree = window.formspree || function() { (formspree.q = formspree.q || []).push(arguments); };
     formspree('initForm', { formElement: '#onboardingForm', formId: 'mvzdryjb' });
 
-    // Watch for Formspree signalling success (it sets display:block on [data-fs-success])
+    // ── Direct Discord notification (fire-and-forget) ──
+    function notifyDiscord() {
+      const g = id => (document.getElementById(id) || {}).value || '—';
+      const payload = {
+        username: 'BizLegal Forms',
+        embeds: [{
+          title: '📋 New POPIA/PAIA Onboarding Submission',
+          color: 0x1E3D82,
+          fields: [
+            { name: '🏢 Company',    value: g('q1')  || '—', inline: true },
+            { name: '📧 Email',      value: g('q9')  || '—', inline: true },
+            { name: '📱 Phone',      value: g('q8')  || '—', inline: true },
+            { name: '🏭 Industry',   value: g('q4')  || '—', inline: true },
+            { name: '👥 Employees',  value: g('q12') || '—', inline: true },
+            { name: '👤 CEO / MD',   value: g('q11') || '—', inline: true },
+          ],
+          footer: { text: 'BizLegal POPIA Onboarding • ' + new Date().toLocaleDateString('en-ZA') }
+        }]
+      };
+      fetch('https://discord.com/api/webhooks/1341454980174839828/B8DyW65SiSWYyNjuvtIDj41YkzNmMouOP1wPtzYlUidsdqZ3iRXn8nTHkNE9LnPRV86o', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      }).catch(e => console.warn('Discord notification:', e));
+    }
+
+    // ── Watch for Formspree success signal ──
+    // The @formspree/ajax library reveals [data-fs-success] when submission succeeds.
+    // It may toggle via style, hidden attribute, or class — watch all of them.
     const fsSignal = document.getElementById('fs-signal');
     const fsError  = document.getElementById('fs-error');
+    let successFired = false;
+
+    function checkVisible(el) {
+      return !el.hidden &&
+             el.style.display !== 'none' &&
+             !el.classList.contains('hidden') &&
+             !el.hasAttribute('aria-hidden');
+    }
 
     new MutationObserver(() => {
-      if (fsSignal.style.display === 'block' || fsSignal.childNodes.length > 0) {
+      if (!successFired && checkVisible(fsSignal)) {
+        successFired = true;
+        notifyDiscord();
         showSuccess();
       }
-    }).observe(fsSignal, { attributes: true, childList: true, subtree: true, attributeFilter: ['style'] });
+    }).observe(fsSignal, {
+      attributes: true, childList: true, subtree: true,
+      attributeFilter: ['style', 'class', 'hidden', 'aria-hidden']
+    });
 
     new MutationObserver(() => {
-      if (fsError.style.display === 'block' || fsError.childNodes.length > 0) {
+      if (checkVisible(fsError)) {
         const btn = document.getElementById('submitBtn');
-        if (btn) { btn.disabled = false; btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:18px;height:18px;"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/></svg> Submit Form'; }
+        if (btn) {
+          btn.disabled = false;
+          btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:18px;height:18px;"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/></svg> Submit Form';
+        }
       }
-    }).observe(fsError, { attributes: true, childList: true, subtree: true, attributeFilter: ['style'] });
+    }).observe(fsError, {
+      attributes: true, childList: true, subtree: true,
+      attributeFilter: ['style', 'class', 'hidden', 'aria-hidden']
+    });
   </script>
   <style>
     @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
