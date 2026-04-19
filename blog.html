@@ -31,8 +31,9 @@
     .container { width: 100%; max-width: 1240px; margin: 0 auto; padding: 0 clamp(20px,5vw,48px); }
 
     /* ANNOUNCEMENT */
-    .announcement { background: var(--blue-deep); color: var(--white); padding: 10px 0; text-align: center; font-size: 13px; font-weight: 500; letter-spacing: 0.02em; position: relative; z-index: 1001; }
-    .announcement a { color: var(--gold); text-decoration: underline; margin-left: 8px; }
+    .announcement { background: var(--blue-deep); color: var(--white); padding: 10px 20px; text-align: center; font-size: 13.5px; font-weight: 500; letter-spacing: 0.01em; position: relative; z-index: 1001; }
+    .announcement strong { color: var(--gold); }
+    .announcement a { color: var(--gold-light); text-decoration: underline; text-underline-offset: 3px; margin-left: 4px; }
 
     /* NAV */
     nav { position: sticky; top: 0; z-index: 1000; background: rgba(255,255,255,0.97); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--grey-light); height: var(--nav-h); transition: box-shadow var(--transition); }
@@ -76,14 +77,11 @@
     .breadcrumb a:hover { color: var(--gold); }
     .breadcrumb svg { width: 12px; height: 12px; color: rgba(255,255,255,0.35); }
 
-    /* CATEGORY TABS */
-    .blog-filter-header { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 36px; flex-wrap: wrap; border-bottom: 1px solid var(--grey-light); padding-bottom: 0; }
-    .filter-tabs { display: flex; align-items: center; gap: 0; list-style: none; overflow-x: auto; scrollbar-width: none; flex-wrap: nowrap; }
-    .filter-tabs::-webkit-scrollbar { display: none; }
-    .filter-tab { flex-shrink: 0; padding: 14px 20px; font-size: 13.5px; font-weight: 600; color: var(--grey-mid); cursor: pointer; border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s; background: none; border-left: none; border-right: none; border-top: none; font-family: 'DM Sans', sans-serif; margin-bottom: -1px; }
-    .filter-tab:hover { color: var(--blue-dark); }
-    .filter-tab.active { color: var(--blue-dark); border-bottom-color: var(--gold); }
-    .filter-count { display: inline-block; font-size: 11px; font-weight: 700; background: var(--blue-pale); color: var(--blue); border-radius: 100px; padding: 1px 7px; margin-left: 5px; vertical-align: middle; }
+    /* FILTER DROPDOWN */
+    .filter-select-wrap { position: relative; margin-top: 4px; }
+    .filter-select { width: 100%; padding: 11px 40px 11px 14px; border: 1.5px solid var(--grey-light); border-radius: 8px; font-size: 14px; font-weight: 500; font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--white); appearance: none; -webkit-appearance: none; cursor: pointer; transition: border-color 0.2s, box-shadow 0.2s; }
+    .filter-select:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(30,61,130,0.1); }
+    .filter-select-icon { position: absolute; right: 13px; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; color: var(--grey-mid); pointer-events: none; }
 
     /* MAIN LAYOUT */
     .blog-section { padding: clamp(56px,8vw,96px) 0; background: var(--off-white); }
@@ -156,13 +154,15 @@
     .sidebar-cta .btn { width: 100%; justify-content: center; position: relative; z-index: 1; }
 
     /* FACEBOOK SECTION */
-    .facebook-section { padding: clamp(56px,7vw,80px) 0; background: var(--white); }
-    .facebook-inner { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px,6vw,72px); align-items: center; }
-    .fb-text h2 { font-family: 'Montserrat', sans-serif; font-size: clamp(22px,2.5vw,32px); font-weight: 700; color: var(--blue-dark); margin-bottom: 14px; }
-    .fb-text p { font-size: 15px; color: var(--text-soft); line-height: 1.7; margin-bottom: 28px; }
+    .facebook-section { padding: clamp(56px,7vw,80px) 0; background: var(--blue-deep); position: relative; overflow: hidden; }
+    .facebook-section::before { content: ''; position: absolute; inset: -60px; background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E"); pointer-events: none; animation: bgDrift 20s linear infinite; }
+    .facebook-inner { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px,6vw,80px); align-items: center; position: relative; z-index: 1; }
+    .fb-text .tag { background: rgba(255,255,255,0.1); color: var(--gold); box-shadow: none; border: 1px solid rgba(255,255,255,0.15); }
+    .fb-text h2 { font-family: 'Montserrat', sans-serif; font-size: clamp(22px,2.5vw,34px); font-weight: 700; color: var(--white); margin-bottom: 14px; line-height: 1.25; }
+    .fb-text p { font-size: 15px; color: rgba(255,255,255,0.68); line-height: 1.7; margin-bottom: 28px; }
     .fb-follow-btn { background: #1877F2; color: var(--white); }
-    .fb-follow-btn:hover { background: #1464d0; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(24,119,242,0.3); }
-    .fb-embed-wrap { border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-md); line-height: 0; }
+    .fb-follow-btn:hover { background: #1464d0; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(24,119,242,0.4); }
+    .fb-embed-wrap { border-radius: 14px; overflow: hidden; box-shadow: 0 24px 64px rgba(0,0,0,0.35); line-height: 0; border: 1px solid rgba(255,255,255,0.08); }
 
     /* FOOTER */
     footer { background: var(--blue-deep); color: var(--white); padding: clamp(52px,8vw,80px) 0 0; }
@@ -231,7 +231,7 @@
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li class="has-dropdown">
-        <a href="services.html">Services</a>
+        <a href="services.html">Services ▾</a>
         <ul class="dropdown">
           <li><a href="services/labour.html">Labour &amp; HR</a></li>
           <li><a href="services/legal.html">Legal Services</a></li>
@@ -286,17 +286,6 @@
 <!-- BLOG SECTION -->
 <section class="blog-section">
   <div class="container">
-    <div class="blog-filter-header">
-      <ul class="filter-tabs">
-        <li><button class="filter-tab active" onclick="filterPosts('all', this)">All Articles <span class="filter-count">8</span></button></li>
-        <li><button class="filter-tab" onclick="filterPosts('labour', this)">Labour Law <span class="filter-count">4</span></button></li>
-        <li><button class="filter-tab" onclick="filterPosts('popia', this)">POPIA <span class="filter-count">1</span></button></li>
-        <li><button class="filter-tab" onclick="filterPosts('legal', this)">Legal <span class="filter-count">1</span></button></li>
-        <li><button class="filter-tab" onclick="filterPosts('tax', this)">Tax &amp; Accounting <span class="filter-count">1</span></button></li>
-        <li><button class="filter-tab" onclick="filterPosts('cpa', this)">Consumer Protection <span class="filter-count">1</span></button></li>
-        <li><button class="filter-tab" onclick="filterPosts('hr', this)">HR</button></li>
-      </ul>
-    </div>
     <div class="blog-layout">
 
       <!-- MAIN CONTENT -->
@@ -425,6 +414,22 @@
 
       <!-- SIDEBAR -->
       <aside class="sidebar">
+
+        <div class="sidebar-card reveal">
+          <h4>Filter by Topic</h4>
+          <div class="filter-select-wrap">
+            <select class="filter-select" onchange="filterPosts(this.value)">
+              <option value="all">All Articles</option>
+              <option value="labour">Labour Law</option>
+              <option value="popia">POPIA</option>
+              <option value="legal">Legal</option>
+              <option value="tax">Tax &amp; Accounting</option>
+              <option value="cpa">Consumer Protection</option>
+              <option value="hr">HR</option>
+            </select>
+            <svg class="filter-select-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </div>
 
         <div class="sidebar-card reveal">
           <h4>Recent Articles</h4>
@@ -572,9 +577,7 @@
   });
 
   // FILTER
-  function filterPosts(cat, btn) {
-    document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
-    if (btn) btn.classList.add('active');
+  function filterPosts(cat) {
     document.querySelectorAll('#articlesGrid .article-card, #articlesGrid .coming-soon').forEach(card => {
       const cardCat = card.dataset.cat;
       card.style.display = (cat === 'all' || cardCat === cat || cardCat === 'all') ? '' : 'none';
