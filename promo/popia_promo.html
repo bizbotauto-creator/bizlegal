@@ -9,242 +9,222 @@
 :root{
   --navy:#0F1A3A; --blue:#1E3D82;
   --gold:#F0C020; --gold2:#D4A800;
-  --white:#fff; --dim:rgba(255,255,255,0.65);
+  --bg:#F2F5FC; --white:#fff;
+  --text:#0F1A3A; --soft:#4A5070;
+  --faint:#E8EBF4;
 }
 
-/* ── BASE: exactly 1280×720, nothing escapes ── */
 html,body{
   width:1280px; height:720px;
   overflow:hidden;
-  background:var(--navy);
+  background:var(--bg);
   font-family:'DM Sans',sans-serif;
-  color:var(--white);
+  color:var(--text);
 }
 
-/* ── + GRID PATTERN ── */
+/* ── LIGHT + GRID PATTERN ── */
 body::before{
   content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
   background-image:
-    linear-gradient(rgba(255,255,255,0.05) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,0.05) 1px,transparent 1px);
-  background-size:64px 64px;
-  background-position:31px 31px;
+    linear-gradient(var(--navy) 1.5px,transparent 1.5px),
+    linear-gradient(90deg,var(--navy) 1.5px,transparent 1.5px);
+  background-size:40px 40px;
+  background-position:19px 19px;
+  opacity:0.04;
 }
 
-/* ── PROGRESS BAR ── */
-#prog{
-  position:fixed;bottom:0;left:0;height:5px;z-index:99;
-  width:0%;
-  background:linear-gradient(90deg,var(--gold),var(--gold2));
-  box-shadow:0 0 12px rgba(240,192,32,0.5);
-  transition:width 0.08s linear;
-}
-
-/* ── SLIDE DOTS ── */
+/* ── SLIDE DOTS (no progress bar) ── */
 #dots{
   position:fixed;bottom:14px;left:50%;transform:translateX(-50%);
   z-index:99;display:flex;gap:10px;align-items:center;
 }
-.di{
-  width:8px;height:8px;border-radius:50%;
-  background:rgba(255,255,255,0.2);
-  transition:all 0.3s;
-}
+.di{width:8px;height:8px;border-radius:50%;background:rgba(15,26,58,0.18);transition:all 0.3s;}
 .di.on{background:var(--gold);width:28px;border-radius:4px;}
 
-/* ══════════════════════════════════════
+/* ══════════════════════════
    SCENE SYSTEM
-══════════════════════════════════════ */
+══════════════════════════ */
 .sc{
   position:absolute;
-  /* top: safe zone below badge (badge is ~70px in iframe coords from top) */
-  top:0; bottom:44px; left:0; right:0;
+  inset:0 0 36px 0; /* leave room for dots */
   display:none;
   flex-direction:column;
   align-items:center;
   justify-content:center;
-  padding:80px 120px 0;
+  padding:70px 110px 0;
   text-align:center;
   overflow:hidden;
 }
 .sc.on{ display:flex; }
 
 /* ── SWISH ANIMATIONS ── */
-@keyframes swIn  { from{opacity:0;transform:translateX(140px)} to{opacity:1;transform:none} }
-@keyframes swOut { from{opacity:1;transform:none} to{opacity:0;transform:translateX(-140px)} }
-@keyframes popIn { from{opacity:0;transform:scale(0.8) translateY(20px)} to{opacity:1;transform:none} }
-@keyframes goldGlow { 0%,100%{text-shadow:0 0 30px rgba(240,192,32,0.2)} 50%{text-shadow:0 0 60px rgba(240,192,32,0.7)} }
-@keyframes btnGlow { 0%,100%{box-shadow:0 6px 32px rgba(240,192,32,0.3)} 50%{box-shadow:0 6px 60px rgba(240,192,32,0.7)} }
+@keyframes swIn  { from{opacity:0;transform:translateX(130px)} to{opacity:1;transform:none} }
+@keyframes swOut { from{opacity:1;transform:none} to{opacity:0;transform:translateX(-130px)} }
+@keyframes goldPulse { 0%,100%{color:var(--gold)} 50%{color:#FFD84D} }
+@keyframes cardPulse { 0%,100%{box-shadow:0 6px 32px rgba(240,192,32,0.2)} 50%{box-shadow:0 6px 52px rgba(240,192,32,0.55)} }
 
-/* Elements swish in when scene is .on */
-.sw{opacity:0;}
-.sc.on  .sw{animation:swIn  0.45s ease-out forwards;}
-.sc.bye .sw{animation:swOut 0.38s ease-in  forwards!important;}
+/* Base: all .sw elements start invisible */
+.sw{ opacity:0; }
 
-/* Staggered delays */
-.d1{animation-delay:0.04s}
-.d2{animation-delay:0.16s}
-.d3{animation-delay:0.28s}
+/* ── SWISH IN: scene active ── */
+.sc.on .sw               { animation: swIn 0.45s ease-out forwards; }
+.sc.on .sw.d1            { animation-delay: 0.04s; }
+.sc.on .sw.d2            { animation-delay: 0.17s; }
+.sc.on .sw.d3            { animation-delay: 0.30s; }
+.sc.on .sw.d4            { animation-delay: 0.43s; }
+
+/* ── GLOW: specific big elements get glow AFTER swIn completes (delay > d2+duration) ──
+   Specificity of `.sc.on #s2 .big` beats `.sc.on .sw`, so these correctly override */
+.sc.on #s2 .big   { animation: swIn 0.45s 0.17s ease-out forwards, goldPulse 2.5s 1.2s infinite; }
+.sc.on #s3 .date  { animation: swIn 0.45s 0.17s ease-out forwards, goldPulse 2.5s 1.2s infinite; }
+.sc.on #s5 .price { animation: swIn 0.45s 0.17s ease-out forwards, goldPulse 2.5s 1.2s infinite; }
+
+/* ── SWISH OUT: !important overrides everything including glow ── */
+.sc.bye .sw { animation: swOut 0.38s ease-in forwards !important; }
 
 /* ── SHARED ── */
 .eyebrow{
-  font-size:32px;font-weight:700;
-  letter-spacing:0.18em;text-transform:uppercase;
-  color:var(--gold);margin-bottom:20px;
-  display:block;
+  font-size:32px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--blue);opacity:0.7;margin-bottom:18px;display:block;
 }
-.divider{
-  width:120px;height:4px;border-radius:2px;
+.rule{
+  width:140px;height:4px;border-radius:2px;
   background:linear-gradient(90deg,var(--gold),var(--gold2));
-  margin:22px auto;
+  margin:20px auto 22px;
+}
+.gold-card{
+  background:var(--white);
+  border:1px solid rgba(240,192,32,0.3);
+  border-left:7px solid var(--gold);
+  border-radius:0 14px 14px 0;
+  padding:32px 36px;
+  box-shadow:0 3px 20px rgba(15,26,58,0.07);
 }
 
-/*
- ═════════════════════════════
- S1 — OPENER
- Budget: eyebrow 52px + gap + h1 2×110px=240px + divider 50px + sub 75px = 417px ✓
- ═════════════════════════════
-*/
-#s1 .headline{
+/* ════════════════════════
+   S1 — IS YOUR BUSINESS POPIA COMPLIANT?
+   Budget: eyebrow 50px + h1 220px + rule 44px + sub 75px = 389px ✓
+════════════════════════ */
+#s1 h1{
   font-family:'Montserrat',sans-serif;
-  font-size:110px;font-weight:900;
-  line-height:1.0;letter-spacing:-0.03em;
-  color:var(--white);margin:0;
+  font-size:112px;font-weight:900;
+  line-height:1.0;letter-spacing:-0.03em;color:var(--navy);
+  margin-bottom:0;
 }
-#s1 .headline em{font-style:normal;color:var(--gold);display:block;}
-#s1 .sub{
-  font-size:52px;font-weight:500;
-  color:var(--dim);line-height:1.35;margin-top:4px;
-}
+#s1 h1 em{font-style:normal;color:var(--gold);display:block;}
+#s1 .sub{font-size:52px;font-weight:500;color:var(--soft);line-height:1.35;}
 
-/*
- ═════════════════════════════
- S2 — PENALTY
- Budget: label 52px + gap + big 200px + sub 100px = 352px ✓
- ═════════════════════════════
-*/
+/* ════════════════════════
+   S2 — THE PENALTY
+   Budget: eyebrow 50px + big 170px + lbl 66px + sub 65px = 351px ✓
+════════════════════════ */
 #s2 .big{
   font-family:'Montserrat',sans-serif;
-  font-size:200px;font-weight:900;line-height:0.88;
-  letter-spacing:-0.05em;
-  color:var(--gold);
-  animation:goldGlow 2.5s 1s infinite;
+  font-size:200px;font-weight:900;
+  line-height:0.88;letter-spacing:-0.05em;
+  color:var(--navy);
 }
-#s2 .big-label{
+#s2 .big span{color:var(--gold);}
+#s2 .lbl{
   font-family:'Montserrat',sans-serif;
-  font-size:56px;font-weight:700;
-  color:var(--white);margin-top:14px;
+  font-size:58px;font-weight:700;color:var(--navy);margin-top:10px;
 }
-#s2 .sub{
-  font-size:46px;color:var(--dim);
-  margin-top:12px;line-height:1.3;
-}
+#s2 .sub{font-size:46px;color:var(--soft);margin-top:10px;line-height:1.3;}
 
-/*
- ═════════════════════════════
- S3 — ANNUAL REPORTING
- Budget: eyebrow 52px + date 180px + h2 2x76px=170px + sub 65px = 467px ✓
- ═════════════════════════════
-*/
+/* ════════════════════════
+   S3 — ANNUAL REPORTING
+   Budget: eyebrow 50px + date 158px + tagline 76px + sub 62px = 346px ✓
+════════════════════════ */
 #s3 .date{
   font-family:'Montserrat',sans-serif;
-  font-size:180px;font-weight:900;line-height:0.9;
-  letter-spacing:-0.04em;
+  font-size:190px;font-weight:900;
+  line-height:0.88;letter-spacing:-0.04em;
   color:var(--gold);
-  animation:goldGlow 2.5s 0.5s infinite;
 }
 #s3 .tagline{
   font-family:'Montserrat',sans-serif;
-  font-size:68px;font-weight:700;
-  color:var(--white);margin-top:16px;line-height:1.1;
+  font-size:70px;font-weight:800;
+  color:var(--navy);margin-top:14px;line-height:1.1;
 }
 #s3 .tagline em{font-style:normal;color:var(--gold);}
-#s3 .sub{font-size:44px;color:var(--dim);margin-top:12px;}
+#s3 .sub{font-size:44px;color:var(--soft);margin-top:10px;}
 
-/*
- ═════════════════════════════
- S4 — BIZLEGAL PROCESS
- Budget: eyebrow 52px + h2 2x96px=210px + stat row 140px = 402px ✓
- ═════════════════════════════
-*/
-#s4 .headline{
+/* ════════════════════════
+   S4 — BIZLEGAL PROCESS
+   Budget: eyebrow 50px + h2 200px + stats 130px = 380px ✓
+════════════════════════ */
+#s4 h2{
   font-family:'Montserrat',sans-serif;
   font-size:96px;font-weight:900;
-  line-height:1.0;letter-spacing:-0.03em;color:var(--white);
+  line-height:1.0;letter-spacing:-0.03em;color:var(--navy);
 }
-#s4 .headline em{font-style:normal;color:var(--gold);}
+#s4 h2 em{font-style:normal;color:var(--gold);}
 #s4 .stats{
-  display:flex;gap:0;margin-top:36px;
-  background:rgba(255,255,255,0.06);
-  border:1px solid rgba(255,255,255,0.12);
+  display:flex;margin-top:32px;
+  background:var(--white);
+  border:1px solid var(--faint);
   border-radius:14px;overflow:hidden;width:100%;
+  box-shadow:0 3px 18px rgba(15,26,58,0.07);
 }
 #s4 .stat{
-  flex:1;padding:24px 16px;
-  border-right:1px solid rgba(255,255,255,0.1);
-  text-align:center;
+  flex:1;padding:22px 14px;text-align:center;
+  border-right:1px solid var(--faint);
 }
 #s4 .stat:last-child{border-right:none;}
-#s4 .sn{
-  font-family:'Montserrat',sans-serif;
-  font-size:72px;font-weight:900;color:var(--gold);line-height:1;
-}
-#s4 .sl{font-size:34px;font-weight:600;color:var(--dim);margin-top:4px;line-height:1.2;}
+#s4 .sn{font-family:'Montserrat',sans-serif;font-size:68px;font-weight:900;color:var(--gold);line-height:1;}
+#s4 .sl{font-size:32px;font-weight:600;color:var(--soft);margin-top:4px;}
 
-/*
- ═════════════════════════════
- S5 — PRICING
- Budget: eyebrow 52px + price 170px + sub 60px + card 160px = 442px ✓
- ═════════════════════════════
-*/
+/* ════════════════════════
+   S5 — PRICING: TWO CARDS
+   Budget: eyebrow 50px + cards 280px = 330px ✓
+════════════════════════ */
+#s5 .pr-row{display:flex;gap:24px;margin-top:26px;width:100%;}
+#s5 .pr-card{
+  flex:1;background:var(--white);
+  border:1.5px solid var(--faint);
+  border-radius:18px;padding:36px 40px;text-align:left;
+  box-shadow:0 4px 20px rgba(15,26,58,0.07);
+}
+#s5 .pr-card.feat{
+  border-color:var(--gold);
+  animation:cardPulse 2.5s 1.2s infinite;
+}
+#s5 .pt{
+  display:inline-block;font-size:26px;font-weight:700;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--navy);background:linear-gradient(135deg,var(--gold),var(--gold2));
+  border-radius:100px;padding:7px 22px;margin-bottom:14px;
+}
+#s5 .pn{
+  font-family:'Montserrat',sans-serif;
+  font-size:36px;font-weight:700;color:var(--navy);margin-bottom:8px;
+}
 #s5 .price{
   font-family:'Montserrat',sans-serif;
-  font-size:170px;font-weight:900;
-  line-height:0.88;letter-spacing:-0.04em;
-  color:var(--gold);
-  animation:goldGlow 2.5s 1s infinite;
+  font-size:90px;font-weight:900;
+  color:var(--gold);line-height:1;letter-spacing:-0.02em;
 }
-#s5 .per{
-  font-size:52px;font-weight:600;
-  color:var(--dim);margin-top:8px;
-}
-#s5 .alt{
-  margin-top:22px;
-  background:rgba(255,255,255,0.07);
-  border:1px solid rgba(255,255,255,0.15);
-  border-radius:12px;
-  padding:20px 48px;
-  font-family:'Montserrat',sans-serif;
-  font-size:52px;font-weight:700;
-  color:var(--white);
-  display:inline-block;
-}
-#s5 .alt span{color:var(--gold);}
+#s5 .pp{font-size:30px;color:var(--soft);margin-top:6px;line-height:1.4;}
 
-/*
- ═════════════════════════════
- S6 — CTA
- Budget: logo 120px + gap + h2 105px + url 70px + btn 100px = 395px ✓
- ═════════════════════════════
-*/
-#s6 .logo{margin-bottom:18px;}
+/* ════════════════════════
+   S6 — GET COMPLIANT NOW
+   Budget: logo 100px + h2 110px + url 70px + btn 100px = 380px ✓
+════════════════════════ */
+#s6 .logo{margin-bottom:14px;}
 #s6 .logo img{
-  height:110px;width:auto;
+  height:100px;width:auto;
   display:block;margin:0 auto;
   object-fit:contain;
-  filter:brightness(0) invert(1);
 }
-#s6 .headline{
+#s6 h2{
   font-family:'Montserrat',sans-serif;
-  font-size:105px;font-weight:900;
-  line-height:1.0;letter-spacing:-0.03em;
-  color:var(--white);
+  font-size:108px;font-weight:900;
+  line-height:1.0;letter-spacing:-0.03em;color:var(--navy);
 }
-#s6 .headline em{font-style:normal;color:var(--gold);}
+#s6 h2 em{font-style:normal;color:var(--gold);}
 #s6 .url{
   font-size:52px;font-weight:600;
-  color:rgba(255,255,255,0.45);
-  letter-spacing:0.06em;margin-top:10px;
+  color:var(--soft);letter-spacing:0.05em;margin-top:8px;
 }
 #s6 .btn{
   display:inline-block;
@@ -252,46 +232,43 @@ body::before{
   color:var(--navy);
   font-family:'Montserrat',sans-serif;
   font-size:52px;font-weight:900;
-  padding:24px 72px;border-radius:10px;
-  margin-top:22px;letter-spacing:0.01em;
-  animation:btnGlow 2s 2s infinite;
+  padding:22px 72px;border-radius:10px;
+  margin-top:20px;letter-spacing:0.01em;
 }
 </style>
 </head>
 <body>
 
-<!-- S1: IS YOUR BUSINESS POPIA COMPLIANT? -->
+<!-- ════ S1: IS YOUR BUSINESS POPIA COMPLIANT? ════ -->
 <div class="sc" id="s1">
   <span class="eyebrow sw d1">POPIA &amp; PAIA Compliance</span>
-  <div class="headline sw d2">
+  <h1 class="sw d2">
     Is Your Business<br><em>POPIA Compliant?</em>
-  </div>
-  <div class="divider sw d3"></div>
+  </h1>
+  <div class="rule sw d3"></div>
   <p class="sub sw d3">No exceptions. No minimum size. Every SA business.</p>
 </div>
 
-<!-- S2: THE PENALTY -->
+<!-- ════ S2: THE PENALTY ════ -->
 <div class="sc" id="s2">
   <span class="eyebrow sw d1">The Cost of Non-Compliance</span>
-  <div class="big sw d2">R10M</div>
-  <div class="big-label sw d2">Maximum fine — per violation</div>
+  <div class="big sw d2">R<span>10</span>M</div>
+  <div class="lbl sw d2">Maximum fine — per violation</div>
   <p class="sub sw d3">Directors and officers face criminal prosecution.</p>
 </div>
 
-<!-- S3: ANNUAL REPORTING DEADLINE -->
+<!-- ════ S3: ANNUAL REPORTING ════ -->
 <div class="sc" id="s3">
   <span class="eyebrow sw d1">Annual Reporting Deadline</span>
   <div class="date sw d2">30 June</div>
   <div class="tagline sw d2">Submit to the <em>Information Regulator.</em></div>
-  <p class="sub sw d3">Mandatory for every compliant business — every year.</p>
+  <p class="sub sw d3">Mandatory annual reporting for every compliant business.</p>
 </div>
 
-<!-- S4: BIZLEGAL PROCESS -->
+<!-- ════ S4: BIZLEGAL 10-PHASE PROCESS ════ -->
 <div class="sc" id="s4">
-  <span class="eyebrow sw d1">The BizLegal Solution</span>
-  <div class="headline sw d2">
-    10 Phases. ~12 Weeks.<br><em>Fully Compliant.</em>
-  </div>
+  <span class="eyebrow sw d1">The BizLegal Process</span>
+  <h2 class="sw d2">10 Phases. ~12 Weeks.<br><em>Fully Compliant.</em></h2>
   <div class="stats sw d3">
     <div class="stat"><div class="sn">10</div><div class="sl">Phases</div></div>
     <div class="stat"><div class="sn">12</div><div class="sl">Weeks</div></div>
@@ -300,101 +277,98 @@ body::before{
   </div>
 </div>
 
-<!-- S5: PRICING -->
+<!-- ════ S5: PRICING — TWO CARDS ════ -->
 <div class="sc" id="s5">
-  <span class="eyebrow sw d1">Transparent Pricing</span>
-  <div class="price sw d2">R1,500</div>
-  <div class="per sw d2">per month · min. 12 months · all-inclusive</div>
-  <div class="alt sw d3">Or <span>R12,000</span> once-off</div>
+  <span class="eyebrow sw d1">Transparent Pricing — Two Options</span>
+  <div class="pr-row sw d2">
+    <div class="pr-card">
+      <div class="pt">Option 1</div>
+      <div class="pn">Once-Off Implementation</div>
+      <div class="price">R12,000</div>
+      <div class="pp">Once-off · Annual reporting R3,000/year</div>
+    </div>
+    <div class="pr-card feat">
+      <div class="pt">Most Popular</div>
+      <div class="pn">Monthly Retainer</div>
+      <div class="price">R1,500</div>
+      <div class="pp">Per month · Min. 12 months · All-inclusive</div>
+    </div>
+  </div>
 </div>
 
-<!-- S6: GET COMPLIANT NOW -->
+<!-- ════ S6: GET COMPLIANT NOW ════ -->
 <div class="sc" id="s6">
   <div class="logo sw d1">
-    <img src="../images/logo.png" alt="BizLegal"
+    <img src="../images/logocolor.png" alt="BizLegal"
       onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
-    <div style="display:none;font-family:'Montserrat',sans-serif;font-size:90px;font-weight:900;letter-spacing:-0.02em;color:var(--white)">BIZ<span style="color:var(--gold)">/</span>LEGAL</div>
+    <div style="display:none;font-family:'Montserrat',sans-serif;font-size:90px;font-weight:900;letter-spacing:-0.02em;color:var(--navy)">BIZ<span style="color:var(--gold)">/</span>LEGAL</div>
   </div>
-  <div class="headline sw d2">Get <em>Compliant</em> Now.</div>
+  <h2 class="sw d2">Get <em>Compliant</em> Now.</h2>
   <div class="url sw d3">bizlegal.co.za</div>
-  <div class="btn sw d3">Contact Us Today →</div>
+  <div class="btn sw d4">Contact Us Today →</div>
 </div>
 
-<div id="prog"></div>
 <div id="dots"></div>
 
 <script>
 const SCENES   = [{id:'s1',t:0},{id:'s2',t:5000},{id:'s3',t:10000},{id:'s4',t:15000},{id:'s5',t:20000},{id:'s6',t:25000}];
 const TOTAL    = 30000;
-const SWISH_MS = 520;
+const SWISH_MS = 500;
 
 let raf, t0, lastIdx = -1, byeSet = false;
 
-// Build dots
 const dotsEl = document.getElementById('dots');
 SCENES.forEach((_,i)=>{
   const d = document.createElement('div');
   d.className='di'; d.id='di'+i; dotsEl.appendChild(d);
 });
 
-function el(id){ return document.getElementById(id); }
+function g(id){ return document.getElementById(id); }
 
 function resetAll(){
   SCENES.forEach(s=>{
-    const e = el(s.id); if(!e) return;
-    const c = e.cloneNode(true);
-    e.parentNode.replaceChild(c, e);
+    const e=g(s.id); if(!e) return;
+    const c=e.cloneNode(true);
+    e.parentNode.replaceChild(c,e);
   });
-  SCENES.forEach((_,i)=>{ const d=el('di'+i); if(d) d.classList.remove('on'); });
-  el('prog').style.width='0%';
+  SCENES.forEach((_,i)=>{ const d=g('di'+i); if(d) d.classList.remove('on'); });
   lastIdx=-1; byeSet=false;
 }
 
 function tick(){
-  const now     = Date.now();
-  const raw     = now - t0;
-  const elapsed = raw % TOTAL;
+  const now=Date.now(), raw=now-t0, elapsed=raw%TOTAL;
 
-  // Loop reset
-  if(raw >= TOTAL && elapsed < 100 && lastIdx === SCENES.length-1){
-    resetAll();
-    t0 = now - elapsed;
-    raf = requestAnimationFrame(tick);
-    return;
+  // Loop: reset when wrapping
+  if(raw>=TOTAL && elapsed<120 && lastIdx===SCENES.length-1){
+    resetAll(); t0=now-elapsed;
+    raf=requestAnimationFrame(tick); return;
   }
 
-  el('prog').style.width = (elapsed/TOTAL*100)+'%';
-
   // Active index
-  let idx = 0;
+  let idx=0;
   for(let i=SCENES.length-1;i>=0;i--){ if(elapsed>=SCENES[i].t){idx=i;break;} }
 
   // Scene change
-  if(idx !== lastIdx){
-    if(lastIdx>=0){
-      const p = el(SCENES[lastIdx].id);
-      if(p){ p.classList.remove('on','bye'); }
-    }
-    const c = el(SCENES[idx].id);
+  if(idx!==lastIdx){
+    if(lastIdx>=0){ const p=g(SCENES[lastIdx].id); if(p) p.classList.remove('on','bye'); }
+    const c=g(SCENES[idx].id);
     if(c){ c.classList.remove('bye'); c.classList.add('on'); }
-    SCENES.forEach((_,i)=>{ const d=el('di'+i); if(d) d.classList.toggle('on',i===idx); });
+    SCENES.forEach((_,i)=>{ const d=g('di'+i); if(d) d.classList.toggle('on',i===idx); });
     lastIdx=idx; byeSet=false;
   }
 
-  // Trigger exit swish
-  const nextT = idx<SCENES.length-1 ? SCENES[idx+1].t : TOTAL;
-  if(!byeSet && (nextT-elapsed) <= SWISH_MS){
-    const c = el(SCENES[idx].id);
-    if(c){ c.classList.add('bye'); }
+  // Trigger swish-out before scene ends
+  const nextT=idx<SCENES.length-1?SCENES[idx+1].t:TOTAL;
+  if(!byeSet && (nextT-elapsed)<=SWISH_MS){
+    const c=g(SCENES[idx].id); if(c) c.classList.add('bye');
     byeSet=true;
   }
 
-  raf = requestAnimationFrame(tick);
+  raf=requestAnimationFrame(tick);
 }
 
 function start(){
-  cancelAnimationFrame(raf);
-  resetAll();
+  cancelAnimationFrame(raf); resetAll();
   setTimeout(()=>{ t0=Date.now(); raf=requestAnimationFrame(tick); },80);
 }
 
