@@ -41,7 +41,7 @@
     .btn svg { width: 18px; height: 18px; flex-shrink: 0; }
 
     /* NAV */
-    nav { position: sticky; top: 0; z-index: 1000; background: rgba(255,255,255,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid var(--grey-light); height: var(--nav-h); transition: box-shadow var(--transition); }
+    nav { position: sticky; top: 0; z-index: 1000; background: rgba(255,255,255,0.97); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--grey-light); height: var(--nav-h); transition: box-shadow var(--transition); }
     nav.scrolled { box-shadow: var(--shadow-md); }
     nav .container { height: 100%; }
     .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 100%; }
@@ -319,10 +319,10 @@
   <!-- WHAT'S INCLUDED -->
   <section class="svc-included">
     <div class="container">
-      <div class="fade-up" style="text-align:center;max-width:620px;margin:0 auto;">
+      <div class="fade-up" style="max-width:620px;">
         <span class="tag">What&#8217;s Included</span>
         <h2 class="section-title">Our Complete POPIA & PAIA Compliance Package</h2>
-        <p class="section-sub" style="margin:16px auto 0;">We handle every element of your compliance — from the first appointment to the annual review. Nothing is left to chance.</p>
+        <p class="section-sub" style="margin-top:16px;">We handle every element of your compliance — from the first appointment to the annual review. Nothing is left to chance.</p>
       </div>
       <div class="included-grid">
         
@@ -406,28 +406,70 @@
     <div class="container">
       <div class="fade-up" style="max-width:560px;">
         <span class="tag">How It Works</span>
-        <h2 class="section-title light">From Gap to Compliant — We Manage the Whole Process.</h2>
-        <p class="section-sub light">We handle the complexity so you can focus on your business, not your compliance obligations.</p>
+        <h2 class="section-title light">A Structured 10-Phase Implementation — Approximately 12 Weeks.</h2>
+        <p class="section-sub light">We manage the entire process from discovery to certification, so you can focus on your business while we build your compliance framework.</p>
       </div>
-      <div class="steps-grid">
-        
-            <div class="step-card fade-up">
-              <div class="step-num">01</div>
-              <h4>Gap Assessment</h4>
-              <p>We audit your current position against all 8 POPIA conditions and produce a written report identifying every exposure and the priority order for remediation.</p>
-            </div>
-
-            <div class="step-card fade-up">
-              <div class="step-num">02</div>
-              <h4>Implementation</h4>
-              <p>We appoint your Information Officer, draft all required documents, conduct training, and put every required process in place — end to end.</p>
-            </div>
-
-            <div class="step-card fade-up">
-              <div class="step-num">03</div>
-              <h4>Annual Review</h4>
-              <p>We conduct an annual review to keep your compliance current as your business and the regulatory environment evolve — and support you through any incidents that arise.</p>
-            </div>
+      <div class="steps-grid" style="grid-template-columns:repeat(auto-fill,minmax(200px,1fr));margin-top:48px;">
+        <div class="step-card fade-up">
+          <div class="step-num">01</div>
+          <h4>Client Discovery & Onboarding</h4>
+          <p style="color:rgba(255,255,255,0.55);font-size:12.5px;margin-bottom:6px;">Week 1 – 2</p>
+          <p>We get to know your business, your data flows, and your current compliance position before any work begins.</p>
+        </div>
+        <div class="step-card fade-up">
+          <div class="step-num">02</div>
+          <h4>Governance & IO Appointment</h4>
+          <p style="color:rgba(255,255,255,0.55);font-size:12.5px;margin-bottom:6px;">Week 2 – 3</p>
+          <p>We formally appoint and register your Information Officer (and Deputy where needed) with the Information Regulator.</p>
+        </div>
+        <div class="step-card fade-up">
+          <div class="step-num">03</div>
+          <h4>PAIA Manual — Section 51</h4>
+          <p style="color:rgba(255,255,255,0.55);font-size:12.5px;margin-bottom:6px;">Week 3 – 4</p>
+          <p>We custom-draft your PAIA Manual from scratch to meet all prescribed legal requirements under Section 51.</p>
+        </div>
+        <div class="step-card fade-up">
+          <div class="step-num">04</div>
+          <h4>POPIA Policy & Documentation</h4>
+          <p style="color:rgba(255,255,255,0.55);font-size:12.5px;margin-bottom:6px;">Week 4 – 6</p>
+          <p>All required internal compliance policies drafted — POPIA Compliance, Information Security, Data Retention and Breach Response policies.</p>
+        </div>
+        <div class="step-card fade-up">
+          <div class="step-num">05</div>
+          <h4>Data Inventory & Mapping</h4>
+          <p style="color:rgba(255,255,255,0.55);font-size:12.5px;margin-bottom:6px;">Week 5 – 7</p>
+          <p>We map every category of personal information your business collects, processes, stores or shares — and identify your exposure points.</p>
+        </div>
+        <div class="step-card fade-up">
+          <div class="step-num">06</div>
+          <h4>Consent & Lawful Processing</h4>
+          <p style="color:rgba(255,255,255,0.55);font-size:12.5px;margin-bottom:6px;">Week 7 – 8</p>
+          <p>We draft your Privacy Policy, Cookie Policy, and all Privacy Notices for employees, customers and suppliers — plus required consent forms.</p>
+        </div>
+        <div class="step-card fade-up">
+          <div class="step-num">07</div>
+          <h4>Security Safeguards</h4>
+          <p style="color:rgba(255,255,255,0.55);font-size:12.5px;margin-bottom:6px;">Week 8 – 9</p>
+          <p>We assess and document the technical and organisational security measures required to protect personal information your business holds.</p>
+        </div>
+        <div class="step-card fade-up">
+          <div class="step-num">08</div>
+          <h4>Third Parties & Operators</h4>
+          <p style="color:rgba(255,255,255,0.55);font-size:12.5px;margin-bottom:6px;">Week 9 – 10</p>
+          <p>We identify all third parties processing data on your behalf and draft POPIA-compliant Operator Agreements to bind each of them.</p>
+        </div>
+        <div class="step-card fade-up">
+          <div class="step-num">09</div>
+          <h4>Training & Awareness</h4>
+          <p style="color:rgba(255,255,255,0.55);font-size:12.5px;margin-bottom:6px;">Week 10 – 11</p>
+          <p>Practical awareness training for all staff and dedicated training for your Information Officer. Certificates issued and a training register maintained.</p>
+        </div>
+        <div class="step-card fade-up">
+          <div class="step-num">10</div>
+          <h4>Data Subject Rights & Breach Plan</h4>
+          <p style="color:rgba(255,255,255,0.55);font-size:12.5px;margin-bottom:6px;">Week 11 – 12</p>
+          <p>We establish your formal procedure for access, correction and deletion requests, and implement your data breach response plan and notification procedure.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -435,59 +477,82 @@
   <!-- PRICING -->
   <section class="svc-pricing">
     <div class="container">
-      <div class="fade-up" style="text-align:center;max-width:580px;margin:0 auto;">
+      <div class="fade-up" style="max-width:580px;">
         <span class="tag">Pricing</span>
         <h2 class="section-title">Compliance Package Pricing</h2>
-        <p class="section-sub" style="margin:16px auto 0;">Our POPIA & PAIA package is a once-off implementation with optional ongoing support. Pricing is tailored to your business size and complexity.</p>
+        <p class="section-sub" style="margin-top:16px;">Two options to suit your business — both include the full 10-phase implementation over approximately 12 weeks.</p>
       </div>
       <div class="pricing-grid" style="margin-top:48px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));">
-    <div class="pricing-card featured" style="text-align:left;">
-      <span class="pc-tag">Full Package</span>
-      <div class="pc-name" style="position:relative;z-index:1;">Complete POPIA & PAIA Implementation</div>
-      <div class="pc-price" style="font-size:28px;margin-top:12px;">On Request</div>
-      <div class="pc-period">Tailored to your business size & complexity</div>
-      <ul class="pc-items">
-        <li class="pc-item"><span class="pc-check">&#10003;</span> Information Officer appointment & registration</li>
-        <li class="pc-item"><span class="pc-check">&#10003;</span> Custom PAIA Manual</li>
-        <li class="pc-item"><span class="pc-check">&#10003;</span> Full Gap Assessment & written report</li>
-        <li class="pc-item"><span class="pc-check">&#10003;</span> All 4 required compliance policies</li>
-        <li class="pc-item"><span class="pc-check">&#10003;</span> Privacy Notices, Consent & Operator Agreements</li>
-        <li class="pc-item"><span class="pc-check">&#10003;</span> Staff & IO training with certificates</li>
-        <li class="pc-item"><span class="pc-check">&#10003;</span> Annual review & ongoing support</li>
-      </ul>
-      <a href="../index.html#quote" class="btn btn-primary" style="position:relative;z-index:1;">Get a Quote</a>
-    </div>
-    <div class="pricing-card" style="display:flex;flex-direction:column;gap:16px;justify-content:center;">
-      <div style="font-family:Montserrat,sans-serif;font-size:17px;font-weight:700;color:var(--blue-dark);">Why act now?</div>
-      <div style="display:flex;flex-direction:column;gap:12px;">
-        <div style="display:flex;gap:12px;align-items:flex-start;font-size:14px;color:var(--text-soft);">
-          <span style="color:var(--gold);font-weight:700;font-size:16px;flex-shrink:0;">&#9888;</span>
-          Administrative fines of <strong style="color:var(--text)">up to R10 million</strong> per violation
+
+        <!-- Option 1 -->
+        <div class="pricing-card fade-up" style="display:flex;flex-direction:column;gap:0;">
+          <span class="pc-tag">Option 1</span>
+          <div class="pc-name">Once-Off Implementation</div>
+          <div class="pc-price">R12,000</div>
+          <div class="pc-period">Once-off — billed on date of client onboarding</div>
+          <ul class="pc-items">
+            <li class="pc-item"><span class="pc-check">&#10003;</span> Full 10-phase POPIA &amp; PAIA implementation (~12 weeks)</li>
+            <li class="pc-item"><span class="pc-check">&#10003;</span> Information Officer appointment &amp; registration</li>
+            <li class="pc-item"><span class="pc-check">&#10003;</span> Custom PAIA Manual (Section 51)</li>
+            <li class="pc-item"><span class="pc-check">&#10003;</span> All policies, notices &amp; operator agreements</li>
+            <li class="pc-item"><span class="pc-check">&#10003;</span> Staff &amp; IO training with certificates</li>
+          </ul>
+          <div style="background:var(--blue-pale);border-radius:10px;padding:16px 18px;margin-bottom:20px;">
+            <div style="font-size:13px;font-weight:700;color:var(--blue-dark);margin-bottom:6px;">+ Annual Reporting to the Information Regulator</div>
+            <div style="font-size:22px;font-weight:700;font-family:Montserrat,sans-serif;color:var(--gold);">R3,000 <span style="font-size:13px;color:var(--text-soft);font-family:DM Sans,sans-serif;font-weight:400;">/year</span></div>
+            <div style="font-size:12px;color:var(--text-soft);margin-top:2px;">Billed annually upon submission of report (1 April – 30 June)</div>
+          </div>
+          <a href="../index.html#quote" class="btn btn-blue" style="margin-top:auto;">Get a Quote</a>
         </div>
-        <div style="display:flex;gap:12px;align-items:flex-start;font-size:14px;color:var(--text-soft);">
-          <span style="color:var(--gold);font-weight:700;font-size:16px;flex-shrink:0;">&#9888;</span>
-          Criminal prosecution — <strong style="color:var(--text)">directors face imprisonment</strong>
+
+        <!-- Option 2 -->
+        <div class="pricing-card featured fade-up">
+          <span class="pc-tag">Option 2 — Most Popular</span>
+          <div class="pc-name">Monthly Retainer Package</div>
+          <div class="pc-price">R1,500</div>
+          <div class="pc-period">Per month — minimum 12 months, billed monthly in advance</div>
+          <ul class="pc-items">
+            <li class="pc-item"><span class="pc-check">&#10003;</span> Full 10-phase POPIA &amp; PAIA implementation (~12 weeks)</li>
+            <li class="pc-item"><span class="pc-check">&#10003;</span> Annual Reporting to the Information Regulator included</li>
+            <li class="pc-item"><span class="pc-check">&#10003;</span> Ongoing support — access to information requests</li>
+            <li class="pc-item"><span class="pc-check">&#10003;</span> Data breach assistance &amp; regulator correspondence</li>
+            <li class="pc-item"><span class="pc-check">&#10003;</span> All policies, notices, operator agreements &amp; training</li>
+          </ul>
+          <p class="pc-note">Spread the cost while getting full compliance from day one — with continued support for incidents and regulatory changes throughout your term.</p>
+          <a href="../index.html#quote" class="btn btn-primary" style="position:relative;z-index:1;margin-top:auto;">Get Started</a>
         </div>
-        <div style="display:flex;gap:12px;align-items:flex-start;font-size:14px;color:var(--text-soft);">
-          <span style="color:var(--gold);font-weight:700;font-size:16px;flex-shrink:0;">&#9888;</span>
-          Civil claims by individuals whose data was mishandled
+
+        <!-- Why act now -->
+        <div class="pricing-card fade-up" style="display:flex;flex-direction:column;gap:16px;justify-content:center;">
+          <div style="font-family:Montserrat,sans-serif;font-size:17px;font-weight:700;color:var(--blue-dark);">Why act now?</div>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <div style="display:flex;gap:12px;align-items:flex-start;font-size:14px;color:var(--text-soft);">
+              <span style="color:var(--gold);font-weight:700;font-size:16px;flex-shrink:0;">&#9888;</span>
+              Administrative fines of <strong style="color:var(--text)">up to R10 million</strong> per violation
+            </div>
+            <div style="display:flex;gap:12px;align-items:flex-start;font-size:14px;color:var(--text-soft);">
+              <span style="color:var(--gold);font-weight:700;font-size:16px;flex-shrink:0;">&#9888;</span>
+              Criminal prosecution — <strong style="color:var(--text)">directors face imprisonment</strong>
+            </div>
+            <div style="display:flex;gap:12px;align-items:flex-start;font-size:14px;color:var(--text-soft);">
+              <span style="color:var(--gold);font-weight:700;font-size:16px;flex-shrink:0;">&#9888;</span>
+              Civil claims by <strong style="color:var(--text)">individuals whose data was mishandled</strong>
+            </div>
+            <div style="display:flex;gap:12px;align-items:flex-start;font-size:14px;color:var(--text-soft);">
+              <span style="color:var(--gold);font-weight:700;font-size:16px;flex-shrink:0;">&#9888;</span>
+              <strong style="color:var(--text)">R5 million fine already issued</strong> in South Africa — more are coming
+            </div>
+            <div style="display:flex;gap:12px;align-items:flex-start;font-size:14px;color:var(--text-soft);">
+              <span style="color:var(--gold);font-weight:700;font-size:16px;flex-shrink:0;">&#9888;</span>
+              Trading disruptions while you <strong style="color:var(--text)">scramble to comply under pressure</strong>
+            </div>
+          </div>
         </div>
-        <div style="display:flex;gap:12px;align-items:flex-start;font-size:14px;color:var(--text-soft);">
-          <span style="color:var(--gold);font-weight:700;font-size:16px;flex-shrink:0;">&#9888;</span>
-          The Information Regulator is <strong style="color:var(--text)">actively investigating</strong>
-        </div>
-        <div style="display:flex;gap:12px;align-items:flex-start;font-size:14px;color:var(--text-soft);">
-          <span style="color:var(--gold);font-weight:700;font-size:16px;flex-shrink:0;">&#9888;</span>
-          A R5 million fine has <strong style="color:var(--text)">already been issued</strong> in SA
-        </div>
+
       </div>
-      <a href="../index.html#quote" class="btn btn-blue" style="margin-top:8px;justify-content:center;">Speak to Us Today</a>
-    </div>
-  </div>
     </div>
   </section>
 
-  
 
   <!-- CTA BANNER -->
   <section class="svc-cta">
