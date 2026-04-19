@@ -114,23 +114,36 @@
     .step-card p { font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.65; }
 
     /* PRICING */
-    .svc-pricing { padding: var(--section-pad,clamp(64px,8vw,112px)) 0; background: var(--white); }
-    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 24px; margin-top: 48px; }
-    .pricing-card { background: var(--off-white); border: 1px solid var(--grey-light); border-radius: 16px; padding: 32px; position: relative; overflow: hidden; }
-    .pricing-card.featured { background: var(--blue-deep); border-color: transparent; }
-    .pricing-card.featured::before { content: ""; position: absolute; inset: -20px; background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M20 20v-2h-1v2h-2v1h2v2h1v-2h2v-1h-2z'/%3E%3C/g%3E%3C/svg%3E"); pointer-events: none; }
-    .pc-tag { display: inline-block; font-size: 10.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue-deep); background: linear-gradient(135deg,var(--gold),#E6A800); border-radius: 100px; padding: 4px 12px; margin-bottom: 14px; box-shadow: 0 3px 10px rgba(240,192,32,0.3); }
-    .pc-name { font-family: "Montserrat",sans-serif; font-size: 20px; font-weight: 700; color: var(--blue-dark); margin-bottom: 8px; }
-    .pricing-card.featured .pc-name { color: var(--white); position: relative; z-index: 1; }
-    .pc-price { font-family: "Montserrat",sans-serif; font-size: 36px; font-weight: 700; color: var(--gold); text-shadow: 0 0 18px rgba(240,192,32,0.5); margin-bottom: 4px; position: relative; z-index: 1; }
-    .pc-period { font-size: 13px; color: var(--text-soft); margin-bottom: 20px; position: relative; z-index: 1; }
-    .pricing-card.featured .pc-period { color: rgba(255,255,255,0.55); }
-    .pc-items { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; position: relative; z-index: 1; }
-    .pc-item { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--text-soft); }
-    .pricing-card.featured .pc-item { color: rgba(255,255,255,0.75); }
-    .pc-check { color: var(--gold); font-size: 14px; flex-shrink: 0; filter: drop-shadow(0 0 3px rgba(240,192,32,0.5)); margin-top: 1px; }
-    .pc-note { font-size: 12.5px; color: var(--text-soft); font-style: italic; margin-top: 12px; position: relative; z-index: 1; }
-    .pricing-card.featured .pc-note { color: rgba(255,255,255,0.45); }
+    .svc-pricing { padding: var(--section-pad,clamp(64px,8vw,112px)) 0; background: var(--off-white); }
+    .pricing-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 48px; border-radius: 20px; overflow: hidden; box-shadow: var(--shadow-lg); }
+    .pc-option { padding: clamp(36px,4vw,52px); display: flex; flex-direction: column; position: relative; }
+    .pc-option-1 { background: var(--white); border-right: 1px solid var(--grey-light); }
+    .pc-option-2 { background: var(--blue-deep); overflow: hidden; }
+    .pc-option-2::before { content: ""; position: absolute; inset: -40px; background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M20 20v-2h-1v2h-2v1h2v2h1v-2h2v-1h-2z'/%3E%3C/g%3E%3C/svg%3E"); pointer-events: none; }
+    .pc-option-label { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; background: linear-gradient(135deg,var(--gold),#E6A800); color: var(--blue-deep); border-radius: 100px; padding: 5px 14px; margin-bottom: 20px; box-shadow: 0 3px 12px rgba(240,192,32,0.35); align-self: flex-start; }
+    .pc-option-name { font-family: "Montserrat",sans-serif; font-size: clamp(18px,2vw,22px); font-weight: 700; color: var(--blue-dark); margin-bottom: 6px; position: relative; z-index: 1; }
+    .pc-option-2 .pc-option-name { color: var(--white); }
+    .pc-option-price { font-family: "Montserrat",sans-serif; font-size: clamp(38px,4vw,52px); font-weight: 800; color: var(--gold); text-shadow: 0 0 24px rgba(240,192,32,0.5); line-height: 1; margin: 16px 0 6px; position: relative; z-index: 1; }
+    .pc-option-billing { font-size: 13px; color: var(--text-soft); line-height: 1.5; margin-bottom: 28px; position: relative; z-index: 1; }
+    .pc-option-2 .pc-option-billing { color: rgba(255,255,255,0.5); }
+    .pc-divider { height: 1px; background: var(--grey-light); margin-bottom: 24px; }
+    .pc-option-2 .pc-divider { background: rgba(255,255,255,0.1); }
+    .pc-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; position: relative; z-index: 1; flex: 1; }
+    .pc-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 14.5px; color: var(--text-soft); line-height: 1.5; }
+    .pc-option-2 .pc-list li { color: rgba(255,255,255,0.78); }
+    .pc-list li::before { content: "✓"; width: 20px; height: 20px; border-radius: 50%; background: linear-gradient(135deg,var(--gold),#E6A800); color: var(--blue-deep); font-size: 11px; font-weight: 900; flex-shrink: 0; display: flex; align-items: center; justify-content: center; margin-top: 1px; box-shadow: 0 2px 8px rgba(240,192,32,0.35); }
+    .pc-addon { background: var(--blue-pale); border-radius: 12px; padding: 18px 20px; margin-bottom: 28px; }
+    .pc-addon-title { font-size: 13px; font-weight: 700; color: var(--blue-dark); margin-bottom: 6px; }
+    .pc-addon-price { font-family: "Montserrat",sans-serif; font-size: 26px; font-weight: 700; color: var(--gold); line-height: 1; }
+    .pc-addon-period { font-size: 13px; color: var(--text-soft); display: inline; }
+    .pc-addon-note { font-size: 12px; color: var(--grey-mid); margin-top: 4px; }
+    .pc-option-note { font-size: 13px; font-style: italic; color: rgba(255,255,255,0.45); margin-bottom: 24px; line-height: 1.6; position: relative; z-index: 1; }
+    .pc-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 15px 28px; border-radius: 8px; font-size: 15px; font-weight: 700; font-family: "DM Sans",sans-serif; cursor: pointer; transition: var(--transition); border: none; text-decoration: none; position: relative; z-index: 1; }
+    .pc-btn-dark { background: var(--blue-deep); color: var(--white); }
+    .pc-btn-dark:hover { background: var(--blue-dark); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+    .pc-btn-gold { background: var(--gold); color: var(--blue-deep); }
+    .pc-btn-gold:hover { background: #d4a800; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(240,192,32,0.4); }
+    @media(max-width:768px) { .pricing-wrap { grid-template-columns: 1fr; } .pc-option-1 { border-right: none; border-bottom: 1px solid var(--grey-light); } }
 
     /* CTA BANNER */
     .svc-cta { padding: clamp(52px,7vw,80px) 0; background: linear-gradient(135deg,var(--blue-deep) 0%,var(--blue) 100%); position: relative; overflow: hidden; }
@@ -480,73 +493,53 @@
       <div class="fade-up" style="max-width:580px;">
         <span class="tag">Pricing</span>
         <h2 class="section-title">Compliance Package Pricing</h2>
-        <p class="section-sub" style="margin-top:16px;">Two options to suit your business — both include the full 10-phase implementation over approximately 12 weeks.</p>
+        <p class="section-sub" style="margin-top:16px;">Two options to suit your budget — both include the full 10-phase implementation over approximately 12 weeks.</p>
       </div>
-      <div class="pricing-grid" style="margin-top:48px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));">
+
+      <div class="pricing-wrap fade-up">
 
         <!-- Option 1 -->
-        <div class="pricing-card fade-up" style="display:flex;flex-direction:column;gap:0;">
-          <span class="pc-tag">Option 1</span>
-          <div class="pc-name">Once-Off Implementation</div>
-          <div class="pc-price">R12,000</div>
-          <div class="pc-period">Once-off — billed on date of client onboarding</div>
-          <ul class="pc-items">
-            <li class="pc-item"><span class="pc-check">&#10003;</span> Full 10-phase POPIA &amp; PAIA implementation (~12 weeks)</li>
-            <li class="pc-item"><span class="pc-check">&#10003;</span> Information Officer appointment &amp; registration</li>
-            <li class="pc-item"><span class="pc-check">&#10003;</span> Custom PAIA Manual (Section 51)</li>
-            <li class="pc-item"><span class="pc-check">&#10003;</span> All policies, notices &amp; operator agreements</li>
-            <li class="pc-item"><span class="pc-check">&#10003;</span> Staff &amp; IO training with certificates</li>
+        <div class="pc-option pc-option-1">
+          <span class="pc-option-label">Option 1</span>
+          <div class="pc-option-name">Once-Off Implementation</div>
+          <div class="pc-option-price">R12,000</div>
+          <div class="pc-option-billing">Once-off fee — billed on date of client onboarding</div>
+          <div class="pc-divider"></div>
+          <ul class="pc-list">
+            <li>Full 10-phase POPIA &amp; PAIA implementation (~12 weeks)</li>
+            <li>Information Officer appointment &amp; registration</li>
+            <li>Custom PAIA Manual (Section 51)</li>
+            <li>All required policies, privacy notices &amp; consent forms</li>
+            <li>Operator agreements for third-party processors</li>
+            <li>Data subject rights procedure &amp; templates</li>
+            <li>Staff &amp; Information Officer training with certificates</li>
           </ul>
-          <div style="background:var(--blue-pale);border-radius:10px;padding:16px 18px;margin-bottom:20px;">
-            <div style="font-size:13px;font-weight:700;color:var(--blue-dark);margin-bottom:6px;">+ Annual Reporting to the Information Regulator</div>
-            <div style="font-size:22px;font-weight:700;font-family:Montserrat,sans-serif;color:var(--gold);">R3,000 <span style="font-size:13px;color:var(--text-soft);font-family:DM Sans,sans-serif;font-weight:400;">/year</span></div>
-            <div style="font-size:12px;color:var(--text-soft);margin-top:2px;">Billed annually upon submission of report (1 April – 30 June)</div>
+          <div class="pc-addon">
+            <div class="pc-addon-title">+ Annual Reporting to the Information Regulator</div>
+            <div class="pc-addon-price">R3,000 <span class="pc-addon-period">/year</span></div>
+            <div class="pc-addon-note">Billed annually upon submission of report (1 April – 30 June each year)</div>
           </div>
-          <a href="../index.html#quote" class="btn btn-blue" style="margin-top:auto;">Get a Quote</a>
+          <a href="../index.html#quote" class="pc-btn pc-btn-dark">Get a Quote</a>
         </div>
 
         <!-- Option 2 -->
-        <div class="pricing-card featured fade-up">
-          <span class="pc-tag">Option 2 — Most Popular</span>
-          <div class="pc-name">Monthly Retainer Package</div>
-          <div class="pc-price">R1,500</div>
-          <div class="pc-period">Per month — minimum 12 months, billed monthly in advance</div>
-          <ul class="pc-items">
-            <li class="pc-item"><span class="pc-check">&#10003;</span> Full 10-phase POPIA &amp; PAIA implementation (~12 weeks)</li>
-            <li class="pc-item"><span class="pc-check">&#10003;</span> Annual Reporting to the Information Regulator included</li>
-            <li class="pc-item"><span class="pc-check">&#10003;</span> Ongoing support — access to information requests</li>
-            <li class="pc-item"><span class="pc-check">&#10003;</span> Data breach assistance &amp; regulator correspondence</li>
-            <li class="pc-item"><span class="pc-check">&#10003;</span> All policies, notices, operator agreements &amp; training</li>
+        <div class="pc-option pc-option-2">
+          <span class="pc-option-label">Option 2 — Most Popular</span>
+          <div class="pc-option-name">Monthly Retainer Package</div>
+          <div class="pc-option-price">R1,500</div>
+          <div class="pc-option-billing">Per month — minimum 12 months, billed monthly in advance</div>
+          <div class="pc-divider"></div>
+          <ul class="pc-list">
+            <li>Full 10-phase POPIA &amp; PAIA implementation (~12 weeks)</li>
+            <li>Annual Reporting to the Information Regulator included</li>
+            <li>Ongoing support for access to information requests</li>
+            <li>Data breach assistance &amp; incident notification</li>
+            <li>Regulator correspondence handled on your behalf</li>
+            <li>All policies, notices, operator agreements &amp; training</li>
+            <li>Regulatory updates throughout your retainer term</li>
           </ul>
-          <p class="pc-note">Spread the cost while getting full compliance from day one — with continued support for incidents and regulatory changes throughout your term.</p>
-          <a href="../index.html#quote" class="btn btn-primary" style="position:relative;z-index:1;margin-top:auto;">Get Started</a>
-        </div>
-
-        <!-- Why act now -->
-        <div class="pricing-card fade-up" style="display:flex;flex-direction:column;gap:16px;justify-content:center;">
-          <div style="font-family:Montserrat,sans-serif;font-size:17px;font-weight:700;color:var(--blue-dark);">Why act now?</div>
-          <div style="display:flex;flex-direction:column;gap:12px;">
-            <div style="display:flex;gap:12px;align-items:flex-start;font-size:14px;color:var(--text-soft);">
-              <span style="color:var(--gold);font-weight:700;font-size:16px;flex-shrink:0;">&#9888;</span>
-              Administrative fines of <strong style="color:var(--text)">up to R10 million</strong> per violation
-            </div>
-            <div style="display:flex;gap:12px;align-items:flex-start;font-size:14px;color:var(--text-soft);">
-              <span style="color:var(--gold);font-weight:700;font-size:16px;flex-shrink:0;">&#9888;</span>
-              Criminal prosecution — <strong style="color:var(--text)">directors face imprisonment</strong>
-            </div>
-            <div style="display:flex;gap:12px;align-items:flex-start;font-size:14px;color:var(--text-soft);">
-              <span style="color:var(--gold);font-weight:700;font-size:16px;flex-shrink:0;">&#9888;</span>
-              Civil claims by <strong style="color:var(--text)">individuals whose data was mishandled</strong>
-            </div>
-            <div style="display:flex;gap:12px;align-items:flex-start;font-size:14px;color:var(--text-soft);">
-              <span style="color:var(--gold);font-weight:700;font-size:16px;flex-shrink:0;">&#9888;</span>
-              <strong style="color:var(--text)">R5 million fine already issued</strong> in South Africa — more are coming
-            </div>
-            <div style="display:flex;gap:12px;align-items:flex-start;font-size:14px;color:var(--text-soft);">
-              <span style="color:var(--gold);font-weight:700;font-size:16px;flex-shrink:0;">&#9888;</span>
-              Trading disruptions while you <strong style="color:var(--text)">scramble to comply under pressure</strong>
-            </div>
-          </div>
+          <p class="pc-option-note">Spread the cost over 12 months while getting full compliance from day one — with continued expert support for every incident and regulatory development that arises.</p>
+          <a href="../index.html#quote" class="pc-btn pc-btn-gold">Get Started</a>
         </div>
 
       </div>
