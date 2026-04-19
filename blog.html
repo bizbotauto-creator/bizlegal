@@ -77,16 +77,17 @@
     .breadcrumb a:hover { color: var(--gold); }
     .breadcrumb svg { width: 12px; height: 12px; color: rgba(255,255,255,0.35); }
 
-    /* INLINE FILTER ROW */
-    .filter-row { position: relative; margin-bottom: 28px; display: inline-block; }
-    .filter-trigger { display: inline-flex; align-items: center; gap: 9px; padding: 9px 16px; background: var(--white); border: 1.5px solid var(--grey-light); border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 600; color: var(--text); transition: border-color 0.2s, box-shadow 0.2s; user-select: none; }
+    /* FILTER */
+    .filter-row { position: relative; }
+    .filter-trigger { display: flex; align-items: center; gap: 9px; width: 100%; padding: 10px 14px; background: var(--white); border: 1.5px solid var(--grey-light); border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 600; color: var(--text); transition: border-color 0.2s, box-shadow 0.2s; user-select: none; box-sizing: border-box; }
     .filter-trigger:hover, .filter-trigger.open { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(30,61,130,0.08); }
-    .filter-trigger svg:first-child { width: 14px; height: 14px; color: var(--blue); flex-shrink: 0; }
+    .filter-trigger .fi-icon { width: 14px; height: 14px; color: var(--blue); flex-shrink: 0; }
+    .filter-trigger span { flex: 1; text-align: left; }
     .filter-chevron { width: 14px; height: 14px; color: var(--grey-mid); transition: transform 0.2s; flex-shrink: 0; }
     .filter-trigger.open .filter-chevron { transform: rotate(180deg); }
-    .filter-dropdown { display: none; position: absolute; top: calc(100% + 6px); left: 0; background: var(--white); border: 1.5px solid var(--grey-light); border-radius: 10px; box-shadow: var(--shadow-lg); min-width: 220px; padding: 6px; z-index: 50; }
+    .filter-dropdown { display: none; position: absolute; top: calc(100% + 6px); left: 0; right: 0; background: var(--white); border: 1.5px solid var(--grey-light); border-radius: 10px; box-shadow: var(--shadow-lg); padding: 6px; z-index: 50; }
     .filter-dropdown.open { display: block; }
-    .filter-option { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 9px 12px; background: none; border: none; border-radius: 6px; font-size: 13.5px; font-weight: 500; font-family: 'DM Sans', sans-serif; color: var(--text-soft); cursor: pointer; text-align: left; transition: background 0.15s, color 0.15s; }
+    .filter-option { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 9px 12px; background: none; border: none; border-radius: 6px; font-size: 13.5px; font-weight: 500; font-family: 'DM Sans', sans-serif; color: var(--text-soft); cursor: pointer; transition: background 0.15s, color 0.15s; }
     .filter-option:hover { background: var(--blue-pale); color: var(--blue-dark); }
     .filter-option.active { background: linear-gradient(135deg, var(--gold), #E6A800); color: var(--blue-deep); font-weight: 700; }
     .filter-option.active .fo-count { background: rgba(15,26,58,0.15); color: var(--blue-deep); }
@@ -163,13 +164,12 @@
     .sidebar-cta .btn { width: 100%; justify-content: center; position: relative; z-index: 1; }
 
     /* FACEBOOK SECTION */
-    .facebook-section { padding: clamp(56px,7vw,80px) 0; background: var(--off-white); }
-    .facebook-inner { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px,6vw,80px); align-items: center; }
+    .facebook-section { padding: clamp(56px,7vw,80px) 0; background: var(--blue-pale); }
+    .facebook-inner { max-width: 640px; }
     .fb-text h2 { font-family: 'Montserrat', sans-serif; font-size: clamp(22px,2.5vw,34px); font-weight: 700; color: var(--blue-dark); margin-bottom: 14px; line-height: 1.25; }
-    .fb-text p { font-size: 15px; color: var(--text-soft); line-height: 1.7; margin-bottom: 28px; }
-    .fb-follow-btn { background: #1877F2; color: var(--white); }
+    .fb-text p { font-size: 15px; color: var(--text-soft); line-height: 1.7; margin-bottom: 28px; max-width: 520px; }
+    .fb-follow-btn { background: #1877F2; color: var(--white); display: inline-flex; }
     .fb-follow-btn:hover { background: #1464d0; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(24,119,242,0.35); }
-    .fb-embed-wrap { border-radius: 14px; overflow: hidden; line-height: 0; border: 4px solid var(--gold); box-shadow: 0 0 0 8px rgba(240,192,32,0.15), var(--shadow-md); }
 
     /* FOOTER */
     footer { background: var(--blue-deep); color: var(--white); padding: clamp(52px,8vw,80px) 0 0; }
@@ -298,24 +298,6 @@
       <!-- MAIN CONTENT -->
       <div class="blog-main">
 
-        <!-- FILTER ROW -->
-        <div class="filter-row">
-          <div class="filter-trigger" id="filterTrigger" onclick="toggleFilter()">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
-            <span id="filterLabel">All Articles</span>
-            <svg class="filter-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-          <div class="filter-dropdown" id="filterDropdown">
-            <button class="filter-option active" onclick="selectFilter('all', 'All Articles', this)">All Articles <span class="fo-count">8</span></button>
-            <button class="filter-option" onclick="selectFilter('labour', 'Labour Law', this)">Labour Law <span class="fo-count">4</span></button>
-            <button class="filter-option" onclick="selectFilter('popia', 'POPIA', this)">POPIA <span class="fo-count">1</span></button>
-            <button class="filter-option" onclick="selectFilter('legal', 'Legal', this)">Legal <span class="fo-count">1</span></button>
-            <button class="filter-option" onclick="selectFilter('tax', 'Tax &amp; Accounting', this)">Tax &amp; Accounting <span class="fo-count">1</span></button>
-            <button class="filter-option" onclick="selectFilter('cpa', 'Consumer Protection', this)">Consumer Protection <span class="fo-count">1</span></button>
-            <button class="filter-option" onclick="selectFilter('hr', 'HR', this)">HR <span class="fo-count">0</span></button>
-          </div>
-        </div>
-
         <!-- FEATURED -->
         <a href="blog/labour-inspectors-2026.html" class="featured-article reveal" data-cat="labour">
           <div class="fa-image">
@@ -441,6 +423,26 @@
       <aside class="sidebar">
 
         <div class="sidebar-card reveal">
+          <h4>Filter by Topic</h4>
+          <div class="filter-row">
+            <div class="filter-trigger" id="filterTrigger" onclick="toggleFilter()">
+              <svg class="fi-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+              <span id="filterLabel">All Articles</span>
+              <svg class="filter-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="filter-dropdown" id="filterDropdown">
+              <button class="filter-option active" onclick="selectFilter('all', 'All Articles', this)">All Articles <span class="fo-count">8</span></button>
+              <button class="filter-option" onclick="selectFilter('labour', 'Labour Law', this)">Labour Law <span class="fo-count">4</span></button>
+              <button class="filter-option" onclick="selectFilter('popia', 'POPIA', this)">POPIA <span class="fo-count">1</span></button>
+              <button class="filter-option" onclick="selectFilter('legal', 'Legal', this)">Legal <span class="fo-count">1</span></button>
+              <button class="filter-option" onclick="selectFilter('tax', 'Tax &amp; Accounting', this)">Tax &amp; Accounting <span class="fo-count">1</span></button>
+              <button class="filter-option" onclick="selectFilter('cpa', 'Consumer Protection', this)">Consumer Protection <span class="fo-count">1</span></button>
+              <button class="filter-option" onclick="selectFilter('hr', 'HR', this)">HR <span class="fo-count">0</span></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar-card reveal">
           <h4>Recent Articles</h4>
           <div class="sidebar-recent">
             <div class="sr-item">
@@ -485,23 +487,11 @@
       <div class="fb-text">
         <span class="tag">Follow Us</span>
         <h2>Stay Up to Date on Facebook</h2>
-        <p>Follow BizLegal on Facebook for compliance updates, labour law news and practical tips for South African business owners.</p>
-        <a href="https://www.facebook.com/p/BizLegal-61556007415475/" target="_blank" rel="noopener" class="btn btn-primary fb-follow-btn">
+        <p>Follow BizLegal on Facebook for compliance updates, labour law news and practical tips for South African business owners. We post regularly — and it's free.</p>
+        <a href="https://www.facebook.com/p/BizLegal-61556007415475/" target="_blank" rel="noopener" class="btn fb-follow-btn">
           <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
-          Follow on Facebook
+          Follow BizLegal on Facebook
         </a>
-      </div>
-      <div class="fb-embed-wrap">
-        <iframe
-          src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fp%2FBizLegal-61556007415475%2F&tabs=timeline&width=500&height=500&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false&appId"
-          width="500"
-          height="500"
-          style="border:none;overflow:hidden;border-radius:12px;"
-          scrolling="no"
-          frameborder="0"
-          allowfullscreen="true"
-          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-        </iframe>
       </div>
     </div>
   </div>
