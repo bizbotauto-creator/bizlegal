@@ -84,56 +84,47 @@ body::before{
 
 /* ── SHARED ── */
 .eyebrow{
-  font-size:32px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;
-  color:var(--blue);opacity:0.7;margin-bottom:18px;display:block;
-}
-.rule{
-  width:140px;height:4px;border-radius:2px;
-  background:linear-gradient(90deg,var(--gold),var(--gold2));
-  margin:20px auto 22px;
-}
-.gold-card{
-  background:var(--white);
-  border:1px solid rgba(240,192,32,0.3);
-  border-left:7px solid var(--gold);
-  border-radius:0 14px 14px 0;
-  padding:32px 36px;
-  box-shadow:0 3px 20px rgba(15,26,58,0.07);
+  display:inline-block;
+  font-size:32px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--navy);
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  border-radius:100px;padding:14px 40px;margin-bottom:22px;
+  box-shadow:0 4px 20px rgba(240,192,32,0.35);
 }
 
 /* ════════════════════════
    S1 — IS YOUR BUSINESS POPIA COMPLIANT?
-   Budget: eyebrow 50px + h1 220px + rule 44px + sub 75px = 389px ✓
+   Budget: eyebrow 60px + h1 220px + sub 75px = 355px ✓
 ════════════════════════ */
 #s1 h1{
   font-family:'Montserrat',sans-serif;
   font-size:112px;font-weight:900;
-  line-height:1.0;letter-spacing:-0.03em;color:var(--navy);
+  line-height:1.0;letter-spacing:-0.03em;color:var(--blue);
   margin-bottom:0;
 }
 #s1 h1 em{font-style:normal;color:var(--gold);display:block;}
-#s1 .sub{font-size:52px;font-weight:500;color:var(--soft);line-height:1.35;}
+#s1 .sub{font-size:52px;font-weight:500;color:var(--soft);line-height:1.35;margin-top:22px;}
 
 /* ════════════════════════
    S2 — THE PENALTY
-   Budget: eyebrow 50px + big 170px + lbl 66px + sub 65px = 351px ✓
+   Budget: eyebrow 60px + big 170px + lbl 66px + sub 65px = 361px ✓
 ════════════════════════ */
 #s2 .big{
   font-family:'Montserrat',sans-serif;
   font-size:200px;font-weight:900;
   line-height:0.88;letter-spacing:-0.05em;
-  color:var(--navy);
+  color:var(--blue);
 }
 #s2 .big span{color:var(--gold);}
 #s2 .lbl{
   font-family:'Montserrat',sans-serif;
-  font-size:58px;font-weight:700;color:var(--navy);margin-top:10px;
+  font-size:58px;font-weight:700;color:var(--blue);margin-top:10px;
 }
 #s2 .sub{font-size:46px;color:var(--soft);margin-top:10px;line-height:1.3;}
 
 /* ════════════════════════
    S3 — ANNUAL REPORTING
-   Budget: eyebrow 50px + date 158px + tagline 76px + sub 62px = 346px ✓
+   Budget: eyebrow 60px + date 158px + tagline 76px + sub 62px = 356px ✓
 ════════════════════════ */
 #s3 .date{
   font-family:'Montserrat',sans-serif;
@@ -144,39 +135,25 @@ body::before{
 #s3 .tagline{
   font-family:'Montserrat',sans-serif;
   font-size:70px;font-weight:800;
-  color:var(--navy);margin-top:14px;line-height:1.1;
+  color:var(--blue);margin-top:14px;line-height:1.1;
 }
 #s3 .tagline em{font-style:normal;color:var(--gold);}
 #s3 .sub{font-size:44px;color:var(--soft);margin-top:10px;}
 
 /* ════════════════════════
-   S4 — BIZLEGAL PROCESS
-   Budget: eyebrow 50px + h2 200px + stats 130px = 380px ✓
+   S4 — BIZLEGAL PROCESS (no stats bar)
+   Budget: eyebrow 60px + h2 3×96px=310px = 370px ✓
 ════════════════════════ */
 #s4 h2{
   font-family:'Montserrat',sans-serif;
   font-size:96px;font-weight:900;
-  line-height:1.0;letter-spacing:-0.03em;color:var(--navy);
+  line-height:1.05;letter-spacing:-0.03em;color:var(--blue);
 }
 #s4 h2 em{font-style:normal;color:var(--gold);}
-#s4 .stats{
-  display:flex;margin-top:32px;
-  background:var(--white);
-  border:1px solid var(--faint);
-  border-radius:14px;overflow:hidden;width:100%;
-  box-shadow:0 3px 18px rgba(15,26,58,0.07);
-}
-#s4 .stat{
-  flex:1;padding:22px 14px;text-align:center;
-  border-right:1px solid var(--faint);
-}
-#s4 .stat:last-child{border-right:none;}
-#s4 .sn{font-family:'Montserrat',sans-serif;font-size:68px;font-weight:900;color:var(--gold);line-height:1;}
-#s4 .sl{font-size:32px;font-weight:600;color:var(--soft);margin-top:4px;}
 
 /* ════════════════════════
    S5 — PRICING: TWO CARDS
-   Budget: eyebrow 50px + cards 280px = 330px ✓
+   Budget: eyebrow 60px + cards 280px = 340px ✓
 ════════════════════════ */
 #s5 .pr-row{display:flex;gap:24px;margin-top:26px;width:100%;}
 #s5 .pr-card{
@@ -197,7 +174,7 @@ body::before{
 }
 #s5 .pn{
   font-family:'Montserrat',sans-serif;
-  font-size:36px;font-weight:700;color:var(--navy);margin-bottom:8px;
+  font-size:36px;font-weight:700;color:var(--blue);margin-bottom:8px;
 }
 #s5 .price{
   font-family:'Montserrat',sans-serif;
@@ -207,33 +184,25 @@ body::before{
 #s5 .pp{font-size:30px;color:var(--soft);margin-top:6px;line-height:1.4;}
 
 /* ════════════════════════
-   S6 — GET COMPLIANT NOW
-   Budget: logo 100px + h2 110px + url 70px + btn 100px = 380px ✓
+   S6 — GET COMPLIANT NOW (no btn)
+   Budget: logo 130px + h2 110px + url 70px = 310px ✓
 ════════════════════════ */
 #s6 .logo{margin-bottom:14px;}
 #s6 .logo img{
-  height:100px;width:auto;
+  height:130px;width:auto;
   display:block;margin:0 auto;
   object-fit:contain;
+  filter:brightness(0) saturate(100%) invert(65%) sepia(90%) saturate(800%) hue-rotate(5deg) brightness(88%);
 }
 #s6 h2{
   font-family:'Montserrat',sans-serif;
   font-size:108px;font-weight:900;
-  line-height:1.0;letter-spacing:-0.03em;color:var(--navy);
+  line-height:1.0;letter-spacing:-0.03em;color:var(--blue);
 }
 #s6 h2 em{font-style:normal;color:var(--gold);}
 #s6 .url{
   font-size:52px;font-weight:600;
-  color:var(--soft);letter-spacing:0.05em;margin-top:8px;
-}
-#s6 .btn{
-  display:inline-block;
-  background:linear-gradient(135deg,var(--gold),var(--gold2));
-  color:var(--navy);
-  font-family:'Montserrat',sans-serif;
-  font-size:52px;font-weight:900;
-  padding:22px 72px;border-radius:10px;
-  margin-top:20px;letter-spacing:0.01em;
+  color:var(--soft);letter-spacing:0.05em;margin-top:14px;
 }
 </style>
 </head>
@@ -245,7 +214,6 @@ body::before{
   <h1 class="sw d2">
     Is Your Business<br><em>POPIA Compliant?</em>
   </h1>
-  <div class="rule sw d3"></div>
   <p class="sub sw d3">No exceptions. No minimum size. Every SA business.</p>
 </div>
 
@@ -268,13 +236,7 @@ body::before{
 <!-- ════ S4: BIZLEGAL 10-PHASE PROCESS ════ -->
 <div class="sc" id="s4">
   <span class="eyebrow sw d1">The BizLegal Process</span>
-  <h2 class="sw d2">10 Phases. ~12 Weeks.<br><em>Fully Compliant.</em></h2>
-  <div class="stats sw d3">
-    <div class="stat"><div class="sn">10</div><div class="sl">Phases</div></div>
-    <div class="stat"><div class="sn">12</div><div class="sl">Weeks</div></div>
-    <div class="stat"><div class="sn">9</div><div class="sl">Deliverables</div></div>
-    <div class="stat"><div class="sn">1</div><div class="sl">Consultant</div></div>
-  </div>
+  <h2 class="sw d2">10 Phases.<br>~12 Weeks.<br><em>Fully Compliant.</em></h2>
 </div>
 
 <!-- ════ S5: PRICING — TWO CARDS ════ -->
@@ -301,11 +263,10 @@ body::before{
   <div class="logo sw d1">
     <img src="../images/logocolor.png" alt="BizLegal"
       onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
-    <div style="display:none;font-family:'Montserrat',sans-serif;font-size:90px;font-weight:900;letter-spacing:-0.02em;color:var(--navy)">BIZ<span style="color:var(--gold)">/</span>LEGAL</div>
+    <div style="display:none;font-family:'Montserrat',sans-serif;font-size:90px;font-weight:900;letter-spacing:-0.02em;color:var(--blue)">BIZ<span style="color:var(--gold)">/</span>LEGAL</div>
   </div>
-  <h2 class="sw d2">Get <em>Compliant</em> Now.</h2>
+  <h2 class="sw d2">Get Compliant <em>Now.</em></h2>
   <div class="url sw d3">bizlegal.co.za</div>
-  <div class="btn sw d4">Contact Us Today →</div>
 </div>
 
 <div id="dots"></div>
