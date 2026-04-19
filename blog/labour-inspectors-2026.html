@@ -163,16 +163,22 @@
       background: var(--off-white);
       border-left: 4px solid var(--gold);
       border-radius: 0 12px 12px 0;
-      padding: 20px 24px;
       margin-bottom: 40px;
+      overflow: hidden;
     }
-    .article-toc h4 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 13px; font-weight: 700;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--blue-dark); margin-bottom: 12px;
+    .toc-trigger {
+      display: flex; align-items: center; justify-content: space-between;
+      width: 100%; padding: 18px 24px; background: none; border: none;
+      font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue-dark);
+      cursor: pointer; transition: background 0.2s;
     }
-    .article-toc ol { padding-left: 20px; display: flex; flex-direction: column; gap: 6px; }
+    .toc-trigger:hover { background: rgba(30,61,130,0.04); }
+    .toc-chevron { width: 16px; height: 16px; color: var(--gold); transition: transform 0.25s; flex-shrink: 0; }
+    .toc-trigger[aria-expanded="true"] .toc-chevron { transform: rotate(180deg); }
+    .toc-body { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; }
+    .toc-body.open { max-height: 400px; padding-bottom: 20px; }
+    .article-toc ol { padding: 0 24px 0 44px; display: flex; flex-direction: column; gap: 6px; }
     .article-toc li { font-size: 14px; }
     .article-toc a { color: var(--blue); transition: color 0.2s; }
     .article-toc a:hover { color: var(--gold); }
@@ -303,13 +309,15 @@
     .share-label { font-size: 13px; font-weight: 600; color: var(--text-soft); text-transform: uppercase; letter-spacing: 0.08em; }
     .share-btn {
       display: inline-flex; align-items: center; gap: 7px;
-      padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600;
-      cursor: pointer; transition: var(--transition); border: 1.5px solid var(--grey-light);
-      color: var(--text-soft); background: var(--white);
+      padding: 9px 18px; border-radius: 8px; font-size: 13px; font-weight: 600;
+      cursor: pointer; transition: var(--transition); border: none;
+      font-family: 'DM Sans', sans-serif;
     }
-    .share-btn:hover { border-color: var(--blue); color: var(--blue); transform: translateY(-1px); }
     .share-btn svg { width: 15px; height: 15px; }
-    .copy-btn { cursor: pointer; }
+    .share-btn-fb { background: #1877F2; color: var(--white); }
+    .share-btn-fb:hover { background: #1464d0; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(24,119,242,0.3); }
+    .share-btn-copy { background: var(--gold); color: var(--blue-deep); }
+    .share-btn-copy:hover { background: #d4a800; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(240,192,32,0.35); }
 
     /* ── SIDEBAR ── */
     .article-sidebar { position: sticky; top: calc(var(--nav-h) + 24px); display: flex; flex-direction: column; gap: 24px; }
@@ -576,14 +584,19 @@
 
           <!-- Table of Contents -->
           <div class="article-toc">
-            <h4>In This Article</h4>
-            <ol>
-              <li><a href="#announcement">The Announcement: What the President Said</a></li>
-              <li><a href="#what-it-means">What This Means for Your Business</a></li>
-              <li><a href="#who-are-inspectors">Who Are Labour Inspectors and What Do They Do?</a></li>
-              <li><a href="#consequences">Consequences of Non-Compliance</a></li>
-              <li><a href="#call-to-action">Be Proactive: Your Compliance Action Plan</a></li>
-            </ol>
+            <button class="toc-trigger" id="tocTrigger" onclick="toggleToc()" aria-expanded="false">
+              <span>In This Article</span>
+              <svg class="toc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="toc-body" id="tocBody">
+              <ol>
+                <li><a href="#announcement" onclick="closeToc()">The Announcement: What the President Said</a></li>
+                <li><a href="#what-it-means" onclick="closeToc()">What This Means for Your Business</a></li>
+                <li><a href="#who-are-inspectors" onclick="closeToc()">Who Are Labour Inspectors and What Do They Do?</a></li>
+                <li><a href="#consequences" onclick="closeToc()">Consequences of Non-Compliance</a></li>
+                <li><a href="#call-to-action" onclick="closeToc()">Be Proactive: Your Compliance Action Plan</a></li>
+              </ol>
+            </div>
           </div>
 
           <div class="article-prose">
@@ -652,7 +665,9 @@
 
           <!-- Author -->
           <div class="author-card">
-            <div class="author-avatar">BL</div>
+            <div class="author-avatar">
+              <img src="../favicon.ico" alt="BizLegal" style="width:36px;height:36px;object-fit:contain;" onerror="this.outerHTML='<span style=\'font-family:Montserrat,sans-serif;font-size:18px;font-weight:700;color:#fff;\'>BL</span>'" />
+            </div>
             <div>
               <div class="author-name">BizLegal Editorial</div>
               <div class="author-role">Labour, Legal &amp; Compliance Specialists — Cape Town, Overberg &amp; West Coast</div>
@@ -662,15 +677,11 @@
           <!-- Share bar -->
           <div class="share-bar">
             <span class="share-label">Share this article</span>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://bizlegal.co.za/blog/labour-inspectors-2026.html" target="_blank" rel="noopener" class="share-btn">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://bizlegal.co.za/blog/labour-inspectors-2026.html" target="_blank" rel="noopener" class="share-btn share-btn-fb">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
               Facebook
             </a>
-            <a href="https://wa.me/?text=10%2C000+New+Labour+Inspectors+%E2%80%94+What+SA+Businesses+Need+to+Know%3A+https%3A%2F%2Fbizlegal.co.za%2Fblog%2Flabour-inspectors-2026.html" target="_blank" rel="noopener" class="share-btn">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 1.999C6.477 1.999 2 6.477 2 12c0 1.88.518 3.638 1.418 5.148L2 22l4.966-1.395A9.956 9.956 0 0012 22c5.523 0 10-4.477 10-10S17.522 1.999 11.999 1.999z"/></svg>
-              WhatsApp
-            </a>
-            <button class="share-btn copy-btn" onclick="copyLink()">
+            <button class="share-btn share-btn-copy" onclick="copyLink()">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
               Copy Link
             </button>
@@ -840,6 +851,17 @@
     });
 
     // Copy link
+    function toggleToc() {
+      const trigger = document.getElementById('tocTrigger');
+      const body = document.getElementById('tocBody');
+      const isOpen = body.classList.toggle('open');
+      trigger.setAttribute('aria-expanded', isOpen);
+    }
+    function closeToc() {
+      document.getElementById('tocBody').classList.remove('open');
+      document.getElementById('tocTrigger').setAttribute('aria-expanded', 'false');
+    }
+
     function copyLink() {
       navigator.clipboard.writeText(window.location.href).then(() => {
         const toast = document.getElementById('copy-toast');
