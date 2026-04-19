@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>POPIA in 2026: South Africa's Enforcement Crackdown — What Every Business Must Know | BizLegal</title>
+  <meta name="description" content="The Information Regulator has shifted from advisory to active enforcement. R5 million fines have been issued. 40% more data breaches were reported in 2025. Here is what your business must do now." />
+  <link rel="icon" type="image/x-icon" href="../favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue:#1E3D82; --blue-dark:#162F6E; --blue-deep:#0F1A3A; --blue-light:#2F4D8F; --blue-pale:#E8EDF8;
+      --gold:#F0C020; --gold-light:#FAE06A;
+      --white:#FFFFFF; --off-white:#F0F2F8; --grey-light:#E8EBF4; --grey-mid:#9099B5;
+      --text:#1A1D2E; --text-soft:#4A5070;
+      --nav-h:90px; --radius:12px;
+      --shadow-sm:0 2px 12px rgba(28,40,90,0.08); --shadow-md:0 8px 40px rgba(28,40,90,0.14); --shadow-lg:0 20px 60px rgba(28,40,90,0.2);
+      --transition:0.3s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family:'DM Sans',sans-serif; color:var(--text); background:var(--white); line-height:1.6; -webkit-font-smoothing:antialiased; }
+    img { display:block; max-width:100%; }
+    a { text-decoration:none; color:inherit; }
+    .container { width:100%; max-width:1240px; margin:0 auto; padding:0 clamp(20px,5vw,48px); }
+    #progress-bar { position:fixed; top:0; left:0; height:3px; width:0%; background:linear-gradient(90deg,var(--gold),#E6A800); z-index:2000; transition:width 0.1s linear; box-shadow:0 0 8px rgba(240,192,32,0.5); }
+    nav { position:sticky; top:0; z-index:1000; background:rgba(255,255,255,0.97); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-bottom:1px solid var(--grey-light); height:var(--nav-h); transition:box-shadow var(--transition); }
+    nav.scrolled { box-shadow:var(--shadow-md); }
+    nav .container { height:100%; }
+    .nav-inner { display:flex; align-items:center; justify-content:space-between; height:100%; }
+    .nav-logo img { height:64px; width:auto; object-fit:contain; }
+    .nav-links { display:flex; align-items:center; gap:4px; list-style:none; }
+    .nav-links a { display:block; padding:8px 14px; font-size:14.5px; font-weight:500; color:var(--text); border-radius:6px; transition:var(--transition); }
+    .nav-links a:hover { color:var(--gold); }
+    .nav-links .has-dropdown { position:relative; }
+    .nav-links .dropdown { position:absolute; top:100%; left:50%; transform:translateX(-50%) translateY(-8px); background:var(--white); border:1px solid var(--grey-light); border-radius:var(--radius); box-shadow:var(--shadow-lg); min-width:240px; padding:8px; padding-top:16px; opacity:0; pointer-events:none; transition:opacity 0.2s,transform 0.2s; list-style:none; }
+    .nav-links .has-dropdown:hover .dropdown { opacity:1; pointer-events:all; transform:translateX(-50%) translateY(0); }
+    .nav-links .dropdown a { padding:10px 16px; border-radius:6px; font-size:14px; font-weight:500; display:block; color:var(--text); border-left:3px solid transparent; transition:all 0.2s; }
+    .nav-links .dropdown a:hover { border-left-color:var(--gold); color:var(--gold); padding-left:20px; }
+    .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; padding:8px; }
+    .hamburger span { display:block; width:24px; height:2px; background:var(--text); border-radius:2px; transition:var(--transition); }
+    .btn { display:inline-flex; align-items:center; gap:10px; padding:14px 28px; border-radius:6px; font-size:15px; font-weight:600; font-family:'DM Sans',sans-serif; cursor:pointer; transition:var(--transition); border:none; }
+    .btn-primary { background:var(--gold); color:var(--blue-deep); }
+    .btn-primary:hover { background:#b5953c; transform:translateY(-2px); box-shadow:0 8px 24px rgba(240,192,32,0.35); }
+    .btn-blue { background:var(--blue); color:var(--white); }
+    .btn-blue:hover { background:var(--blue-dark); transform:translateY(-2px); box-shadow:var(--shadow-md); }
+    .btn-outline { background:transparent; color:var(--white); border:2px solid rgba(255,255,255,0.5); }
+    .btn-outline:hover { border-color:var(--white); background:rgba(255,255,255,0.1); }
+    .btn svg { width:18px; height:18px; flex-shrink:0; }
+    .mobile-menu { display:none; position:fixed; inset:0; top:var(--nav-h); background:var(--white); z-index:999; padding:24px; overflow-y:auto; }
+    .mobile-menu.open { display:block; }
+    .mobile-menu ul { list-style:none; display:flex; flex-direction:column; gap:4px; }
+    .mobile-menu ul a { display:block; padding:14px 16px; font-size:16px; font-weight:500; color:var(--text); border-radius:8px; transition:background var(--transition); }
+    .mobile-menu ul a:hover { color:var(--gold); }
+    .mobile-menu-cta { margin-top:24px; }
+    .article-hero { background:linear-gradient(135deg,var(--blue-deep) 0%,var(--blue) 100%); padding:clamp(48px,7vw,88px) 0 0; position:relative; overflow:hidden; }
+    .article-hero::before { content:''; position:absolute; inset:-60px; background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); pointer-events:none; animation:bgDrift 20s linear infinite; }
+    @keyframes bgDrift { 0%{transform:translate(0,0)} 25%{transform:translate(20px,10px)} 50%{transform:translate(10px,30px)} 75%{transform:translate(-10px,15px)} 100%{transform:translate(0,0)} }
+    .article-hero-inner { position:relative; z-index:2; }
+    .article-breadcrumb { display:flex; align-items:center; gap:8px; font-size:13px; color:rgba(255,255,255,0.55); margin-bottom:24px; }
+    .article-breadcrumb a { color:rgba(255,255,255,0.55); transition:color 0.2s; }
+    .article-breadcrumb a:hover { color:var(--gold); }
+    .article-breadcrumb span { color:rgba(255,255,255,0.3); }
+    .article-cat-pill { display:inline-block; font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--blue-deep); background:linear-gradient(135deg,var(--gold) 0%,#E6A800 100%); border-radius:100px; padding:5px 14px; margin-bottom:20px; box-shadow:0 4px 18px rgba(240,192,32,0.35); }
+    .article-hero h1 { font-family:'Montserrat',sans-serif; font-size:clamp(26px,4vw,48px); font-weight:700; color:var(--white); line-height:1.15; max-width:820px; margin-bottom:24px; }
+    .article-meta-row { display:flex; align-items:center; gap:24px; flex-wrap:wrap; padding-bottom:36px; }
+    .article-meta-item { display:flex; align-items:center; gap:7px; font-size:13.5px; color:rgba(255,255,255,0.65); }
+    .article-meta-item svg { width:15px; height:15px; color:var(--gold); filter:drop-shadow(0 0 4px rgba(240,192,32,0.6)); }
+    .article-hero-img-placeholder { width:100%; height:320px; background:linear-gradient(135deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03)); border-radius:16px 16px 0 0; display:flex; align-items:center; justify-content:center; position:relative; z-index:2; }
+    .article-body { padding:clamp(48px,6vw,80px) 0; background:var(--white); }
+    .article-layout { display:grid; grid-template-columns:1fr 340px; gap:56px; align-items:start; }
+    .article-content { min-width:0; }
+    .article-toc { background:var(--off-white); border-left:4px solid var(--gold); border-radius:0 12px 12px 0; padding:20px 24px; margin-bottom:40px; }
+    .article-toc h4 { font-family:'Montserrat',sans-serif; font-size:13px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--blue-dark); margin-bottom:12px; }
+    .article-toc ol { padding-left:20px; display:flex; flex-direction:column; gap:6px; }
+    .article-toc li { font-size:14px; }
+    .article-toc a { color:var(--blue); transition:color 0.2s; }
+    .article-toc a:hover { color:var(--gold); }
+    .article-prose h2 { font-family:'Montserrat',sans-serif; font-size:clamp(17px,1.8vw,21px); font-weight:700; color:var(--blue-dark); margin:44px 0 14px; padding-top:10px; border-top:1px solid var(--grey-light); scroll-margin-top:calc(var(--nav-h) + 24px); }
+    .article-prose h2:first-child { margin-top:0; border-top:none; }
+    .article-prose h3 { font-family:'Montserrat',sans-serif; font-size:15px; font-weight:700; color:var(--text); margin:28px 0 10px; }
+    .article-prose p { font-size:15.5px; line-height:1.85; color:var(--text-soft); margin-bottom:18px; text-align:justify; }
+    .article-prose p strong { color:var(--text); font-weight:600; }
+    .article-prose ul, .article-prose ol { margin:0 0 18px 22px; }
+    .article-prose li { font-size:15px; line-height:1.8; color:var(--text-soft); margin-bottom:8px; text-align:justify; }
+    .article-prose li strong { color:var(--text); }
+    .pull-quote { border-left:4px solid var(--gold); padding:20px 28px; margin:36px 0; background:var(--blue-pale); border-radius:0 12px 12px 0; }
+    .pull-quote p { font-family:'Montserrat',sans-serif; font-size:clamp(16px,2vw,20px); font-weight:600; color:var(--blue-dark); line-height:1.5; margin:0; font-style:italic; }
+    .callout { background:var(--blue-deep); border-radius:16px; padding:28px 32px; margin:36px 0; position:relative; overflow:hidden; }
+    .callout::before { content:''; position:absolute; inset:-30px; background-image:url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M20 20v-2h-1v2h-2v1h2v2h1v-2h2v-1h-2z'/%3E%3C/g%3E%3C/svg%3E"); pointer-events:none; }
+    .callout-label { font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--blue-deep); background:linear-gradient(135deg,var(--gold),#E6A800); border-radius:100px; padding:4px 12px; display:inline-block; margin-bottom:14px; box-shadow:0 3px 10px rgba(240,192,32,0.3); }
+    .callout h3 { font-family:'Montserrat',sans-serif; font-size:20px; font-weight:700; color:var(--white); margin-bottom:10px; position:relative; z-index:1; }
+    .callout p { color:rgba(255,255,255,0.75); font-size:15px; line-height:1.7; margin:0; position:relative; z-index:1; }
+    .callout ul { margin:12px 0 0 20px; position:relative; z-index:1; }
+    .callout li { color:rgba(255,255,255,0.75); font-size:15px; margin-bottom:6px; }
+    .stat-row { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin:32px 0; }
+    .stat-card { background:var(--off-white); border:1px solid var(--grey-light); border-radius:12px; padding:20px; text-align:center; }
+    .stat-card .num { font-family:'Montserrat',sans-serif; font-size:32px; font-weight:700; color:var(--gold); text-shadow:0 0 18px rgba(240,192,32,0.55); line-height:1; }
+    .stat-card .label { font-size:13px; color:var(--text-soft); margin-top:6px; line-height:1.4; }
+    .article-cta { background:linear-gradient(135deg,var(--blue-deep),var(--blue)); border-radius:16px; padding:36px; margin-top:52px; text-align:center; position:relative; overflow:hidden; }
+    .article-cta::before { content:''; position:absolute; inset:-40px; background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); pointer-events:none; }
+    .article-cta-badge { display:inline-block; font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--blue-deep); background:linear-gradient(135deg,var(--gold),#E6A800); border-radius:100px; padding:5px 14px; box-shadow:0 4px 18px rgba(240,192,32,0.35); margin-bottom:16px; position:relative; z-index:1; }
+    .article-cta h2 { font-family:'Montserrat',sans-serif; font-size:clamp(20px,2.5vw,28px); font-weight:700; color:var(--white); margin-bottom:12px; position:relative; z-index:1; }
+    .article-cta p { color:rgba(255,255,255,0.72); font-size:16px; margin-bottom:24px; position:relative; z-index:1; }
+    .article-cta-btns { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; position:relative; z-index:1; }
+    .share-bar { display:flex; align-items:center; gap:12px; padding:20px 0; border-top:1px solid var(--grey-light); border-bottom:1px solid var(--grey-light); margin:48px 0 0; flex-wrap:wrap; }
+    .share-label { font-size:13px; font-weight:600; color:var(--text-soft); text-transform:uppercase; letter-spacing:0.08em; }
+    .share-btn { display:inline-flex; align-items:center; gap:7px; padding:8px 16px; border-radius:8px; font-size:13px; font-weight:600; cursor:pointer; transition:var(--transition); border:1.5px solid var(--grey-light); color:var(--text-soft); background:var(--white); }
+    .share-btn:hover { border-color:var(--blue); color:var(--blue); transform:translateY(-1px); }
+    .share-btn svg { width:15px; height:15px; }
+    .article-sidebar { position:sticky; top:calc(var(--nav-h) + 24px); display:flex; flex-direction:column; gap:24px; }
+    .sidebar-card { background:var(--white); border:1px solid var(--grey-light); border-radius:16px; padding:24px; overflow:hidden; }
+    .sidebar-card h4 { font-family:'Montserrat',sans-serif; font-size:12px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--blue); margin-bottom:16px; padding-bottom:12px; border-bottom:1px solid var(--grey-light); }
+    .related-article { display:flex; gap:12px; padding:12px 0; border-bottom:1px solid var(--grey-light); }
+    .related-article:last-child { border-bottom:none; padding-bottom:0; }
+    .related-article-thumb { width:56px; height:56px; border-radius:8px; background:var(--blue-pale); flex-shrink:0; display:flex; align-items:center; justify-content:center; color:var(--blue); }
+    .related-article-thumb svg { width:22px; height:22px; opacity:0.4; }
+    .related-article-title { font-size:13.5px; font-weight:600; color:var(--text); line-height:1.4; margin-bottom:4px; transition:color 0.2s; }
+    .related-article:hover .related-article-title { color:var(--blue); }
+    .related-article-meta { font-size:12px; color:var(--text-soft); }
+    .sidebar-cta { background:linear-gradient(135deg,var(--blue-deep),var(--blue)); border-radius:16px; padding:24px; text-align:center; position:relative; overflow:hidden; }
+    .sidebar-cta::before { content:''; position:absolute; inset:-20px; background-image:url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M20 20v-2h-1v2h-2v1h2v2h1v-2h2v-1h-2z'/%3E%3C/g%3E%3C/svg%3E"); pointer-events:none; }
+    .sidebar-cta h4 { font-family:'Montserrat',sans-serif; font-size:17px; font-weight:700; color:var(--white); margin-bottom:8px; position:relative; z-index:1; }
+    .sidebar-cta p { font-size:13px; color:rgba(255,255,255,0.65); margin-bottom:16px; line-height:1.6; position:relative; z-index:1; }
+    .sidebar-cta .btn { width:100%; justify-content:center; position:relative; z-index:1; }
+    .article-tags { display:flex; gap:8px; flex-wrap:wrap; margin-top:32px; }
+    .article-tag { font-size:12px; font-weight:600; padding:4px 12px; background:var(--blue-pale); color:var(--blue); border-radius:100px; transition:var(--transition); }
+    .article-tag:hover { background:var(--blue); color:var(--white); }
+    .author-card { display:flex; gap:16px; align-items:center; padding:24px; border:1px solid var(--grey-light); border-radius:16px; margin-top:40px; background:var(--off-white); }
+    .author-avatar { width:56px; height:56px; border-radius:50%; background:var(--blue); display:flex; align-items:center; justify-content:center; font-family:'Montserrat',sans-serif; font-size:20px; font-weight:700; color:var(--white); flex-shrink:0; }
+    .author-name { font-size:15px; font-weight:600; color:var(--text); margin-bottom:2px; }
+    .author-role { font-size:13px; color:var(--text-soft); }
+    footer { background:var(--blue-deep); color:var(--white); padding:clamp(52px,8vw,80px) 0 0; }
+    .footer-top { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:clamp(32px,4vw,60px); padding-bottom:52px; border-bottom:1px solid rgba(255,255,255,0.1); }
+    .footer-brand img { height:40px; width:auto; margin-bottom:18px; display:block; }
+    .footer-brand p { font-size:14.5px; color:rgba(255,255,255,0.6); line-height:1.7; max-width:300px; }
+    .footer-social { display:flex; gap:10px; margin-top:24px; }
+    .footer-social a { width:36px; height:36px; border-radius:8px; background:rgba(255,255,255,0.08); display:flex; align-items:center; justify-content:center; transition:background var(--transition); }
+    .footer-social a:hover { background:rgba(255,255,255,0.15); }
+    .footer-social a.social-gold svg { color:var(--gold); filter:drop-shadow(0 0 4px rgba(240,192,32,0.6)); }
+    .footer-social svg { width:17px; height:17px; }
+    .footer-col h5 { font-size:12px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); margin-bottom:20px; }
+    .footer-col ul { list-style:none; display:flex; flex-direction:column; gap:10px; }
+    .footer-col ul a { font-size:14px; color:rgba(255,255,255,0.6); transition:color var(--transition); }
+    .footer-col ul a:hover { color:var(--white); }
+    .footer-contact-item { display:flex; gap:10px; margin-bottom:12px; align-items:flex-start; }
+    .footer-contact-item svg { width:16px; height:16px; color:var(--gold); flex-shrink:0; margin-top:2px; }
+    .footer-contact-item span { font-size:13.5px; color:rgba(255,255,255,0.65); line-height:1.5; }
+    .footer-bottom { display:flex; justify-content:space-between; align-items:center; gap:16px; padding:24px 0; flex-wrap:wrap; }
+    .footer-bottom p { font-size:13px; color:rgba(255,255,255,0.4); }
+    .footer-bottom-links { display:flex; gap:20px; list-style:none; }
+    .footer-bottom-links a { font-size:13px; color:rgba(255,255,255,0.4); transition:color 0.2s; }
+    .footer-bottom-links a:hover { color:var(--white); }
+    .whatsapp-float { position:fixed; bottom:28px; right:28px; z-index:999; display:flex; flex-direction:column; align-items:flex-end; gap:10px; }
+    .whatsapp-btn { width:56px; height:56px; border-radius:50%; background:#25D366; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 24px rgba(37,211,102,0.45); transition:transform 0.25s,box-shadow 0.25s; cursor:pointer; }
+    .whatsapp-btn:hover { transform:scale(1.1); box-shadow:0 8px 32px rgba(37,211,102,0.55); }
+    .whatsapp-btn svg { width:28px; height:28px; color:#fff; }
+    .whatsapp-tooltip { background:var(--text); color:var(--white); font-size:13px; font-weight:500; padding:7px 14px; border-radius:8px; white-space:nowrap; opacity:0; transform:translateX(10px); transition:var(--transition); pointer-events:none; }
+    .whatsapp-float:hover .whatsapp-tooltip { opacity:1; transform:translateX(0); }
+    #copy-toast { position:fixed; bottom:80px; left:50%; transform:translateX(-50%) translateY(20px); background:var(--text); color:var(--white); padding:10px 20px; border-radius:8px; font-size:14px; opacity:0; transition:all 0.3s; pointer-events:none; z-index:9999; }
+    #copy-toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
+    @media (max-width:1024px) { .article-layout { grid-template-columns:1fr 280px; gap:36px; } .footer-top { grid-template-columns:1fr 1fr; } }
+    @media (max-width:768px) { .nav-links { display:none; } .hamburger { display:flex; } .article-layout { grid-template-columns:1fr; } .article-sidebar { position:static; } .stat-row { grid-template-columns:1fr; } .footer-top { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+
+  <div id="progress-bar"></div>
+  <div id="copy-toast">Link copied to clipboard!</div>
+
+  <div style="background:var(--blue-deep);color:var(--white);text-align:center;padding:10px 20px;font-size:13.5px;font-weight:500;letter-spacing:0.01em;">
+    <strong style="color:var(--gold);">⚠ Urgent:</strong> The Information Regulator has already issued a R5 million fine. Is your business POPIA compliant?
+    <a href="../services/popia.html" style="color:var(--gold-light);text-decoration:underline;text-underline-offset:3px;margin-left:6px;">See our compliance package →</a>
+  </div>
+
+  <nav id="mainNav">
+    <div class="container">
+      <div class="nav-inner">
+        <a class="nav-logo" href="../index.html"><img src="../images/logo.png" alt="BizLegal" /></a>
+        <ul class="nav-links">
+          <li><a href="../index.html">Home</a></li>
+          <li class="has-dropdown">
+            <a href="../services.html">Services ▾</a>
+            <ul class="dropdown">
+              <li><a href="../services/labour.html">Labour &amp; HR Services</a></li>
+              <li><a href="../services/legal.html">Legal Services</a></li>
+              <li><a href="../services/popia.html">POPI &amp; PAIA Compliance</a></li>
+              <li><a href="../services/cpa.html">Consumer Protection</a></li>
+              <li><a href="../services/tax.html">Tax &amp; Accounting</a></li>
+              <li><a href="../services/training.html">Training</a></li>
+            </ul>
+          </li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../blog.html">Blog</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+        <button class="hamburger" id="hamburgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../services.html">Services</a></li>
+      <li><a href="../services/labour.html" style="padding-left:32px;font-size:15px">→ Labour &amp; HR Services</a></li>
+      <li><a href="../services/legal.html" style="padding-left:32px;font-size:15px">→ Legal Services</a></li>
+      <li><a href="../services/popia.html" style="padding-left:32px;font-size:15px">→ POPI &amp; PAIA Compliance</a></li>
+      <li><a href="../services/cpa.html" style="padding-left:32px;font-size:15px">→ Consumer Protection</a></li>
+      <li><a href="../services/tax.html" style="padding-left:32px;font-size:15px">→ Tax &amp; Accounting</a></li>
+      <li><a href="../services/training.html" style="padding-left:32px;font-size:15px">→ Training</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../blog.html">Blog</a></li>
+      <li><a href="../contact.html">Contact</a></li>
+    </ul>
+    <div class="mobile-menu-cta"><a href="../index.html#quote" class="btn btn-primary">Get a Free Quote</a></div>
+  </div>
+
+  <!-- ARTICLE HERO -->
+  <section class="article-hero">
+    <div class="container">
+      <div class="article-hero-inner">
+        <div class="article-breadcrumb">
+          <a href="../index.html">Home</a><span>›</span>
+          <a href="../blog.html">Blog</a><span>›</span>
+          <span style="color:rgba(255,255,255,0.75);">POPIA &amp; PAIA</span>
+        </div>
+        <span class="article-cat-pill">POPIA &amp; PAIA</span>
+        <h1>POPIA in 2026: South Africa's Enforcement Crackdown — What Every Business Must Know Now</h1>
+        <div class="article-meta-row">
+          <div class="article-meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            April 2026
+          </div>
+          <div class="article-meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            9 min read
+          </div>
+          <div class="article-meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            BizLegal Editorial
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container" style="padding-bottom:0;">
+      <div class="article-hero-img-placeholder">
+        <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1" style="width:80px;height:80px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARTICLE BODY -->
+  <section class="article-body">
+    <div class="container">
+      <div class="article-layout">
+
+        <div class="article-content">
+
+          <div class="article-toc">
+            <h4>In This Article</h4>
+            <ol>
+              <li><a href="#enforcement-shift">The Enforcement Shift: From Advisory to Active</a></li>
+              <li><a href="#landmark-cases">Landmark Cases: What the Information Regulator Has Done</a></li>
+              <li><a href="#2025-amendments">The 2025 Amendment Regulations: Key Changes</a></li>
+              <li><a href="#common-failures">The Seven Most Common POPIA Compliance Failures</a></li>
+              <li><a href="#annual-reporting">The Annual Reporting Obligation and the 30 June Deadline</a></li>
+              <li><a href="#genuine-compliance">What Genuine Compliance Looks Like in 2026</a></li>
+            </ol>
+          </div>
+
+          <div class="article-prose">
+
+            <p>When the Protection of Personal Information Act 4 of 2013 came into full effect on 1 July 2021, many South African businesses treated compliance as a once-off administrative exercise — appoint an Information Officer, draft a privacy policy, and file it away. That approach is no longer adequate, and the consequences of maintaining it are becoming real and expensive.</p>
+
+            <p>The Information Regulator of South Africa has undergone a decisive transformation. What was once a body focused primarily on education and guidance has become an active enforcement authority — investigating complaints, issuing enforcement notices, imposing administrative fines, and pursuing litigation against non-compliant organisations. The question South African businesses must now answer is not whether they have POPIA documentation, but whether that documentation reflects what they actually do with personal information, and whether they can prove it.</p>
+
+            <div class="stat-row">
+              <div class="stat-card">
+                <div class="num">40%</div>
+                <div class="label">Increase in reported data breaches in South Africa during 2025</div>
+              </div>
+              <div class="stat-card">
+                <div class="num">R44M</div>
+                <div class="label">Average cost of a data breach in South Africa (IBM, 2025)</div>
+              </div>
+              <div class="stat-card">
+                <div class="num">R5M</div>
+                <div class="label">Administrative fine already imposed by the Information Regulator</div>
+              </div>
+            </div>
+
+            <h2 id="enforcement-shift">The Enforcement Shift: From Advisory to Active</h2>
+
+            <p>The Information Regulator was established in 2016 with a dual mandate: to enforce both POPIA and the Promotion of Access to Information Act (PAIA). For several years following its establishment, the Regulator concentrated on building institutional capacity, issuing guidance notices, and engaging with the public and private sectors about compliance expectations.</p>
+
+            <p>That phase is over. Since 2024, the Regulator has significantly escalated its enforcement activities. It has issued multiple enforcement notices, conducted over thirty PAIA compliance assessments, investigated security compromises across both public and private entities, and imposed its first administrative fine. In early 2026, at its annual stakeholder engagement, the Regulator made its priorities for the 2026–2027 financial year explicit: faster escalation from complaints to enforcement action, increased use of administrative fines, and greater public exposure of non-compliance.</p>
+
+            <div class="pull-quote">
+              <p>"The Information Regulator has transitioned from an advisory body to a high-functioning enforcement machine. The question is no longer 'Are we compliant?' — it is 'Can we prove our compliance is sustainable and resilient against a breach?'"</p>
+            </div>
+
+            <p>Perhaps most significantly, the Regulator has indicated that proposed amendments to POPIA may remove the procedural steps that currently allow organisations time to remedy non-compliance before sanctions are imposed. If those amendments are enacted, businesses could face fines without the grace period they have previously relied upon.</p>
+
+            <h2 id="landmark-cases">Landmark Cases: What the Information Regulator Has Done</h2>
+
+            <p>Understanding what the Regulator has actually done — not merely what it can do — is essential for any business assessing its exposure.</p>
+
+            <h3>The Department of Justice Fine</h3>
+            <p>The most prominent enforcement action to date involves the Department of Justice and Constitutional Development. Following a serious security compromise in 2021, the Regulator issued an enforcement notice requiring the department to implement specific remedial measures. When the department failed to comply with that notice, the Regulator issued an Infringement Notice and imposed a fine of R5 million. The matter is now before the courts, with judgment reserved. This case is significant because it demonstrates both the Regulator's willingness to impose maximum sanctions and its readiness to pursue litigation when enforcement notices are ignored.</p>
+
+            <h3>Social Media Platform Enforcement</h3>
+            <p>In 2024, the Regulator issued an enforcement notice against a major social media platform following an investigation into its terms and conditions for South African users. The Regulator found that South African users were afforded lesser data privacy protections than users in other jurisdictions — a practice the Regulator determined to be inconsistent with POPIA's requirements. This case signals that the Regulator is prepared to act against well-resourced multinational organisations, not only against public bodies or small enterprises.</p>
+
+            <h3>Security Compromise Enforcement</h3>
+            <p>During 2024 and into 2025, the Regulator issued several enforcement notices following security compromises and inadequate breach notification processes. These cases highlight that an organisation's vulnerability is not limited to the moment of a breach — the manner in which a breach is identified, contained, reported to the Regulator, and communicated to affected data subjects is itself a basis for enforcement action.</p>
+
+            <div class="callout">
+              <div class="callout-label">Key Fact</div>
+              <h3>2,000 Security Compromises in Six Months</h3>
+              <p>The Information Regulator reported nearly 2,000 security compromises in the first half of the 2025/2026 financial year — a 40% increase on the prior period. The average cost of a data breach in South Africa reached R44.1 million in 2025, with the financial sector experiencing average breach costs of R70.2 million. Reputational damage and lost business, averaging R13.1 million per incident, typically exceed the maximum R10 million POPIA fine.</p>
+            </div>
+
+            <h2 id="2025-amendments">The 2025 Amendment Regulations: Key Changes</h2>
+
+            <p>On 17 April 2025, the Information Regulator published amendments to the POPIA Regulations. These changes are not merely procedural — they materially alter how businesses must approach several core compliance obligations.</p>
+
+            <h3>Simplified Objection and Erasure Processes</h3>
+            <p>The amended regulations simplify the mechanisms by which data subjects can object to the processing of their personal information, request corrections, and seek the deletion of their data. Businesses are now required to have documented, workable procedures for handling these requests — not merely policy statements. A data subject who cannot practically exercise their rights through your organisation's process has grounds for a complaint to the Regulator.</p>
+
+            <h3>Expanded Information Officer Responsibilities</h3>
+            <p>The amended regulations introduce new responsibilities for Information Officers. An IO who is registered on the Regulator's portal but who has no real understanding of the role, no internal authority, and no operational oversight of compliance activities is precisely the pattern the Regulator has identified as one of the most persistent failures in South African business compliance. The IO must be functionally empowered, not merely nominally appointed.</p>
+
+            <h3>Immediate Breach Reporting</h3>
+            <p>Under the 2025 amendments, all security compromises must be reported to the Regulator as soon as an organisation is reasonably certain that a breach has occurred — not after a full internal investigation has been completed. The previous practice of delaying notification while an internal process ran its course is no longer consistent with regulatory expectations.</p>
+
+            <h3>Administrative Fines in Instalments</h3>
+            <p>In an acknowledgement that R10 million administrative fines could present severe financial difficulty for smaller organisations, the amended regulations permit administrative fines to be paid in instalments. This provision should not be read as softening the Regulator's enforcement approach — it is an administrative accommodation, not an indication that smaller businesses are at reduced risk of enforcement action.</p>
+
+            <h2 id="common-failures">The Seven Most Common POPIA Compliance Failures</h2>
+
+            <p>The Information Regulator, compliance practitioners, and legal firms advising on data protection have consistently identified the same categories of failure across South African businesses. Understanding these patterns is the most efficient starting point for any compliance review.</p>
+
+            <ul>
+              <li><strong>Information Officers appointed in name only.</strong> The IO is registered on the Regulator's portal but exercises no real authority within the organisation. There is no POPIA governance framework, no internal reporting line, and no mechanism for the IO to be informed of incidents or data subject requests in real time.</li>
+              <li><strong>Outdated or generic privacy notices.</strong> Privacy policies are often copy-pasted templates that bear no relationship to the organisation's actual data processing activities. A privacy notice that describes processing the organisation does not conduct — or omits processing it does conduct — creates both a regulatory and a reputational risk.</li>
+              <li><strong>No POPIA training beyond management.</strong> Compliance is treated as a legal or governance issue. Frontline employees who handle personal information daily — customer service staff, HR personnel, financial administrators — receive little or no training. Human error is consistently identified as the leading cause of data breaches and POPIA incidents.</li>
+              <li><strong>Inadequate operator agreements.</strong> Organisations identify their third-party processors (operators) but fail to conclude POPIA-compliant operator agreements, or conclude agreements that are never reviewed or updated. Every organisation that uses payroll software, cloud services, a CRM system, or any IT service provider that handles personal information requires a compliant operator agreement.</li>
+              <li><strong>No documented data subject request procedure.</strong> When a client, employee, or supplier submits a request to access, correct, or delete their personal information, there is no internal procedure for handling it. Responses are delayed, inconsistent, or simply not sent.</li>
+              <li><strong>Treating POPIA as a once-off exercise.</strong> Compliance documentation was prepared, filed, and forgotten. Annual reviews are not conducted. Regulatory changes are not tracked. The organisation's data processing practices have evolved since the documentation was prepared, but the documentation has not.</li>
+              <li><strong>Assuming IT equals POPIA compliance.</strong> Strong cybersecurity measures are necessary but not sufficient. POPIA compliance requires policies, governance structures, employee training, operator management, and documented procedures. A technically secure organisation may still be non-compliant under POPIA.</li>
+            </ul>
+
+            <h2 id="annual-reporting">The Annual Reporting Obligation and the 30 June Deadline</h2>
+
+            <p>One of the less-discussed POPIA obligations — and one with a fixed annual deadline — is the requirement for responsible parties to submit their annual compliance report to the Information Regulator. This submission must be completed between 1 April and 30 June each year.</p>
+
+            <p>The annual report is not a formality. It requires organisations to confirm the current status of their POPIA compliance programme, identify any changes to their data processing activities during the preceding year, and confirm that their PAIA Manual remains current and has been made publicly available as required. For businesses that have allowed their POPIA documentation to become stale, the annual reporting cycle creates a forced review moment — and a potential trigger for enforcement attention if the report reveals non-compliance.</p>
+
+            <div class="callout">
+              <div class="callout-label">Deadline</div>
+              <h3>Annual Report to the Information Regulator: 30 June</h3>
+              <p>Every compliant business must submit its annual POPIA compliance report to the Information Regulator between 1 April and 30 June each year. Failure to submit, or submission of a report that reveals material non-compliance, may trigger an investigation. BizLegal handles annual reporting as part of both our once-off and monthly retainer packages.</p>
+            </div>
+
+            <p>The annual reporting obligation also functions as a mechanism for the Regulator to monitor the overall compliance landscape. Patterns in annual reports — sectors where non-compliance clusters, common failure types, organisations that have not submitted — all inform the Regulator's enforcement priorities for the coming year.</p>
+
+            <h2 id="genuine-compliance">What Genuine Compliance Looks Like in 2026</h2>
+
+            <p>Genuine POPIA compliance in 2026 is characterised not by the existence of a set of documents, but by the integration of data protection principles into the way an organisation actually operates. The Regulator has been explicit: it is no longer asking whether you have a policy. It is asking whether you can demonstrate that your policy reflects your practice, and whether your practice can withstand scrutiny.</p>
+
+            <p>This requires, at minimum, the following:</p>
+
+            <ul>
+              <li><strong>A registered and functionally empowered Information Officer</strong> who understands the role, has internal authority to enforce compliance, and maintains an active oversight function.</li>
+              <li><strong>A current, accurate PAIA Manual</strong> that reflects the organisation's actual structure and information holdings, made publicly available as required by the Promotion of Access to Information Act.</li>
+              <li><strong>A documented data inventory</strong> mapping every category of personal information collected, the purpose for which it is collected, the legal basis on which it is processed, where it is stored, who has access to it, and when it will be deleted or de-identified.</li>
+              <li><strong>Compliant operator agreements</strong> with every third party that processes personal information on the organisation's behalf.</li>
+              <li><strong>Privacy notices and consent mechanisms</strong> that accurately reflect actual processing activities and are accessible to the individuals to whom they apply.</li>
+              <li><strong>A documented breach response plan</strong> that enables the organisation to identify, contain, and report a security compromise within the timeframes now expected by the Regulator.</li>
+              <li><strong>Regular staff training</strong> at all levels, with attendance records maintained for compliance purposes.</li>
+              <li><strong>Annual reviews</strong> that update all documentation to reflect changes in business operations, technology, or regulatory requirements.</li>
+            </ul>
+
+            <p>For most South African businesses — particularly SMEs operating without dedicated legal or compliance teams — achieving and maintaining this standard is not a realistic internal project. The complexity of POPIA's requirements, the technical knowledge required to assess data flows and security measures, and the ongoing nature of the compliance obligation all point toward professional assistance as the most efficient and reliable path to compliance.</p>
+
+            <div class="article-cta">
+              <div class="article-cta-badge">BizLegal POPIA Service</div>
+              <h2>Get POPIA & PAIA Compliant — Before the Regulator Comes to You</h2>
+              <p>BizLegal provides a complete, professionally managed POPIA and PAIA compliance programme for South African businesses — from Information Officer appointment to annual reporting. Fixed pricing. Qualified attorneys. Western Cape.</p>
+              <div class="article-cta-btns">
+                <a href="../services/popia.html" class="btn btn-primary">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                  See Our POPIA Package
+                </a>
+                <a href="../index.html#quote" class="btn btn-outline">Get a Free Quote</a>
+              </div>
+            </div>
+
+            <div class="author-card">
+              <div class="author-avatar">BL</div>
+              <div>
+                <div class="author-name">BizLegal Editorial</div>
+                <div class="author-role">Labour, Legal &amp; Compliance Practitioners — Western Cape</div>
+              </div>
+            </div>
+
+            <div class="article-tags">
+              <span class="article-tag">POPIA</span>
+              <span class="article-tag">PAIA</span>
+              <span class="article-tag">Information Regulator</span>
+              <span class="article-tag">Data Protection</span>
+              <span class="article-tag">Compliance 2026</span>
+              <span class="article-tag">Privacy Policy</span>
+              <span class="article-tag">Data Breach</span>
+            </div>
+
+            <div class="share-bar">
+              <span class="share-label">Share this article</span>
+              <a href="https://www.facebook.com/sharer/sharer.php?u=https://bizlegal.co.za/blog/popia-compliance-2026.html" target="_blank" rel="noopener" class="share-btn">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+                Facebook
+              </a>
+              <a href="https://wa.me/?text=POPIA+Enforcement+2026+%E2%80%94+What+SA+Businesses+Must+Know%3A+https%3A%2F%2Fbizlegal.co.za%2Fblog%2Fpopia-compliance-2026.html" target="_blank" rel="noopener" class="share-btn">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 1.999C6.477 1.999 2 6.477 2 12c0 1.88.518 3.638 1.418 5.148L2 22l4.966-1.395A9.956 9.956 0 0012 22c5.523 0 10-4.477 10-10S17.522 1.999 11.999 1.999z"/></svg>
+                WhatsApp
+              </a>
+              <button class="share-btn" onclick="copyLink()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+                Copy Link
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- SIDEBAR -->
+        <aside class="article-sidebar">
+          <div class="sidebar-card">
+            <h4>Related Articles</h4>
+            <a href="labour-inspectors-2026.html" style="display:block;">
+              <div class="related-article">
+                <div class="related-article-thumb">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 7H4a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+                </div>
+                <div>
+                  <div class="related-article-title">10,000 New Labour Inspectors: What Every SA Business Owner Needs to Know</div>
+                  <div class="related-article-meta">March 2026 · 8 min read</div>
+                </div>
+              </div>
+            </a>
+            <a href="labour-law-amendments-2026.html" style="display:block;">
+              <div class="related-article">
+                <div class="related-article-thumb">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                </div>
+                <div>
+                  <div class="related-article-title">South Africa's Labour Law Wave: The 2025/2026 Amendment Bills Explained</div>
+                  <div class="related-article-meta">April 2026 · 10 min read</div>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="sidebar-cta">
+            <h4>Is Your Business POPIA Compliant?</h4>
+            <p>Our qualified attorneys handle your complete POPIA &amp; PAIA compliance — Information Officer, PAIA Manual, policies, training and annual reporting.</p>
+            <a href="../index.html#quote" class="btn btn-primary">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:16px;height:16px;"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              Get a Free Quote
+            </a>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="../images/logocolor.png" alt="BizLegal" style="filter:brightness(0) saturate(100%) invert(65%) sepia(90%) saturate(800%) hue-rotate(5deg) brightness(88%);" />
+          <p>Labour, Legal, Tax and Compliance solutions for businesses across the Cape Town, Overberg and West Coast regions. Affordable. Expert. Local.</p>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/p/BizLegal-61556007415475/" aria-label="Facebook" class="social-gold"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+            <a href="https://wa.me/27765760233" aria-label="WhatsApp" class="social-gold"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 1.999C6.477 1.999 2 6.477 2 12c0 1.88.518 3.638 1.418 5.148L2 22l4.966-1.395A9.956 9.956 0 0012 22c5.523 0 10-4.477 10-10S17.522 1.999 11.999 1.999z"/></svg></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Services</h5>
+          <ul>
+            <li><a href="../services/labour.html">Labour &amp; HR Services</a></li>
+            <li><a href="../services/legal.html">Legal Services</a></li>
+            <li><a href="../services/popia.html">POPI &amp; PAIA Compliance</a></li>
+            <li><a href="../services/cpa.html">Consumer Protection</a></li>
+            <li><a href="../services/tax.html">Tax &amp; Accounting</a></li>
+            <li><a href="../services/training.html">Training</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Company</h5>
+          <ul>
+            <li><a href="../about.html">About BizLegal</a></li>
+            <li><a href="../blog.html">Blog &amp; Resources</a></li>
+            <li><a href="../contact.html">Contact Us</a></li>
+            <li><a href="../index.html#quote">Get a Quote</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Our Offices</h5>
+          <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span><strong style="color:rgba(255,255,255,0.85)">Cape Town</strong><br/>Stellenberg<br/>083 292 6936</span></div>
+          <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span><strong style="color:rgba(255,255,255,0.85)">Overberg</strong><br/>Hermanus<br/>083 455 3981</span></div>
+          <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span><strong style="color:rgba(255,255,255,0.85)">West Coast</strong><br/>Vredendal<br/>076 576 0233</span></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 BizLegal. All rights reserved.</p>
+        <ul class="footer-bottom-links"><li><a href="../privacy.html">Privacy Policy</a></li><li><a href="../paia.html">PAIA Manual</a></li></ul>
+      </div>
+    </div>
+  </footer>
+
+  <div class="whatsapp-float">
+    <div class="whatsapp-tooltip">Chat on WhatsApp</div>
+    <a class="whatsapp-btn" href="https://wa.me/27765760233?text=Hi%20BizLegal%2C%20I%20read%20your%20POPIA%20article%20and%20would%20like%20a%20free%20compliance%20review." target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 1.999C6.477 1.999 2 6.477 2 12c0 1.88.518 3.638 1.418 5.148L2 22l4.966-1.395A9.956 9.956 0 0012 22c5.523 0 10-4.477 10-10S17.522 1.999 11.999 1.999z"/></svg></a>
+  </div>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      const el = document.documentElement;
+      const prog = (el.scrollTop || document.body.scrollTop) / (el.scrollHeight - el.clientHeight) * 100;
+      document.getElementById('progress-bar').style.width = prog + '%';
+    });
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20));
+    const hamburger = document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    let menuOpen = false;
+    hamburger.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      mobileMenu.classList.toggle('open', menuOpen);
+      const spans = hamburger.querySelectorAll('span');
+      if (menuOpen) { spans[0].style.transform='rotate(45deg) translate(5px,5px)'; spans[1].style.opacity='0'; spans[2].style.transform='rotate(-45deg) translate(5px,-5px)'; }
+      else { spans.forEach(s => { s.style.transform=''; s.style.opacity=''; }); }
+    });
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { menuOpen=false; mobileMenu.classList.remove('open'); hamburger.querySelectorAll('span').forEach(s=>{s.style.transform='';s.style.opacity='';}); }));
+    function copyLink() {
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        const t = document.getElementById('copy-toast'); t.classList.add('show');
+        setTimeout(() => t.classList.remove('show'), 2500);
+      });
+    }
+  </script>
+</body>
+</html>
