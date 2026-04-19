@@ -77,13 +77,13 @@
     .form-wrap { max-width: 860px; }
 
     /* Progress */
-    .progress-card { background: var(--white); border: 1px solid var(--grey-light); border-radius: var(--radius); padding: 18px 24px; margin-bottom: 24px; display: flex; align-items: center; gap: 16px; box-shadow: var(--shadow-sm); }
+    .progress-card { background: var(--white); border: 1px solid var(--grey-light); border-radius: var(--radius); padding: 18px 24px; margin-bottom: 24px; display: flex; align-items: center; gap: 16px; box-shadow: var(--shadow-sm); position: sticky; top: calc(var(--nav-h) + 8px); z-index: 100; }
     .progress-track { flex: 1; height: 8px; background: var(--grey-light); border-radius: 4px; overflow: hidden; }
-    .progress-fill { height: 100%; background: linear-gradient(90deg, var(--blue), var(--gold)); border-radius: 4px; transition: width 0.4s ease; width: 0%; }
+    .progress-fill { height: 100%; background: var(--gold); border-radius: 4px; transition: width 0.4s ease; width: 0%; }
     .progress-label { font-size: 13px; font-weight: 600; color: var(--text-soft); white-space: nowrap; min-width: 160px; text-align: right; }
 
     /* Notice */
-    .notice { background: #FFFBEC; border: 1px solid rgba(240,192,32,0.4); border-left: 4px solid var(--gold); border-radius: 0 var(--radius) var(--radius) 0; padding: 14px 20px; margin-bottom: 24px; font-size: 13.5px; color: var(--text-soft); line-height: 1.65; }
+    .notice { background: rgba(240,192,32,0.08); border: 1px solid rgba(240,192,32,0.4); border-left: 4px solid var(--gold); border-radius: 0 var(--radius) var(--radius) 0; padding: 14px 20px; margin-bottom: 24px; font-size: 13.5px; color: var(--text-soft); line-height: 1.65; }
     .notice strong { color: var(--text); }
 
     /* Section cards */
@@ -95,7 +95,7 @@
     .section-title-text { font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 700; color: var(--blue-dark); flex: 1; }
     .s-badge { display: inline-flex; align-items: center; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 20px; letter-spacing: 0.02em; }
     .s-badge-empty { background: var(--off-white); color: var(--grey-mid); }
-    .s-badge-partial { background: #FFF3CD; color: #856404; }
+    .s-badge-partial { background: rgba(240,192,32,0.15); color: var(--blue-dark); }
     .s-badge-done { background: #D4EDDA; color: #155724; }
     .s-chevron { font-size: 10px; color: var(--grey-mid); transition: transform 0.25s; flex-shrink: 0; margin-left: 4px; }
     .section-card.is-open .s-chevron { transform: rotate(180deg); }
