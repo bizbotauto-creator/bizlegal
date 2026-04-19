@@ -301,7 +301,7 @@
         </div>
 
         <!-- THE FORM -->
-        <form id="onboardingForm" action="https://formspree.io/f/mvzdryjb" method="POST">
+        <form id="onboardingForm" action="https://formspree.io/f/mvzdryjb" method="POST" novalidate>
 
         <!-- ── Section 1: Company Details ── -->
         <div class="section-card is-open" id="card-s1">
@@ -618,10 +618,11 @@
         </div>
 
         <!-- Formspree success signal (hidden — we use our own success UI) -->
-        <div data-fs-success id="fs-signal" style="display:none"></div>
-        <div data-fs-error id="fs-error" style="display:none"></div>
 
         </form><!-- end form -->
+
+        <!-- Formspree success signal — library removes `hidden` attr on success -->
+        <div data-fs-success id="fs-success-signal" hidden></div>
 
         <!-- SUCCESS STATE -->
         <div class="success-state" id="successState">
@@ -833,73 +834,21 @@
       window.scrollTo({ top: document.querySelector('.form-page').offsetTop - 20, behavior: 'smooth' });
     }
 
-    // ── Formspree Ajax initialization ──
+    // ── Formspree Ajax — per official Vanilla JS guide ──
+    // The library removes the `hidden` attribute from [data-fs-success] on success.
+    // We watch specifically for that attribute change to trigger our custom success UI.
     window.formspree = window.formspree || function() { (formspree.q = formspree.q || []).push(arguments); };
     formspree('initForm', { formElement: '#onboardingForm', formId: 'mvzdryjb' });
 
-    // ── Direct Discord notification (fire-and-forget) ──
-    function notifyDiscord() {
-      const g = id => (document.getElementById(id) || {}).value || '—';
-      const payload = {
-        username: 'BizLegal Forms',
-        embeds: [{
-          title: '📋 New POPIA/PAIA Onboarding Submission',
-          color: 0x1E3D82,
-          fields: [
-            { name: '🏢 Company',    value: g('q1')  || '—', inline: true },
-            { name: '📧 Email',      value: g('q9')  || '—', inline: true },
-            { name: '📱 Phone',      value: g('q8')  || '—', inline: true },
-            { name: '🏭 Industry',   value: g('q4')  || '—', inline: true },
-            { name: '👥 Employees',  value: g('q12') || '—', inline: true },
-            { name: '👤 CEO / MD',   value: g('q11') || '—', inline: true },
-          ],
-          footer: { text: 'BizLegal POPIA Onboarding • ' + new Date().toLocaleDateString('en-ZA') }
-        }]
-      };
-      fetch('https://discord.com/api/webhooks/1341454980174839828/B8DyW65SiSWYyNjuvtIDj41YkzNmMouOP1wPtzYlUidsdqZ3iRXn8nTHkNE9LnPRV86o', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      }).catch(e => console.warn('Discord notification:', e));
-    }
-
-    // ── Watch for Formspree success signal ──
-    // The @formspree/ajax library reveals [data-fs-success] when submission succeeds.
-    // It may toggle via style, hidden attribute, or class — watch all of them.
-    const fsSignal = document.getElementById('fs-signal');
-    const fsError  = document.getElementById('fs-error');
-    let successFired = false;
-
-    function checkVisible(el) {
-      return !el.hidden &&
-             el.style.display !== 'none' &&
-             !el.classList.contains('hidden') &&
-             !el.hasAttribute('aria-hidden');
-    }
-
-    new MutationObserver(() => {
-      if (!successFired && checkVisible(fsSignal)) {
-        successFired = true;
-        notifyDiscord();
-        showSuccess();
-      }
-    }).observe(fsSignal, {
-      attributes: true, childList: true, subtree: true,
-      attributeFilter: ['style', 'class', 'hidden', 'aria-hidden']
-    });
-
-    new MutationObserver(() => {
-      if (checkVisible(fsError)) {
-        const btn = document.getElementById('submitBtn');
-        if (btn) {
-          btn.disabled = false;
-          btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:18px;height:18px;"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/></svg> Submit Form';
+    var successEl = document.getElementById('fs-success-signal');
+    new MutationObserver(function(mutations) {
+      mutations.forEach(function(m) {
+        if (m.attributeName === 'hidden' && !successEl.hasAttribute('hidden')) {
+          showSuccess();
         }
-      }
-    }).observe(fsError, {
-      attributes: true, childList: true, subtree: true,
-      attributeFilter: ['style', 'class', 'hidden', 'aria-hidden']
-    });
+      });
+    }).observe(successEl, { attributes: true, attributeFilter: ['hidden'] });
+
   </script>
   <style>
     @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
