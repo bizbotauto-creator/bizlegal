@@ -841,13 +841,9 @@
     formspree('initForm', { formElement: '#onboardingForm', formId: 'mvzdryjb' });
 
     var successEl = document.getElementById('fs-success-signal');
-    new MutationObserver(function(mutations) {
-      mutations.forEach(function(m) {
-        if (m.attributeName === 'hidden' && !successEl.hasAttribute('hidden')) {
-          showSuccess();
-        }
-      });
-    }).observe(successEl, { attributes: true, attributeFilter: ['hidden'] });
+    new MutationObserver(function() {
+      showSuccess();
+    }).observe(successEl, { attributes: true, childList: true, subtree: true });
 
   </script>
   <style>
